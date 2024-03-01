@@ -6,6 +6,7 @@ import os
 ''' IMPORTANT
 When you build a .md file into a .html file, you need to add the file name to the filenames_to_titles dictionary below.
 Otherwise, the script won't know what text to put in the header (the part above the navbar) of the .html file.
+
 For example, if you have a file called "reading_log.md", you need to add the following line to the dictionary:
   "reading_log.html": "Vijay's Reading Log",
 (You can change "Vijay's Reading Log" to whatever you want the header to be.)
@@ -17,7 +18,8 @@ filenames_to_titles = {
   "writings.html": "Writings",
   "beginning_of_infinity_summary.html": "Summarizing the Beginning of Infinity",
   "1.html": "1",
-  "2.html": "2"
+  "2.html": "2",
+  "free_ideas.html": "Free Ideas"
 }
 
 def md_to_html(md_file):
