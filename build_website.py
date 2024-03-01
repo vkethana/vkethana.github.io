@@ -19,7 +19,7 @@ filenames_to_titles = {
   "beginning_of_infinity_summary.html": "Summarizing the Beginning of Infinity",
   "1.html": "1",
   "2.html": "2",
-  "free_ideas.html": "Free Ideas"
+  "free_questions.html": "Free Questions"
 }
 
 def md_to_html(md_file):
