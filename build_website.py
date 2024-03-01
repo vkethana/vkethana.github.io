@@ -66,7 +66,7 @@ def convert_file(md_file):
 
     # Output HTML to console or save to file
     # If you want to save to file, you can uncomment the following lines:
-    output_file = "html/" + output_file
+    output_file = "docs/" + output_file
     with open(output_file, 'w') as f:
          f.write(html_content)
     print(f"Saved contents to {output_file}")
