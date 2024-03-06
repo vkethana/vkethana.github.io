@@ -17,6 +17,7 @@ filenames_to_titles = {
   "reading_log.html": "Vijay's Reading Log",
   "writings.html": "Writings",
   "beginning_of_infinity_summary.html": "Summarizing the Beginning of Infinity",
+  "language_learning.html": "Every Thought I Have On Language Learning, as Concisely as Possible",
   "1.html": "1",
   "2.html": "2",
   "free_questions.html": "Free Questions"
