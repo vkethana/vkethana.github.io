@@ -1,56 +1,44 @@
 <head>
-<script src="https://www.google.com/recaptcha/api.js?render=6Lc3VpQpAAAAACkMYKQ-Q-3D-JG3LDyN-NxvHqOh" async defer></script>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
 <h1>FormEasy Demo</h1>
 
-<div class="g-recaptcha" data-sitekey="6Lc3VpQpAAAAACkMYKQ-Q-3D-JG3LDyN-NxvHqOh">
-</div>
 <form id="suggestions">
   <label for="message">Message:</label><br />
   <textarea id="message" name="message" rows="4" cols="50"></textarea><br /><br />
   <button type="submit">Submit</button>
 </form>
+<div class="g-recaptcha" data-sitekey="6Lf1jZUpAAAAAAS-WucHT-5xmbRrRrh5n0h3YOfJ"> </div>
 
 </body>
 <script>
-const siteKey = '6Lc3VpQpAAAAACkMYKQ-Q-3D-JG3LDyN-NxvHqOh';
+const siteKey = '6Lf1jZUpAAAAAAS-WucHT-5xmbRrRrh5n0h3YOfJ';
 const url = 'https://script.google.com/macros/s/AKfycby02zc6gCq9PiGqTefDMwQTSOstL-6ows0HNwK8UKG3xwJE1Iz0pFTWBRrqys0a7NY/exec';
 
 form = document.getElementById('suggestions')
 console.log("Grabbed element ", form)
-function handleSubmit(event) {
-  event.preventDefault();
 
-  const formData = new FormData(this);
-  const data = Object.fromEntries(formData);
+form.addEventListener('submit', function (event) {
+    event.preventDefault();
 
-  // Make an API call to get the reCAPTCHA token
-  grecaptcha.ready(function () {
-    console.log("grecaptcha ready")
-    grecaptcha.execute(siteKey, { action: 'submit' }).then(function (token) {
-      // Add the reCAPTCHA token to the form data
+    const formData = new FormData(this);
+    const data = Object.fromEntries(formData);
+    const gCaptchaResponse = document.getElementById('g-recaptcha-response').value;
 
-      data.gCaptchaResponse = token;
-      data.message = document.getElementById('message').value;
-
-      fetch(url, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'text/plain;charset=utf-8',
-        },
-        body: JSON.stringify(data),
-      })
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'text/plain;charset=utf-8',
+      },
+      body: JSON.stringify(data),
+    })
       .then((res) => res.json())
       .then((data) => {
         console.log('Successful', data);
+        this.reset();
       })
       .catch((err) => console.log('err', err));
-
-    });
   });
-}
-
-form.addEventListener('submit', handleSubmit);
 </script>
 
