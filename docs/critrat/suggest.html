@@ -47,20 +47,24 @@ form.addEventListener('submit', function (event) {
     const data = Object.fromEntries(formData);
     const gCaptchaResponse = document.getElementById('g-recaptcha-response').value;
     console.log("Captcha Response = ", gCaptchaResponse);
-
-    fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'text/plain;charset=utf-8',
-      },
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log('Successful', data);
-        this.reset();
+    if (gCaptchaResponse === '') {
+      alert('Please complete the captcha in order to submit the form.');
+      return;
+    } else {
+      fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'text/plain;charset=utf-8',
+        },
+        body: JSON.stringify(data),
       })
-      .catch((err) => console.log('err', err));
+        .then((res) => res.json())
+        .then((data) => {
+          console.log('Successful', data);
+          this.reset();
+        })
+        .catch((err) => console.log('err', err));
+    }
   });
   form.addEventListener('submit', function (event) {
     form.reset();
