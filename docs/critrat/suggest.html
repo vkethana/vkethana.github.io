@@ -1,17 +1,38 @@
+<!DOCTYPE html>
 <head>
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <title>Submit Suggestions</title>
 </head>
 <body>
-<h1>FormEasy Demo</h1>
+<h1>Submit Suggestions</h1>
 
 <form id="suggestions">
-  <label for="message">Message:</label><br />
+  <label for="message">Content of the Quote:</label>
   <textarea id="message" name="message" rows="4" cols="50"></textarea><br /><br />
-  <button type="submit">Submit</button>
-</form>
-<div class="g-recaptcha" data-sitekey="6Lf1jZUpAAAAAAS-WucHT-5xmbRrRrh5n0h3YOfJ"> </div>
 
-</body>
+  <label for="source">Source of the Quote:</label>
+  <input type="text" id="source" name="source" required> <br /><br />
+
+  <label for="email">Your Email:</label>
+  <input type="email" id="email" name="email" ><br /><br />
+
+  <div class="g-recaptcha" data-sitekey="6Lf1jZUpAAAAAAS-WucHT-5xmbRrRrh5n0h3YOfJ"> </div><br />
+  <div class="center">
+    <button type="submit" class="submitButton center">Submit</button>
+  </div>
+</form>
+<footer class="navbar">
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Critical Rationalism</a></li>
+            <li><a href="search.html">Search All Quotes</a></li>
+            <li><a href="random.html">Random Quote</a></li>
+        </ul>
+    </nav>
+</footer>
+
 <script>
 const siteKey = '6Lf1jZUpAAAAAAS-WucHT-5xmbRrRrh5n0h3YOfJ';
 const url = 'https://script.google.com/macros/s/AKfycby02zc6gCq9PiGqTefDMwQTSOstL-6ows0HNwK8UKG3xwJE1Iz0pFTWBRrqys0a7NY/exec';
@@ -25,6 +46,7 @@ form.addEventListener('submit', function (event) {
     const formData = new FormData(this);
     const data = Object.fromEntries(formData);
     const gCaptchaResponse = document.getElementById('g-recaptcha-response').value;
+    console.log("Captcha Response = ", gCaptchaResponse);
 
     fetch(url, {
       method: 'POST',
@@ -40,5 +62,8 @@ form.addEventListener('submit', function (event) {
       })
       .catch((err) => console.log('err', err));
   });
+  form.addEventListener('submit', function (event) {
+    form.reset();
+  });
 </script>
-
+</body>
