@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Five Different Takes on The Beginning of Infinity
+published: false
 ---
 
 Author Nassim Taleb once said that if a book is good, you should ask ten different people to summarize it and get ten, very different summaries. Inspired by this thought, I am writing out a list of summaries of David Deutsch's _The Beginning of Infinity_ from a variety of angles. The goal is to show just how multidimensional of a text it is, and to interest viewers from a variety of backgrounds to try reading the book.
