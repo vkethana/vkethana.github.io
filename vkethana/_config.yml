@@ -1,9 +1,17 @@
 permalink: /:categories/:title:output_ext
 plugins:
   - jekyll-seo-tag
+  - jekyll-feed
+  - jekyll-sitemap
+
+title: vkethana
+description: Vijay Kethanaboyina's personal blog
 
 author:
   name: Vijay Kethanaboyina
   url: https://vkethana.com
-  twitter: @v_kethana
 
+twitter: 
+  username: v_kethana
+  card: summary
+image: /assets/images/ipa_large.jpg

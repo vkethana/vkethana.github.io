@@ -12,9 +12,9 @@ Links
 -----
 
 *   [Reading Log](reading_log.html)
-*   GitHub: [github.com/vkethana](https://www.github.com/vkethana)
-*   LinkedIn: [linkedin.com/in/vkethana/](https://www.linkedin.com/in/vkethana/)
+*		RSS (Atom) Feed:	[vkethana.com/feed.xml]({{ "/feed.xml" | prepend: site.baseurl }}) 
 *   Twitter: [twitter.com/v\_kethana](https://www.twitter.com/v_kethana)
+*   GitHub: [github.com/vkethana](https://www.github.com/vkethana)
 
 Education
 ---------
