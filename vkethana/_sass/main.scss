@@ -602,3 +602,13 @@ a.pagination-item:hover {
     margin-left: var(--spacer);
 }
 
+img {
+  max-height: 500px;
+}
+.center{
+  text-align: center !important;
+}
+figcaption {
+  font-size: 1.1rem;
+  font-style: italic;
+}
