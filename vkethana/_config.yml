@@ -1,0 +1,9 @@
+permalink: /:categories/:title:output_ext
+plugins:
+  - jekyll-seo-tag
+
+author:
+  name: Vijay Kethanaboyina
+  url: https://vkethana.com
+  twitter: @v_kethana
+
