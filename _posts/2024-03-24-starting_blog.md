@@ -3,6 +3,7 @@ layout: post
 title: Why (and How) I am Starting a Website 
 description: My brief essay on why the internet needs more independent blog sites run by independent tinkerers.
 tags: blog, code, web 
+published: false
 ---
 
 ## 1. No Downside, Infinite Upside
