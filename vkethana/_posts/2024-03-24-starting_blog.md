@@ -1,19 +1,29 @@
 ---
 layout: post
-title: How (and why) I am Starting a Blog
+title: Why (and How) I am Starting a Website 
+description: My brief essay on why the internet needs more independent blog sites run by independent tinkerers.
+tags: blog, code, web 
 ---
-(Inspired by [this post](https://guzey.com/personal/why-have-a-blog/) by Alexey Guzey).	
 
-## Why I Started a Blog
-### No Downside, Infinite Upside
-A few decade ago people were at the mercy of publishing companies and mass media, who would arbitrarily decide what could and couldn't be said. People were discriminated against. Good ideas went unheard. It sucked. 
-But the internet has changed things: it's now really easy to get your ideas out there. Aside from purchasing the domain, it's basically free (using hosting service like [Github Pages](https://pages.github.com/) or [Netlify](https://www.netlify.com/)). 
-### Even Repeated Content is Fine
+## 1. No Downside, Infinite Upside
+The internet is a pretty new thing. A few decades ago, people were at the mercy of publishing companies and mass media, who would arbitrarily decide what could and couldn't be said. People were discriminated against. Good ideas went unheard. It sucked. 
+
+But the internet has changed things: it's now really easy to get your ideas out there. Aside from purchasing the domain, it's basically free (using hosting service like [Github Pages](https://pages.github.com/) or [Netlify](https://www.netlify.com/)). Since there is no downside to starting a blog, and a potentially significant upside, why not have one?
+## 2. Ripple Effects
+One person starting a blog can trigger other people to do the same. In my case, some of my inspirations include: 
+- [Gwern](https://gwern.net/index) (machine learning, metascience, and a ton of other stuff)
+- [Progress Good](https://www.arjunkhemani.com/about) (philosophy of science, economics, education)
+- [ftlsid](https://ftlsid.com) (learning Japanese, meditation)
+- [Visakan Veerasamy](https://visakanv.com) (how social networks and innovation work)
+- [Alexey Guzey](https://guzey.com/) (metascience, philosophy)
+- [Matt Might](https://matt.might.net/) (theoretical computer science, precision medicine, free software)
+
+My hope is that starting this website will encourage other people to do the same thing, and we can reverse the development of "web feudalism": hosting your entire online presence underneath a larger platform like Substack, Twitter, or Reddit. These platforms aren't bad -- you need them to reach large audiences -- but they should coexist alongside an independent, decentralized web.
+## 3. Even Repeated Content can be Useful
 Even sites that mostly repeat what other people say can be valuable. My thinking is that as I write more and more, my own ideas will start to emerge without me even trying. Every good idea has already been said, but since nobody was listening the first time around, someone else will have to say it again. 
-### Ripple Effects
-One person starting a blog can trigger other people to do the same. In my case, some of my inspirations include [https://www.arjunkhemani.com/about](Progress Good) (philosophy of science, economics, education), [Gwern](https://gwern.net/index) (machine learning, metascience, and a ton of other stuff), and [Matt Might](https://matt.might.net/) (theoretical computer science, precision medicine, free software).
-My hope is that starting this website will encourage other people to do the same thing, and we can reverse the development of "web feudalism": hosting your entire online presence underneath a larger platform like Substack, Twitter, or Reddit. These platforms aren't bad -- they are probably essential for reaching large audiences -- but they should coexist alongside an independent, decentralized web.
-## Implementation
+
+
+# How I'm Implementing my Website 
 Originally, my website used a handwritten Python script which took a directory of markdown files, stored in a folder titled `md/`, and converted them into a folder of HTML files called `output/`.
 The script was straightfoward (ChatGPT wrote part of it for me). In fact, it boiled down to just a few lines of code: 
 ```python
@@ -53,4 +63,8 @@ def insert_content_into_template(template_file, content):
 ```
 This approach worked fine, but it got clunky when I wanted to add multiple templates or insert figures/images. 
 ### Introducing Jekyll
-Jekyll fixes all these problems -- easy templating, a large plugin ecosystem, the ability to insert HTML into Markdown files (a godsend if you're trying to include graphs / images), you name it. The only price you pay is that you have to work with Ruby version management which is, well, messy. For example, I spent a whole afternoon trying to fix my buggy Homebrew installation of Ruby, which was preventing me from installing 3rd-party plugins. As far as I understand, Jekyll works best when you build up your site from scratch instead of using pre-made templates which deprecate quickly and often break mysteriously. 
+Jekyll fixes all these problems -- easy templating, a large plugin ecosystem, the ability to insert HTML into Markdown files (a godsend if you're trying to include graphs / images), you name it. The only price you pay is that you have to use Ruby, and version management can be very frustrating. I almost gave up on making the site because my Homebrew install of Ruby kept conflciting with some dependencies for a custom theme I wanted to use. 
+
+I've found that Jekyll works a lot better when you build up your site from scratch. Premade templates tend to become deprecated, and you run the risk of something mysteriously breaking. For my website, I used the theme [dark-poole](https://andrewhwanpark.github.io/dark-poole/) and adjusted it to my liking. 
+
+(Inspired by [this essay](https://guzey.com/personal/why-have-a-blog/) by Alexey Guzey).	
