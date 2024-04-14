@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-04-14T11:37:59-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">vkethana</title><subtitle>Vijay Kethanaboyina's personal blog</subtitle><author><name>Vijay Kethanaboyina</name></author><entry><title type="html">ChatGPT is not a next-word predictor</title><link href="http://localhost:4000/chatgpt/" rel="alternate" type="text/html" title="ChatGPT is not a next-word predictor" /><published>2024-03-25T00:00:00-07:00</published><updated>2024-03-25T00:00:00-07:00</updated><id>http://localhost:4000/chatgpt</id><content type="html" xml:base="http://localhost:4000/chatgpt/"><![CDATA[<p>When ChatGPT first came out around a year ago, I remember that my 12th AP government instructor had us discuss it in class. The consensus was that ChatGPT can’t understand anything, because it simply predicts whatever word is most statistically likely to appear next in a sentence. LLMs remix and compress their training data, and they cannot “think.”</p>
+
+<p>This didn’t sound right to me, but at the time I didn’t know much about how LLMs works. But as the months went by, I heard this same idea repeated over and over – that these models are simply a more advanced version of the “predictive text” feature you see when typing on a cell phone. 
+Here’s why I think it’s wrong.</p>
+
+<h2 id="it-cant-be-that-simple">It can’t be that simple</h2>
+<p>If ChatGPT were nothing more than “next-word prediction”, then why wasn’t it made decades ago?
+After all, the necessary hardware (fancy GPUs) and training data (the internet) have been around for years. 
+It is true that GPUs have gotten a lot better in the past few years, but that doesn’t matter here. 
+Suppose that someone in 2015 had come up with a simplified form of GPT-3 using the much-worse hardware available at the time. 
+Even if it took 5 minutes to receive an answer instead of 5 seconds, it still would’ve been the best product out there by 2015 standards.</p>
+
+<p><a href="The">The</a> reason why ChatGPT couldn’t have been invented 10 years ago isn’t just because of better hardware or training data. 
+What really happened is that there was a breakthrough	in model architectures, which started when a team of Google researchers published <em>Attention is All You Need</em> in 2017.</p>
+
+<figure>
+  <img src="/assets/images/transformer.webp" alt="the Transformer architecture" class="center" />
+  <figcaption>Fig. 1: The Transformer Architecture</figcaption>
+</figure>
+<p><br /></p>
+
+<p>Clearly, the transformer architecture took a lot of tinkering and ingenuity to come up with: it required creativity. Saying that LLMs are simply regurgitators of training data implicitly denies that this creativity ever existed, and it downplays the role that key researchers, e.g. the authors of <em>Attention is All You Need</em>, played in bringing about these advancements.</p>
+
+<h2 id="things-are-still-fuzzy">Things are still fuzzy</h2>
+<p>The truth is that nobody (not even Sam Altman!) really understands how LLMs work. If this is true, then how was this stuff invented in the first place?</p>
+
+<p>The answer is that you don’t need to know <em>why</em> something works in order to know <em>how</em> it works. For example, the Wright Brothers flew at Kitty Hawk way before Aerospace Engineering was a formal discipline. The theory behind why airplanes work didn’t come until much later.
+Similarly, nobody right now really understands why the transformer architecture works. To quote Stephen Wolfram’s <em>What Is ChatGPT Doing … and Why Does It Work?</em>, “this is just one of those things that’s been ‘found to work.’”
+I think Wolfram is right: right now AI is in a “tinkering” stage. As a result, we have things like prompt engineering, feedback loops supported by human trainers, tweaking architectures to see how the model’s performance changes. Once the dust settles, AI will evolve into a theoretical disclipline.</p>
+
+<h2 id="bonus-word-regurgitators-are-nothing-new">Bonus: word-regurgitators are nothing new</h2>
+<p>Now for some interesting computational linguistics trivia: word-regurgitating algorithms actually have existed for a while. One good example is the invention of the “context-free grammar” in the 1970s. Here’s a sample sentence from SCIGen, a program that uses a context-free grammar to generate seemingly-coherent computer science research papers. In reality, the papers are completely full of nonsense:</p>
+<blockquote>
+  <p>“We consider an algorithm consisting of n semaphores.
+Any unproven synthesis of introspective methodologies will
+clearly require that the well-known reliable algorithm for the
+investigation of randomized algorithms by Zheng is in Co-NP;
+our application is no different. The question is, will Rooter
+satisfy all of these assumptions? No.” <sup id="fnref:fn-1" role="doc-noteref"><a href="#fn:fn-1" class="footnote" rel="footnote">1</a></sup></p>
+</blockquote>
+
+<p>In short, we give ChatGPT some credit: at the very least, it’s miles ahead of SCIGen.</p>
+
+<hr />
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:fn-1" role="doc-endnote">
+      <p>Fun fact: <a href="https://pdos.csail.mit.edu/archive/scigen/">this paper</a> was actually accepted as a “non-reviewed paper” to the World Multiconference on Systemics, Cybernetics and Informatics in 2005. <a href="#fnref:fn-1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>]]></content><author><name>Vijay Kethanaboyina</name></author><summary type="html"><![CDATA[When ChatGPT first came out around a year ago, I remember that my 12th AP government instructor had us discuss it in class. The consensus was that ChatGPT can’t understand anything, because it simply predicts whatever word is most statistically likely to appear next in a sentence. LLMs remix and compress their training data, and they cannot “think.”]]></summary></entry><entry><title type="html">Why (and How) I am Starting a Website</title><link href="http://localhost:4000/starting_blog/" rel="alternate" type="text/html" title="Why (and How) I am Starting a Website" /><published>2024-03-24T00:00:00-07:00</published><updated>2024-03-24T00:00:00-07:00</updated><id>http://localhost:4000/starting_blog</id><content type="html" xml:base="http://localhost:4000/starting_blog/"><![CDATA[<p>The reason I’m starting a website is simple: I want to join the ranks of all the other cool writers on the internet. Some of my inspirations include:</p>
+<ul>
+  <li><a href="https://gwern.net/index">Gwern</a> (machine learning, the scientific method, and a ton of other stuff)</li>
+  <li><a href="https://www.arjunkhemani.com/about">Progress Good</a> (philosophy of science, economics, education)</li>
+  <li><a href="https://ftlsid.com">ftlsid</a> (learning Japanese, meditation)</li>
+  <li><a href="https://visakanv.com">Visakan Veerasamy</a> (how social networks and innovation work)</li>
+  <li><a href="https://guzey.com/">Alexey Guzey</a> (metascience, philosophy)</li>
+  <li><a href="https://matt.might.net/">Matt Might</a> (theoretical computer science, medicine, free software)</li>
+</ul>
+
+<p>The longer answer is, I think that the internet is moving in the wrong direction. We’re seeing the rise of “web feudalism”: hosting your entire online presence underneath a larger platform like Substack, Twitter, or Reddit. These platforms aren’t bad – you need them to reach large audiences – but they should coexist alongside independently-owned websites.</p>
+
+<p>Some of content on my site is just a repetition of stuff said elsewhere. But right now, I don’t think that’s an issue. My reasoning is that as I write more and more, my own ideas will start to emerge without me even trying. Every good idea has already been said, but since nobody was listening the first time around, someone else will have to repeat it.</p>
+
+<h1 id="how-my-website-works">How my Website Works</h1>
+<h2 id="why-my-original-website-sucked">Why my Original Website Sucked</h2>
+<p>Originally, my website used a handwritten Python script which took a directory of markdown files, stored in a folder titled <code class="language-plaintext highlighter-rouge">md/</code>, and converted them into a folder of HTML files called <code class="language-plaintext highlighter-rouge">output/</code>.
+The script was straightfoward and basically boiled down to just a few lines of code:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Import library that converts markdown text into HTML
+</span><span class="kn">import</span> <span class="nn">markdown</span>
+
+<span class="k">def</span> <span class="nf">md_to_html</span><span class="p">(</span><span class="n">md_file</span><span class="p">):</span>
+    <span class="c1"># Read markdown content from file (script assumes that blog content is written in Markdown)
+</span>    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">md_file</span><span class="p">,</span> <span class="s">'r'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">md_content</span> <span class="o">=</span> <span class="n">f</span><span class="p">.</span><span class="n">read</span><span class="p">()</span>
+
+    <span class="c1"># Convert markdown to HTML
+</span>    <span class="n">html_content</span> <span class="o">=</span> <span class="n">markdown</span><span class="p">.</span><span class="n">markdown</span><span class="p">(</span><span class="n">md_content</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">html_content</span>
+</code></pre></div></div>
+<p>Then I inserted the HTML output into a pre-made template file which had some extra amenities – a header, a footer, CSS styling…:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">insert_content_into_template</span><span class="p">(</span><span class="n">template_file</span><span class="p">,</span> <span class="n">content</span><span class="p">):</span>
+    <span class="c1"># Read template content
+</span>    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">template_file</span><span class="p">,</span> <span class="s">'r'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">template_content</span> <span class="o">=</span> <span class="n">f</span><span class="p">.</span><span class="n">read</span><span class="p">()</span>
+
+    <span class="c1"># Insert content into template
+</span>    <span class="c1"># First, look for the "checkpoint" where the main content should go
+</span>    <span class="n">main_content_index</span> <span class="o">=</span> <span class="n">template_content</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="s">"&lt;!-- Main content --&gt;"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">main_content_index</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+        <span class="n">output_content</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">template_content</span><span class="p">[:</span><span class="n">main_content_index</span><span class="p">]</span> <span class="o">+</span>
+            <span class="s">"&lt;!-- Main content --&gt;"</span> <span class="o">+</span>
+            <span class="n">content</span> <span class="o">+</span>
+            <span class="n">template_content</span><span class="p">[</span><span class="n">main_content_index</span><span class="p">:]</span>
+        <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># If the template file breaks for some reason, the code will still work
+</span>        <span class="n">output_content</span> <span class="o">=</span> <span class="n">template_content</span> <span class="o">+</span> <span class="s">"</span><span class="se">\n</span><span class="s">"</span> <span class="o">+</span> <span class="n">content</span>
+
+    <span class="k">return</span> <span class="n">output_content</span>
+</code></pre></div></div>
+<p>While this script was fun to write (and tell other people about), it had too many problems. 
+What if you want to have multiple templates? 
+What if you want a page that automatically lists out all the blog posts on your site? 
+What if you want to insert interactive content into your Markdown files? 
+Instead of coming up with ad-hoc solutions for each of these issues, I discovered a tool that does it all for me.</p>
+<h2 id="introducing-jekyll">Introducing Jekyll</h2>
+<p>Jekyll fixes all these problems – easy templating, a large plugin ecosystem, the ability to insert HTML into Markdown files (a godsend if you’re trying to include graphs / images with captions), you name it. The only price you pay is that you have to deal with Ruby version management, which is almost guaranteed to be frustrating the first time you install the language. For example, I almost gave up on making the site because my Homebrew version of Ruby kept conflicting with dependencies for a custom theme I wanted to use.</p>
+
+<p>I’ve found that Jekyll works a lot better when you build up your site from scratch. Premade templates tend to become deprecated, and you run the risk of something mysteriously breaking. For my website, I used the theme <a href="https://andrewhwanpark.github.io/dark-poole/">dark-poole</a> and adjusted it to my liking.</p>
+
+<p>(Inspired by <a href="https://guzey.com/personal/why-have-a-blog/">this essay</a> by Alexey Guzey).</p>]]></content><author><name>Vijay Kethanaboyina</name></author><category term="blog," /><category term="code," /><category term="web" /><summary type="html"><![CDATA[My brief essay on why the internet needs more independent blog sites run by independent tinkerers.]]></summary></entry><entry><title type="html">Free Ideas</title><link href="http://localhost:4000/free_ideas/" rel="alternate" type="text/html" title="Free Ideas" /><published>2024-03-03T00:00:00-08:00</published><updated>2024-03-03T00:00:00-08:00</updated><id>http://localhost:4000/free_ideas</id><content type="html" xml:base="http://localhost:4000/free_ideas/"><![CDATA[<p>1) Given a silent MRI video of somebody talking, is it possible to train an ML model to detect what language they are speaking?</p>
+
+<p>2) Suppose there exist two languages, language X and language Y. X and Y are sufficiently different from each other to be considered separate languages, but they still have a lot of shared vocabulary (e.g. English/French, Spanish/Italian). What is the most efficient way to generate sentences in language X that have high mutual intelligiblity for speakers of language Y?</p>
+
+<p>For example, the French sentence below is mostly intelligible to a speaker of English:</p>
+<blockquote>
+  <p>“Le président Emmanuel Macron assure le peuple canadien que le gouvernement français va continuer à défendre le Canada contre la menace américain.”</p>
+</blockquote>
+
+<p>Even if you didn’t catch any word, you can get the gist of it – the French	president Emmanuel Macron is assuring the “peuple canadien” (Canadian people) about something involving the “gouvernment français” (French government). Imagine reading thousands of sentences like this – it would be a great way to “backdoor” into a new language using cognates you already know. Solving this problem will probably involve NLP, statistics, and some kind of cognate detection tool. I’ve made a simple demo of this concept <a href="https://app.vkethana.com/">here</a>.</p>
+
+<p>3) Is it possible to design a writing system that combines English consonant letters with Abugida-style vowel diacritics?	
+For example, the letter “B” would be written “B” and the letter “BA” would be written “Bा. “BI”, “BO”, and “BU” would be  “िB” “Bो”, and “Bु” respectively. 
+Here’s an example:</p>
+
+<p><img src="/assets/images/abugida.jpeg" alt="A writing system combining English consonants with Hindi vowels" width="450" /></p>
+
+<p>Here’s another example, with diacritics exclusively on top of the words:</p>
+
+<p><img src="/assets/images/abugida2.jpeg" alt="A second version, which has all the diacritics on top" width="450" /></p>
+
+<p>4) Is it possible to generate a constructed language using AI? If the language was more “concise” than English (e.g. it takes 150 characters to express a thought that would take 200 characters in English), would there be any practical value to it over English? (Douglas Hofstader alludes to this idea in <em>Godel, Escher, Bach</em> when he talks about translation between languages by means of an intermediate langauge as opposed to dictionary lookup.)</p>
+
+<p>5) In the <em>Beginning of Infinity</em>, physicist David Deutsch proposes the following experiment: find some robot that is already used in the real world and happens to be able to walk. Replace the robot’s existing code with completely random code (“random numbers”, in his words) and implement a system that allows small bits of the code to randomly “mutate”, similar to genetic mutation. The idea behind using random numbers is to totally preclude the possibility that human knowledge is somehow being transfered to the robot. Given enough mutations and time, will the robot ever learn to walk? Has anybody every simulated this experiment?</p>]]></content><author><name>Vijay Kethanaboyina</name></author><summary type="html"><![CDATA[1) Given a silent MRI video of somebody talking, is it possible to train an ML model to detect what language they are speaking?]]></summary></entry></feed>

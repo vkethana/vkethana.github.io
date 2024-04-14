@@ -3,35 +3,29 @@ layout: nonpost
 title: Vijay Kethana
 ---
 
-Bio
----
+## Bio
 
 Computer Science student at UC Berkeley looking to work as a software or data engineer. I've solved problems in technical areas such as computer vision and Linux system administration. I'm also an avid language learner, [reader](reading_log.html), and [Twitter user](https://x.com/v_kethana).
 
-Links
------
+## Links
 
 *   [Reading Log](reading_log.html)
 *		RSS (Atom) Feed:	[vkethana.com/feed.xml]({{ "/feed.xml" | prepend: site.baseurl }}) 
 *   Twitter: [twitter.com/v\_kethana](https://www.twitter.com/v_kethana)
 *   GitHub: [github.com/vkethana](https://www.github.com/vkethana)
 
-Education
----------
+## Education
 
 *   Computer Science BA from UC Berkeley (class of 2027).
 *   Computer Programming Associate's Degree from Gavilan College (concurrent enrollment in high school)
-*   Coursework: Data Structures in C++, Introduction to Java, Introduction to Python, Web Development in HTML/CSS, Linear Algebra, Differential Equations, Multivariable Calculus, Engineering Programming in MATLAB
 
-Skills
-------
+## Skills
 
 *   Programming Experience (five years): Python (Pandas, Matplotlib, Plotly, OpenCV), C++, Java, JavaScript, R, HTML, CSS, SPARQL, SQL, MATLAB. Familiar with using the KCF and CSRT algorithms for object tracking, and some experience with CNNs for object detection.
 *   System Administration: Experienced with Debian and Arch-based Linux distributions. Designed and deployed personal website ([vkethana.com](https://www.vkethana.com)) by installing Nginx on Debian VPS, and later migrated it to AWS S3. Configured Amazon Route 53 to route web traffic to personal domain.
 *   Tools: Proficient in video editing with Sony Vegas Pro, Vim, Nginx.
 
-Project Experience
-------------------
+## Project Experience
 
 ### [OCR Group, FactGrid Cuneiform Project, UC Berkeley](https://drive.google.com/file/d/1vlQzFKQ6lDvLLq6qpwZd_4Shadr_Uq7i/view) (Fall 2023 - Present)
 
@@ -46,8 +40,7 @@ Project Experience
 *   Authored comprehensive, ten-page document describing how to conduct classroom physics demonstrations using the balloon tracking software.
 *   Research log can be found [here](https://www.gavengineering.club/project/4).
 
-Leadership Experience
----------------------
+## Leadership Experience
 
 ### [Co-Founder, Gilroy Hacks (2021 - 2023)](https://gilroyhacks.com)
 
