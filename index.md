@@ -5,11 +5,13 @@ title: Vijay Kethana
 
 ## Bio
 
-Computer Science student at UC Berkeley looking to work as a software or data engineer. I've solved problems in technical areas such as computer vision and Linux system administration. I'm also an avid language learner, [reader](reading_log.html), and [Twitter user](https://x.com/v_kethana).
+Computer Science student at UC Berkeley looking to work as a software or data engineer. 
+I've solved problems in technical areas such as computer vision and Linux system administration. 
+I'm also an avid language learner, [reader](reading_log), and [Twitter user](https://x.com/v_kethana).
 
 ## Links
 
-*   [Reading Log](reading_log.html)
+*   [Reading Log](reading_log)
 *		RSS (Atom) Feed:	[vkethana.com/feed.xml]({{ "/feed.xml" | prepend: site.baseurl }}) 
 *   Twitter: [twitter.com/v\_kethana](https://www.twitter.com/v_kethana)
 *   GitHub: [github.com/vkethana](https://www.github.com/vkethana)
