@@ -19,9 +19,6 @@
 <loc>http://localhost:4000/reading_log/</loc>
 </url>
 <url>
-<loc>http://localhost:4000/work/</loc>
-</url>
-<url>
 <loc>http://localhost:4000/writings/</loc>
 </url>
 </urlset>
