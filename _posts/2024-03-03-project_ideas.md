@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Free Ideas
+title: Project Ideas
 ---
 
 1) Given a silent MRI video of somebody talking, is it possible to train an ML model to detect what language they are speaking?

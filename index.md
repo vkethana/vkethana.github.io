@@ -23,17 +23,17 @@ I'm also an avid language learner, [reader](reading_log), and [Twitter user](htt
 
 ## Skills
 
-*   Programming Experience (five years): Python (Pandas, Matplotlib, Plotly, OpenCV), C++, Java, JavaScript, R, HTML, CSS, SPARQL, SQL, MATLAB. Familiar with using the KCF and CSRT algorithms for object tracking, and some experience with CNNs for object detection.
-*   System Administration: Experienced with Debian and Arch-based Linux distributions. Designed and deployed personal website ([vkethana.com](https://www.vkethana.com)) by installing Nginx on Debian VPS, and later migrated it to AWS S3. Configured Amazon Route 53 to route web traffic to personal domain.
-*   Tools: Proficient in video editing with Sony Vegas Pro, Vim, Nginx.
+*   **Programming Experience** (five years): Python (Pandas, Matplotlib, Plotly, OpenCV), C++, Java, JavaScript, R, HTML, CSS, SPARQL, SQL, MATLAB. Familiar with using the KCF and CSRT algorithms for object tracking, and some experience with CNNs for object detection.
+*   **System Administration**: Experienced with Debian and Arch-based Linux distributions. Designed and deployed personal website (vkethana.com) by installing Nginx on Debian VPS, and later migrated it to GitHub Pages. Configured Namecheap BasicDNS to direct web traffic to personal domain. Proficient with command-line tools such as Vim.
+* **Software Development**: Created Flask web app, hosted on personal website at [rational.vkethana.com](https://rational.vkethana.com), to concisely summarize the writings of physics researcher and author David Deutsch. Site consists of 300+ quotes automatically gathered from the internet, categorized by keywords extracted using the NLTK (Natural Language Toolkit) Porter-Stemmer. Deployed website through the DigitalOcean App Platform.
 
 ## Project Experience
 
-### [OCR Group, FactGrid Cuneiform Project, UC Berkeley](https://drive.google.com/file/d/1vlQzFKQ6lDvLLq6qpwZd_4Shadr_Uq7i/view) (Fall 2023 - Present)
+### [OCR Group, FactGrid Cuneiform Project, UC Berkeley](https://drive.google.com/file/d/1vlQzFKQ6lDvLLq6qpwZd_4Shadr_Uq7i/view) (Fall 2023 - Spring 2024)
 
-*   Develop machine learning model to segment and transcribe Old Assyrian Cuneiform tablets using the YOLOv8 architecture in collaboration with Dr. Adam Anderson. ([website](https://database.factgrid.de/wiki/FactGrid:Cuneiform_Project), [poster](https://drive.google.com/file/d/1vlQzFKQ6lDvLLq6qpwZd_4Shadr_Uq7i/view))
-*   Design pipeline to convert nearly 3,000 raster images of Cuneiform signs into vector images using PIL, Inkscape, and Potrace, and then upload them onto publicly-accessible database using MediaWiki API.
-*   Create OCR Python tool to support development of language models for under-resourced languages written in Cuneiform, especially Old Assyrian. Final OCR tool will be used in annotating, and translating, a collection of 3,954 tablet images.
+* Develop machine learning model to segment and transcribe Old Assyrian Cuneiform tablets using the YOLOv8 architecture in collaboration with Dr. Adam Anderson. ([website](https://database.factgrid.de/wiki/FactGrid:Cuneiform_Project), [poster](https://drive.google.com/file/d/1vlQzFKQ6lDvLLq6qpwZd_4Shadr_Uq7i/view))
+* Design pipeline to convert nearly 3,000 raster images of Cuneiform signs into vector images using PIL, Inkscape, and Potrace, and then upload them onto publicly-accessible database using MediaWiki API.
+* Create OCR model to support development of language models for under-resourced languages written in Cuneiform, especially Old Assyrian. Final product used to annotate dataset of 1,068 tablet images.
 
 ### [STEM Research Internship (Paid), Gavilan College](https://github.com/vkethana/balloon-tracking-software) (Summer 2022)
 
