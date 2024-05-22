@@ -69,3 +69,20 @@ Jekyll fixes all these problems -- easy templating, a large plugin ecosystem, th
 I've found that Jekyll works a lot better when you build up your site from scratch. Premade templates tend to become deprecated, and you run the risk of something mysteriously breaking. For my website, I used the theme [dark-poole](https://andrewhwanpark.github.io/dark-poole/) and adjusted it to my liking. 
 
 (Inspired by [this essay](https://guzey.com/personal/why-have-a-blog/) by Alexey Guzey).	
+
+<script src="https://giscus.app/client.js"
+        data-repo="vkethana/vkethana.github.io"
+        data-repo-id="R_kgDOLBRagA"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOLBRagM4Cfi2H"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="noborder_light"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>

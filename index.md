@@ -1,6 +1,6 @@
 ---
 layout: nonpost
-title: Vijay Kethana
+title: Vijay Kiran Kethanaboyina
 ---
 
 ## Bio
@@ -15,6 +15,7 @@ I'm also an avid language learner, [reader](reading_log), and [Twitter user](htt
 *		RSS (Atom) Feed:	[vkethana.com/feed.xml]({{ "/feed.xml" | prepend: site.baseurl }}) 
 *   Twitter: [twitter.com/v\_kethana](https://www.twitter.com/v_kethana)
 *   GitHub: [github.com/vkethana](https://www.github.com/vkethana)
+*		Email: vijaykethanaboyina at gmail dot com
 
 ## Education
 
