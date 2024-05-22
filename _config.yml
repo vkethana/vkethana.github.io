@@ -3,10 +3,9 @@ plugins:
   - jekyll-seo-tag
   - jekyll-feed
   - jekyll-sitemap
-  - jekyll-og-image
 
-title: vkethana
-description: Vijay Kethanaboyina's personal blog
+title: vkethana.com
+description: Vijay Kethanaboyina's personal website
 
 author:
   name: Vijay Kethanaboyina
@@ -15,13 +14,3 @@ author:
 twitter: 
   username: v_kethana
   card: summary
-
-# _config.yml
-og_image:
-  output_dir: "assets/images/og"
-  domain: "vkethana.com"
-  border_bottom:
-    width: 20
-    fill:
-      - "#4285F4"
-
