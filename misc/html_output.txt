@@ -1,0 +1,452 @@
+<span class="word">
+    <div class="consonant-vowel">
+        <span class="consonant">T</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="vowel">I</span>
+        <span class="consonant">H</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="consonant">S</span>
+    </div>
+</span>
+<span class="word">
+    <div class="consonant-vowel">
+        <span class="consonant">I</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="consonant">S</span>
+    </div>
+</span>
+<span class="word">
+    <div class="consonant-vowel">
+        <span class="consonant">U</span>
+    </div>
+</span>
+<span class="word">
+    <div class="consonant-vowel">
+        <span class="consonant">F</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="consonant">L</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="consonant">L</span>
+    </div>
+</span>
+<span class="word">
+    <div class="consonant-vowel">
+        <span class="vowel">AE</span>
+        <span class="consonant">P</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="vowel">U</span>
+        <span class="consonant">R</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="consonant">G</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="vowel">AE</span>
+        <span class="consonant">R</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="consonant">F</span>
+    </div>
+</span>
+<span class="word">
+    <div class="consonant-vowel">
+        <span class="consonant">I</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="consonant">N</span>
+    </div>
+</span>
+<span class="word">
+    <div class="consonant-vowel">
+        <span class="vowel">EE</span>
+        <span class="consonant">V</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="vowel">EI</span>
+        <span class="consonant">J</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="consonant">S</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="consonant">K</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="vowel">I</span>
+        <span class="consonant">R</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="consonant">P</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="consonant">T</span>
+    </div>
+</span>
+<span class="word">
+    <div class="consonant-vowel">
+        <span class="consonant">A</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="consonant">I</span>
+    </div>
+</span>
+<span class="word">
+    <div class="consonant-vowel">
+        <span class="consonant">A</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="consonant">E</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="consonant">M</span>
+    </div>
+</span>
+<span class="word">
+    <div class="consonant-vowel">
+        <span class="vowel">AI</span>
+        <span class="consonant">R</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="vowel">I</span>
+        <span class="consonant">T</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="consonant">N</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="consonant">G</span>
+    </div>
+</span>
+<span class="word">
+    <div class="consonant-vowel">
+        <span class="consonant">T</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="vowel">I</span>
+        <span class="consonant">H</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="consonant">S</span>
+    </div>
+</span>
+<span class="word">
+    <div class="consonant-vowel">
+        <span class="vowel">OA</span>
+        <span class="consonant">S</span>
+    </div>
+</span>
+<span class="word">
+    <div class="consonant-vowel">
+        <span class="consonant">T</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="vowel">AE</span>
+        <span class="consonant">H</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="consonant">T</span>
+    </div>
+</span>
+<span class="word">
+    <div class="consonant-vowel">
+        <span class="consonant">U</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="consonant">T</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="consonant">H</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="consonant">R</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="consonant">S</span>
+    </div>
+</span>
+<span class="word">
+    <div class="consonant-vowel">
+        <span class="vowel">AE</span>
+        <span class="consonant">K</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="consonant">N</span>
+    </div>
+</span>
+<span class="word">
+    <div class="consonant-vowel">
+        <span class="vowel">UR</span>
+        <span class="consonant">L</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="consonant">N</span>
+    </div>
+</span>
+<span class="word">
+    <div class="consonant-vowel">
+        <span class="vowel">O</span>
+        <span class="consonant">T</span>
+    </div>
+</span>
+<span class="word">
+    <div class="consonant-vowel">
+        <span class="vowel">EE</span>
+        <span class="consonant">R</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="consonant">D</span>
+    </div>
+</span>
+<span class="word">
+    <div class="consonant-vowel">
+        <span class="consonant">I</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="consonant">T</span>
+    </div>
+</span>
+<span class="word">
+    <div class="consonant-vowel">
+        <span class="consonant">A</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="consonant">E</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="consonant">T</span>
+    </div>
+</span>
+<span class="word">
+    <div class="consonant-vowel">
+        <span class="consonant">F</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="consonant">R</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="consonant">S</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="consonant">T</span>
+    </div>
+</span>
+<span class="word">
+    <div class="consonant-vowel">
+        <span class="consonant">I</span>
+    </div>
+</span>
+<span class="word">
+    <div class="consonant-vowel">
+        <span class="vowel">AE</span>
+        <span class="consonant">H</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="consonant">N</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="consonant">D</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="vowel">OA</span>
+        <span class="consonant">R</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="consonant">T</span>
+    </div>
+</span>
+<span class="word">
+    <div class="consonant-vowel">
+        <span class="vowel">AI</span>
+        <span class="consonant">M</span>
+    </div>
+</span>
+<span class="word">
+    <div class="consonant-vowel">
+        <span class="consonant">E</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="consonant">K</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="vowel">AEM</span>
+        <span class="consonant">S</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="consonant">P</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="consonant">L</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="consonant">S</span>
+    </div>
+</span>
+<span class="word">
+    <div class="consonant-vowel">
+        <span class="vowel">OWE</span>
+        <span class="consonant">H</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="consonant">V</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="consonant">R</span>
+    </div>
+</span>
+<span class="word">
+    <div class="consonant-vowel">
+        <span class="consonant">A</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="consonant">I</span>
+    </div>
+</span>
+<span class="word">
+    <div class="consonant-vowel">
+        <span class="vowel">EE</span>
+        <span class="consonant">R</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="vowel">E</span>
+        <span class="consonant">S</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="consonant">N</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="consonant">T</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="vowel">EE</span>
+        <span class="consonant">L</span>
+    </div>
+</span>
+<span class="word">
+    <div class="consonant-vowel">
+        <span class="vowel">I</span>
+        <span class="consonant">D</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="vowel">AI</span>
+        <span class="consonant">Z</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="consonant">N</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="consonant">D</span>
+    </div>
+</span>
+<span class="word">
+    <div class="consonant-vowel">
+        <span class="consonant">A</span>
+    </div>
+</span>
+<span class="word">
+    <div class="consonant-vowel">
+        <span class="consonant">S</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="consonant">K</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="vowel">I</span>
+        <span class="consonant">R</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="consonant">P</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="consonant">T</span>
+    </div>
+</span>
+<span class="word">
+    <div class="consonant-vowel">
+        <span class="consonant">I</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="consonant">N</span>
+    </div>
+</span>
+<span class="word">
+    <div class="consonant-vowel">
+        <span class="vowel">AI</span>
+        <span class="consonant">P</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="consonant">T</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="vowel">AW</span>
+        <span class="consonant">H</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="consonant">N</span>
+    </div>
+</span>
+<span class="word">
+    <div class="consonant-vowel">
+        <span class="vowel">O</span>
+        <span class="consonant">T</span>
+    </div>
+</span>
+<span class="word">
+    <div class="consonant-vowel">
+        <span class="consonant">A</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="consonant">W</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="vowel">OA</span>
+        <span class="consonant">T</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="vowel">EI</span>
+        <span class="consonant">M</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="consonant">T</span>
+    </div>
+</span>
+<span class="word">
+    <div class="consonant-vowel">
+        <span class="consonant">T</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="vowel">U</span>
+        <span class="consonant">H</span>
+    </div>
+</span>
+<span class="word">
+    <div class="consonant-vowel">
+        <span class="vowel">OA</span>
+        <span class="consonant">H</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="consonant">L</span>
+    </div>
+</span>
+<span class="word">
+    <div class="consonant-vowel">
+        <span class="consonant">P</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="vowel">AW</span>
+        <span class="consonant">R</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="vowel">E</span>
+        <span class="consonant">S</span>
+    </div>
+    <div class="consonant-vowel">
+        <span class="consonant">S</span>
+    </div>
+</span>
+
