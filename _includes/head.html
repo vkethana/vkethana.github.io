@@ -9,6 +9,39 @@
 <link rel="stylesheet" href="/assets/css/styles.css" />
 <link rel="shortcut icon" href="/dark-poole/assets/favicon.ico" />
 {% seo %}
+{% if page.contains-vjscript %}
+<style>
+  .sentence {
+      display: flex;
+      flex-wrap: wrap;
+      line-height: 1.5;
+  }
+
+  .word {
+      display: flex;
+      margin-right: 1em; /* Space between words */
+  }
+
+  .consonant-vowel {
+      position: relative;
+      display: inline-block;
+      margin-right: 0.1em; /* Space between letters */
+  }
+
+  .consonant {
+      display: inline-block;
+  }
+
+  .vowel {
+      position: absolute;
+      top: -1em; /* Adjust based on your desired positioning */
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-size: 0.4em; /* Adjust size as needed */
+  }
+</style>
+{% endif %}
 
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-DHP8MNS84G"></script>

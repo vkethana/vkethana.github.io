@@ -42,7 +42,7 @@ def generate_html(parsed_words):
     return html_output
 
 def main():
-    vjscript_sentence = "TH{I}S IS U FLL P{AE}R{U}GR{AE}F IN V{EE}J{EI}SKR{I}PT. AI AEM R{AI}T{I}NG TH{I}S S{OA} TH{AE}T UTHRS K{AE}N L{UR}N T{O} R{EE}D IT. AET FRST I H{AE}NDR{OA}T M{AI} EKS{AEM}PLS. H{OWE}VR, AI R{EE}S{E}NTL{EE} D{I}Z{AI}ND A SKR{I}PT IN P{AI}TH{AW}N T{O} AWT{OA}M{EI}T TH{U} H{OA}L PR{AW}S{E}S. Y^{O} C^{AE}N F^{AI}ND IT H{EE}R: ."
+    vjscript_sentence = "TH{I}S IZ U FLL P{AE}R{U}GR{AE}F IN V{EE}J{EI}SKR{I}PT. AI AEM R{AI}T{I}NG TH{I}S S{OA} TH{AE}T UTHRS K{AE}N LRN T{O} R{EE}D IT. AET FRST I H{AE}NDR{OA}T M{AI} EKS{AEM}PLS. H{OWE}VR, AI R{EE}S{E}NTL{EE} D{I}Z{AI}ND A SKR{I}PT IN P{AI}TH{AW}N T{O} AWT{OA}M{EI}T TH{U} H{OA}L PR{AW}S{E}S. Y{O} C{AE}N F{AI}ND IT B{I}L{OA}. TH{AE}NGKS F{AO}R R{EE}D{I}NG TH{I}S!"
     parsed_words = parse_vjscript(vjscript_sentence)
     html = generate_html(parsed_words)
     print(html)
