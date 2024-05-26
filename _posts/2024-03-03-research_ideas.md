@@ -1,12 +1,17 @@
 ---
 layout: post
 title: Research Ideas
+hide-date: True
 ---
 
 1) In the *Beginning of Infinity*, physicist and quantum computing researcher David Deutsch proposes the following experiment: find some robot that is already used in the real world and happens to be able to walk. Replace the robot's existing code with completely random code ("random numbers", in his words) and implement a system that allows small bits of the code to randomly "mutate", similar to genetic mutation. The idea behind using random numbers is to totally preclude the possibility that human knowledge is somehow being transfered to the robot. Given enough mutations and time, will the robot ever learn to walk? Has anybody every simulated this experiment?
 
 2) How can we assess a language model's performance at tasks in which scoring is arguably subjective, e.g. summarization? 
-For example, if I ask an LLM to summarize a piece of text, how do you determine whether the summary is good or bad? How do you quantify this sort of question? One suggestion I've heard is to try breaking down the task into something more achievable. Independent consultant and expert on RAG (retrieval-augmented generation) Jason Liu draws an analogy to flashcards - suppose that the summary of the text consists of a bunch of "flashcards." Go through every flash card and ask questions like, are the dates right? Does it mention the relevant key words? Are there any key words in this flash card which shouldn't be there? (source: ["How to Build Terrible AI Systems"](https://www.youtube.com/watch?v=USTG6sQlB6s))
+For example, if I ask an LLM to summarize a piece of text, how do you determine whether the summary is good or bad? 
+How do you quantify this sort of question? 
+One suggestion I've heard is to try breaking down the task into something more achievable. 
+One resource I was looking at suggests drawing an analogy to flashcards - suppose that the summary of the text consists of a bunch of "flashcards" and evaluate every flash card individually.
+Go through every flash card and ask questions like, are the dates right? Does it mention the relevant key words? Are there any key words in this flash card which shouldn't be there? (source: ["How to Build Terrible AI Systems"](https://www.youtube.com/watch?v=USTG6sQlB6s))
 
 3) Is it possible to generate a constructed language using AI? If the language was more "concise" than English (e.g. it takes 150 characters to express a thought that would take 200 characters in English), would there be any practical value to it over English? (Douglas Hofstader alludes to this idea in *Godel, Escher, Bach* when he talks about translation between languages by means of an intermediate langauge as opposed to dictionary lookup.)
 
