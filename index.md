@@ -48,3 +48,10 @@ I've solved problems in technical areas such as computer vision and Linux system
 *   Organized the first-ever multi-school, student-led hackathon series in my hometown's history: one hackathon in fall 2022, and another in spring 2023. Spring hackathon offered over $750 in prizes/awards and had 26 attendees.
 *   Secured $1481 grant by convincing sponsors, resolved logistical issues throughout the project, coordinated with judges and backers. Sponsors included Wolfram Language, 1Password, and AoPS (Art of Problem Solving).
 *   Support development of hackathon projects in Python, Next.js, Typescript, and Flask. [https://gilroyhacks.com](https://www.gilroyhacks.com)
+
+## Future Projects
+*		I don't plan on doing a major in linguistics or or any other humanities field. 
+Instead, I plan to focus on my CS coursework with Sanskrit on the side. 
+*		Write more technical stuff on my blog
+*   Invent a miniature jetpack for messenger pigeons to render email, social media, and the entire internet obselete.
+
