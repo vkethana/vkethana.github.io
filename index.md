@@ -5,7 +5,7 @@ title: Vijay Kiran Kethanaboyina
 
 ## Bio
 
-Computer Science student at UC Berkeley looking to work as a software or data engineer. 
+My name is Vijay ("VJ") Kethanaboyina, and I'm a computer science student at UC Berkeley aspiring to work as a software or data engineer. 
 I've solved problems in technical areas such as computer vision and Linux system administration. 
 
 ## Links

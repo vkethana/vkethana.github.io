@@ -1,7 +1,6 @@
 ---
-layout: post
+layout: nonpost
 title: Research Ideas
-hide-date: True
 ---
 
 1) In the *Beginning of Infinity*, physicist and quantum computing researcher David Deutsch proposes the following experiment: find some robot that is already used in the real world and happens to be able to walk. Replace the robot's existing code with completely random code ("random numbers", in his words) and implement a system that allows small bits of the code to randomly "mutate", similar to genetic mutation. The idea behind using random numbers is to totally preclude the possibility that human knowledge is somehow being transfered to the robot. Given enough mutations and time, will the robot ever learn to walk? Has anybody every simulated this experiment?
