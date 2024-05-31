@@ -6,14 +6,17 @@ title: Vijay Kiran Kethanaboyina
 ## Bio
 
 My name is Vijay ("VJ") Kethanaboyina, and I'm a computer science student at UC Berkeley aspiring to work as a software or data engineer. 
-I've solved problems in technical areas such as computer vision and Linux system administration. 
+I've solved problems in technical areas such as computer vision and Linux system administration. I'm also an avid language learner, [reader](reading_log), and [Twitter user](https://x.com/v_kethana).
+
 
 ## Links
 
 *   [Reading Log](reading_log)
 *		RSS (Atom) Feed:	[vkethana.com/feed.xml]({{ "/feed.xml" | prepend: site.baseurl }}) 
+*   Twitter: [twitter.com/v\_kethana](https://www.twitter.com/v_kethana)
 *   GitHub: [github.com/vkethana](https://www.github.com/vkethana)
 *		Email: vijaykethanaboyina at gmail dot com
+
 
 ## Education
 
@@ -51,7 +54,7 @@ I've solved problems in technical areas such as computer vision and Linux system
 
 ## Future Projects
 *		I don't plan on doing a major in linguistics or or any other humanities field. 
-Instead, I plan to focus on my CS coursework with Sanskrit on the side. 
+Instead, I plan to focus on my CS coursework, with some Sanskrit on the side. 
 *		Write more technical stuff on my blog.
 *   Invent a miniature jetpack for messenger pigeons in order to make email, social media, and the entire internet obselete.
 
