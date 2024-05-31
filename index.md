@@ -52,6 +52,6 @@ I've solved problems in technical areas such as computer vision and Linux system
 ## Future Projects
 *		I don't plan on doing a major in linguistics or or any other humanities field. 
 Instead, I plan to focus on my CS coursework with Sanskrit on the side. 
-*		Write more technical stuff on my blog
-*   Invent a miniature jetpack for messenger pigeons to render email, social media, and the entire internet obselete.
+*		Write more technical stuff on my blog.
+*   Invent a miniature jetpack for messenger pigeons in order to make email, social media, and the entire internet obselete.
 
