@@ -19,7 +19,7 @@ I've solved problems in technical areas such as computer vision and Linux system
 
 ## Education
 
-*   Computer Science BA from UC Berkeley (class of 2027).
+*   Computer Science BA from UC Berkeley (class of 2026).
 *   Computer Programming Associate's Degree from Gavilan College (concurrent enrollment in high school)
 
 ## Skills
