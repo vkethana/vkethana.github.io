@@ -1,56 +1,76 @@
 <body>
     <div class="container">
-        <h1 class="center">My Projects</h1>
-        <table>
+        <table class="left-table">
             <thead>
                 <tr>
                     <th>Name</th>
-                    <th>Description</th>
-                    <th class="image-column">Image</th>
+                    <th>Image</th>
+                    <th class="image-column">Description</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td><a href="https://cs61a.org/proj/scheme">Scheme Interpreter</a></td>
-                    <td>Python-based Scheme evaluator and interpreter</td>
+                    <td><a href="https://cs61c.org/su24/projects/proj3/">RISC-V CPU</a></td>
                     <td>
-                        <img src="/assets/images/scheme.png" alt="Scheme Interpreter">
+                        <img src="/assets/images/datapath.png" alt="RISC-V CPU Datapath">
                     </td>
+                    <td>Built a full CPU in Logism that runs actual instructions in assembly language. Implemented two-stage pipelining to increase CPU throughput, and designed logic to prevent control hazards via pipeline flushing. Also created, from scratch, a fully-working Control Unit, Regfile, and Arithmetic Logic Unit.</td>
                 </tr>
                 <tr>
-                    <td><a href="https://sp24.datastructur.es/projects/proj2a/">Ngordnet</a></td>
-                    <td>Browser-based tool for exploring the history of word usage in English texts</td>
+                    <td><a href="https://cs61c.org/su24/projects/proj2/">Handwritten Digit Classifier</a></td>
                     <td>
-                        <img src="/assets/images/ngordnet.svg" alt="Ngordnet">
+                        <img src="/assets/images/mnist.png" alt="Image from the MNIST Handwritten Digits database">
                     </td>
+                    <td>Designed a simple machine learning algorithm to classify handwritten digits. Wrote RISC-V procedures to perform matrix multiplication, dot products, the activation function (ReLU), and the loss function. <br> Did the entire project in assembly language.</td>
                 </tr>
                 <tr>
-                    <td><a href="placeholder_url">FactGrid Cuneiform Project</a></td>
-                    <td>Develop machine learning model to segment and transcribe dataset of 1,068 Cuneiform tablets using the YOLOv8 architecture</td>
+                    <td><a href="https://cs61c.org/su24/projects/proj4/">CS61kaChow</a></td>
+                    <td>
+                        <img src="/assets/images/61kachow-1.svg" alt="diagram of convolutions">
+                    </td>
+                    <td>(WIP) Create algorithm for parallelizable 2D discrete convolutions. Optimize algorithm using SIMD Instructions and OpenMP Directives. Add process-level parallelism capabilities by writing an OpenMPI coordinator.</td>
+                </tr>
+                <tr>
+                    <td><a href="https://drive.google.com/file/d/1vlQzFKQ6lDvLLq6qpwZd_4Shadr_Uq7i/view">FactGrid Cuneiform Project</a></td>
                     <td>
                         <img src="/assets/images/factgrid.png" alt="FactGrid Cuneiform Project">
                     </td>
-                </tr>
-                <tr>
-                    <td><a href="https://sp24.datastructur.es/projects/proj3/">BYOW (Build Your Own World)</a></td>
-                    <td>Procedural random world generation algorithm built in Java</td>
-                    <td>
-                        <img src="/assets/images/byow.png" alt="BYOW">
-                    </td>
-                </tr>
-                <tr>
-                    <td><a href="https://github.com/vkethana/balloon-tracking-software">Helium Balloon Project</a></td>
-                    <td>OpenCV-powered object tracking for helium balloons</td>
-                    <td>
-                        <img src="/assets/images/balloon.png" alt="Helium Balloon Project">
-                    </td>
+                    <td>Develop machine learning model to segment and transcribe dataset of 1,068 Cuneiform tablets using the YOLOv8 architecture</td>
                 </tr>
                 <tr>
                     <td><a href="https://rational.vkethana.com">The David Deutsch Lexicon</a></td>
-                    <td>Online database of quotes from prolific science author and quantum physicist David Deutsch. Utilizes <a href="https://docs.google.com/spreadsheets/d/1xTxusR0Mfy5eE5vbe8wjIAVwvfojvHzCse_J_fUteZc/edit?gid=0#gid=0">Google Sheets</a> as a backend database to allow for seamless and near-real-time updates</td>
                     <td>
                         <img src="/assets/images/david_deutsch_lexicon.png" alt="The David Deutsch Lexicon">
                     </td>
+                    <td>Online database of quotes from prolific science author and quantum physicist David Deutsch. Utilizes <a href="https://docs.google.com/spreadsheets/d/1xTxusR0Mfy5eE5vbe8wjIAVwvfojvHzCse_J_fUteZc/edit?gid=0#gid=0">Google Sheets</a> as a backend database to allow for seamless and near-real-time updates. Scraped quotes off the internet using Python3 and NLTK (Natural Language Tool Kit). Designed UI using Flask and HTML.</td>
+                </tr>
+                <tr>
+                    <td><a href="https://cs61a.org/proj/scheme">Scheme Interpreter</a></td>
+                    <td>
+                        <img src="/assets/images/scheme_expression.png" alt="Scheme Interpreter">
+                    </td>
+                    <td>Python-based evaluator and interpreter for Scheme, a dialect of Lisp. Interpreter supports most major features associated with modern Scheme, e.g. lexical/dynamic scoping and user-defined procedures.</td>
+                </tr>
+                <tr>
+                    <td><a href="https://sp24.datastructur.es/projects/proj3/">BYOW (Build Your Own World)</a></td>
+                    <td>
+                        <img src="/assets/images/byow.png" alt="BYOW">
+                    </td>
+                    <td>Psuedo-random world generation algorithm built in Java. Also created a UI for generating, saving, and loading worlds.</td>
+                </tr>
+                <tr>
+                    <td><a href="https://sp24.datastructur.es/projects/proj2a/">Ngordnet</a></td>
+                    <td>
+                        <img src="/assets/images/ngordnet.svg" alt="Ngordnet">
+                    </td>
+                    <td>Browser-based tool for exploring the history of word usage in English texts. Built in Java.</td>
+                </tr>
+                <tr>
+                    <td><a href="https://github.com/vkethana/balloon-tracking-software">Helium Balloon Project</a></td>
+                    <td>
+                        <img src="/assets/images/balloon.png" alt="Helium Balloon Project">
+                    </td>
+                    <td>OpenCV-powered object tracking for helium balloons using the CSRT (Channel Spatial and Reliability Tracking) algorithm.</td>
                 </tr>
             </tbody>
         </table>
