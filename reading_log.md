@@ -8,8 +8,8 @@ Currently Reading/Rereading
 
 *   **Hands-on Machine Learning Scikit-Learn, Keras & Tensorflow**: I won't be taking Intro to Machine Learning at my college until Fall 2024 at the earliest, so in the meantime I am self-studying the concepts	with this book. 
 *   **Essays by Michel de Montaigne**: Montaigne (1533-1592) invented the essay, but not as we know it today. Modern essays are usually written as part of a school assignment and focus on just one topic. 
-*   **Speaker for the Dead by Orson Scott Card**
 Montaigne's essays, meanwhile, jump from topic to topic and are not dry. There is an emphasis on witty writing and funny anecdotes.
+*   **Speaker for the Dead by Orson Scott Card**
 
 Past Reads
 ----------
