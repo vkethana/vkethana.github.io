@@ -458,28 +458,33 @@ footer {
     margin-bottom: var(--spacer-3);
 }
 .masthead {
-    padding-top: var(--spacer);
     padding-bottom: var(--spacer);
     margin-bottom: var(--spacer-3);
 }
-.masthead-title {
-    margin-bottom: 0;
-}
-.masthead-title a {
+.masthead-title a, .nav a {
     color: inherit;
     text-decoration: none;
 }
-.masthead-title small {
-    font-weight: 400;
-    opacity: 0.5;
+
+.masthead-title {
+    margin-bottom: 0;
 }
+
+.masthead-content {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
 .nav {
-    float: right;
-    line-height: 1.25rem;
-    white-space: nowrap; /* Prevent text from wrapping */
+  display: flex;
+  align-items: baseline;
 }
+
 .nav a {
-    margin-left: 1rem; /* Adjust the margin between links as needed */
+  margin-left: 15px;
+  font-weight: 400;
+  opacity: 0.5;
 }
 
 .page,

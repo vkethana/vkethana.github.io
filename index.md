@@ -2,15 +2,67 @@
 layout: nonpost
 title: Vijay Kiran Kethanaboyina
 ---
+## Projects I've Worked On
+<table class="toc-table">
+		<thead>
+				<tr>
+						<th>Project Title</th>
+						<th>Brief Description</th>
+						<th>Link</th>
+				</tr>
+		</thead>
+		<tbody>
+				<tr>
+						<td>RISC-V CPU</td>
+						<td>Built a full CPU in Logism with two-stage pipelining</td>
+						<td><a href="#risc-v-cpu">View</a></td>
+				</tr>
+				<tr>
+						<td>Handwritten Digit Classifier</td>
+						<td>ML algorithm in RISC-V assembly to classify digits</td>
+						<td><a href="#digit-classifier">View</a></td>
+				</tr>
+				<tr>
+						<td>FactGrid Cuneiform Project</td>
+						<td>ML model to segment and transcribe Cuneiform tablets</td>
+						<td><a href="#factgrid-cuneiform">View</a></td>
+				</tr>
+				<tr>
+						<td>The David Deutsch Lexicon</td>
+						<td>Online database of quotes with Google Sheets backend</td>
+						<td><a href="#david-deutsch-lexicon">View</a></td>
+				</tr>
+				<tr>
+						<td>Scheme Interpreter</td>
+						<td>Python-based evaluator and interpreter for Scheme</td>
+						<td><a href="#scheme-interpreter">View</a></td>
+				</tr>
+				<tr>
+						<td>Helium Balloon Project</td>
+						<td>OpenCV-powered object tracking for helium balloons</td>
+						<td><a href="#balloon-tracking">View</a></td>
+				</tr>
+				<tr>
+						<td>BYOW (Build Your Own World)</td>
+						<td>Pseudo-random world generation algorithm in Java</td>
+						<td><a href="#byow">View</a></td>
+				</tr>
+				<tr>
+						<td>CS61kaChow</td>
+						<td>Parallelizable 2D discrete convolutions algorithm</td>
+						<td><a href="#cs61kachow">View</a></td>
+				</tr>
+		</tbody>
+</table>
+
+<br />
+## Additional Project Details
+{% include projectlist.html %}
 
 ## Bio
 
 My name is Vijay ("VJ") Kethanaboyina, and I'm a computer science student at UC Berkeley aspiring to work as a software or data engineer. 
 I've solved problems in technical areas such as computer vision and Linux system administration. I'm also an avid [reader](reading_log) and language learner.
-
-## Things I've Worked On
-<br />
-{% include projectlist.html %}
 
 ## Links
 
@@ -55,8 +107,8 @@ I've solved problems in technical areas such as computer vision and Linux system
 *   Support development of hackathon projects in Python, Next.js, Typescript, and Flask. [https://gilroyhacks.com](https://www.gilroyhacks.com)
 
 ## Future Projects
-*		I don't plan on doing a major in linguistics or or any other humanities field. 
-Instead, I plan to focus on my CS coursework, with some Sanskrit on the side. 
+*		Continue with my CS coursework (I plan to take machine learning, convex optimization, probability and random processes, and operating systems in the next year), with some Sanskrit on the side. 
 *		Write more technical stuff on my blog.
+*   Start a reading group at UC Berkeley for undergrads interested in machine learning.
 *   Invent a miniature jetpack for messenger pigeons in order to make email, social media, and the entire internet obselete.
 
