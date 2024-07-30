@@ -1,62 +1,12 @@
 ---
 layout: nonpost
-title: Vijay Kiran Kethanaboyina
+title: Vijay's Personal Website
 ---
-## Projects I've Worked On
-<table class="toc-table">
-		<thead>
-				<tr>
-						<th>Project Title</th>
-						<th>Brief Description</th>
-						<th>Link</th>
-				</tr>
-		</thead>
-		<tbody>
-				<tr>
-						<td>RISC-V CPU</td>
-						<td>Built a full CPU in Logism with two-stage pipelining</td>
-						<td><a href="#risc-v-cpu">View</a></td>
-				</tr>
-				<tr>
-						<td>Handwritten Digit Classifier</td>
-						<td>ML algorithm in RISC-V assembly to classify digits</td>
-						<td><a href="#digit-classifier">View</a></td>
-				</tr>
-				<tr>
-						<td>FactGrid Cuneiform Project</td>
-						<td>ML model to segment and transcribe Cuneiform tablets</td>
-						<td><a href="#factgrid-cuneiform">View</a></td>
-				</tr>
-				<tr>
-						<td>The David Deutsch Lexicon</td>
-						<td>Online database of quotes with Google Sheets backend</td>
-						<td><a href="#david-deutsch-lexicon">View</a></td>
-				</tr>
-				<tr>
-						<td>Scheme Interpreter</td>
-						<td>Python-based evaluator and interpreter for Scheme</td>
-						<td><a href="#scheme-interpreter">View</a></td>
-				</tr>
-				<tr>
-						<td>Helium Balloon Project</td>
-						<td>OpenCV-powered object tracking for helium balloons</td>
-						<td><a href="#balloon-tracking">View</a></td>
-				</tr>
-				<tr>
-						<td>BYOW (Build Your Own World)</td>
-						<td>Pseudo-random world generation algorithm in Java</td>
-						<td><a href="#byow">View</a></td>
-				</tr>
-				<tr>
-						<td>CS61kaChow</td>
-						<td>Parallelizable 2D discrete convolutions algorithm</td>
-						<td><a href="#cs61kachow">View</a></td>
-				</tr>
-		</tbody>
-</table>
+## My Projects
+{% include project_toc.html %}
 
 <br />
-## Additional Project Details
+## More Info
 {% include projectlist.html %}
 
 ## Bio
