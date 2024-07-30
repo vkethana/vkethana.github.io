@@ -7,8 +7,8 @@ Currently Reading/Rereading
 ---------------------------
 
 *   **Hands-on Machine Learning Scikit-Learn, Keras & Tensorflow**: I won't be taking Intro to Machine Learning at my college until Fall 2024 at the earliest, so in the meantime I am self-studying the concepts	with this book. 
-*   **Into Thin Air by Jon Krakauer**: An account of the 1996 Mount Everest disaster and how over the years, climbing Everest gradually turned into a business. 
 *   **Essays by Michel de Montaigne**: Montaigne (1533-1592) invented the essay, but not as we know it today. Modern essays are usually written as part of a school assignment and focus on just one topic. 
+*   **Speaker for the Dead by Orson Scott Card**
 Montaigne's essays, meanwhile, jump from topic to topic and are not dry. There is an emphasis on witty writing and funny anecdotes.
 
 Past Reads
@@ -48,6 +48,7 @@ Bradford mixes expert historical research with very entertaining storytelling.
 *   **On Writing by Stephen King**
 *   **How to Read a Book by Mortimer Adler**
 *   **Fashionable Nonsense by Alan Sokal**
+*   **The Fabric of Reality by David Deutsch**
 *   **Sapiens by Yuval Noah Harari:** No.
 
 Non-books, dense blog posts, websites

@@ -9,7 +9,7 @@ My name is Vijay ("VJ") Kethanaboyina, and I'm a computer science student at UC 
 I've solved problems in technical areas such as computer vision and Linux system administration. I'm also an avid [reader](reading_log) and language learner.
 
 ## Things I've Worked On
-
+<br />
 {% include projectlist.html %}
 
 ## Links
