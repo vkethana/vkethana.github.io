@@ -31,7 +31,7 @@ I've solved problems in technical areas such as computer vision and Linux system
 
 *   **Programming Experience** (five years): Python (Pandas, Matplotlib, Plotly, OpenCV), C++, Java, JavaScript, R, HTML, CSS, SPARQL, SQL, MATLAB. Familiar with using the KCF and CSRT algorithms for object tracking, and some experience with CNNs for object detection.
 *   **System Administration**: Experienced with Debian and Arch-based Linux distributions. Designed and deployed personal website (vkethana.com) by installing Nginx on Debian VPS, and later migrated it to GitHub Pages. Configured Namecheap BasicDNS to direct web traffic to personal domain. Proficient with command-line tools such as Vim.
-* **Software Development**: Created Flask web app, hosted on personal website at [rational.vkethana.com](https://rational.vkethana.com), to concisely summarize the writings of physics researcher and author David Deutsch. Site consists of 300+ quotes automatically gathered from the internet, categorized by keywords extracted using the NLTK (Natural Language Toolkit) Porter-Stemmer. Deployed website through the DigitalOcean App Platform.
+* **Software Development**: Created Flask web app, hosted on personal website at [rational.vkethana.com](https://rational.vkethana.com), to concisely summarize the writings of physics researcher and author David Deutsch. Site consists of 300+ quotes automatically gathered from the internet, categorized by keywords extracted using the NLTK (Natural Language Toolkit) Porter-Stemmer. 
 
 ## Project Experience
 
@@ -52,13 +52,12 @@ I've solved problems in technical areas such as computer vision and Linux system
 
 ### [Co-Founder, Gilroy Hacks (2021 - 2023)](https://gilroyhacks.com)
 
-*   Organized the first-ever multi-school, student-led hackathon series in my hometown's history: one hackathon in fall 2022, and another in spring 2023. Spring hackathon offered over $750 in prizes/awards and had 26 attendees.
+*   Organized multi-school, student-led hackathon series in my hometown's history: one hackathon in fall 2022, and another in spring 2023. Spring hackathon offered over $750 in prizes/awards and had 26 attendees.
 *   Secured $1481 grant by convincing sponsors, resolved logistical issues throughout the project, coordinated with judges and backers. Sponsors included Wolfram Language, 1Password, and AoPS (Art of Problem Solving).
 *   Support development of hackathon projects in Python, Next.js, Typescript, and Flask. [https://gilroyhacks.com](https://www.gilroyhacks.com)
 
 ## Future Projects
 *		Continue with my CS coursework (I plan to take machine learning, convex optimization, probability and random processes, and operating systems in the next year), with some Sanskrit on the side. 
 *		Write more technical stuff on my blog.
-*   Start a reading group at UC Berkeley for undergrads interested in machine learning.
 *   Invent a miniature jetpack for messenger pigeons in order to make email, social media, and the entire internet obselete.
 
