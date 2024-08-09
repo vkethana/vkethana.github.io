@@ -46,7 +46,6 @@ I've solved problems in technical areas such as computer vision and Linux system
 *   Used OpenCV's Python interface to track fast-moving balloons using a cell phone camera. Used the CSRT (Channel and Spatial Reliability Tracking) algorithm. Collaborated with two teammates under Dr. David Argudo, Ph.D.
 *   Processed dozens of balloon motion videos into CSV location data files. Cleaned datasets using Statsmodels to correct for noise, outliers, and occasionally out-of-frame objects.
 *   Authored comprehensive, ten-page document describing how to conduct classroom physics demonstrations using the balloon tracking software.
-*   Research log can be found [here](https://www.gavengineering.club/project/4).
 
 ## Leadership Experience
 
