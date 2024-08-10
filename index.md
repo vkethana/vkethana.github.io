@@ -49,7 +49,7 @@ I've solved problems in technical areas such as computer vision and Linux system
 
 ## Leadership Experience
 
-### [Co-Founder, Gilroy Hacks (2021 - 2023)](https://gilroyhacks.com)
+### [Co-Founder, Gilroy Hacks (2022 - 2023)](https://gilroyhacks.com)
 
 *   Organized multi-school, student-led hackathon series in my hometown's history: one hackathon in fall 2022, and another in spring 2023. Spring hackathon offered over $750 in prizes/awards and had 26 attendees.
 *   Secured $1481 grant by convincing sponsors, resolved logistical issues throughout the project, coordinated with judges and backers. Sponsors included Wolfram Language, 1Password, and AoPS (Art of Problem Solving).
