@@ -25,38 +25,33 @@ I've solved problems in technical areas such as computer vision and Linux system
 ## Education
 
 *   Computer Science BA from UC Berkeley (class of 2026).
-*   Computer Programming Associate's Degree from Gavilan College (concurrent enrollment in high school)
+*  	Computer Programming Associate's Degree from Gavilan College (concurrent enrollment in high school)
 
 ## Skills
 
-*   **Programming Experience** (five years): Python (Pandas, Matplotlib, Plotly, OpenCV), C++, Java, JavaScript, R, HTML, CSS, SPARQL, SQL, MATLAB. Familiar with using the KCF and CSRT algorithms for object tracking, and some experience with CNNs for object detection.
-*   **System Administration**: Experienced with Debian and Arch-based Linux distributions. Designed and deployed personal website (vkethana.com) by installing Nginx on Debian VPS, and later migrated it to GitHub Pages. Configured Namecheap BasicDNS to direct web traffic to personal domain. Proficient with command-line tools such as Vim.
-* **Software Development**: Created Flask web app, hosted on personal website at [rational.vkethana.com](https://rational.vkethana.com), to concisely summarize the writings of physics researcher and author David Deutsch. Site consists of 300+ quotes automatically gathered from the internet, categorized by keywords extracted using the NLTK (Natural Language Toolkit) Porter-Stemmer. 
+*   **Languages**: Python (Pandas, Matplotlib, Plotly, OpenCV), C, Assembly, C++, Java, R, HTML/CSS, JavaScript, SQL 
+*   **Frameworks**: React, Node.js, Flask, JUnit
+*   **System Adminstration**: Debian, Arch Linux, Vim, DigitalOcean
 
-## Project Experience
+## Experience
+### Undergraduate Researcher for UC Berkeley Sky Computing Lab
+*June 2024 - Present*
+* Collaborating with UC Berkeley CS PhD students to enhance [R2E](https://r2e.dev), a framework for evaluating code generation capabilities of large language models. Scaling Python code generation benchmarks to include snippets from a wide selection of repositories (end goal: 1000+).
+* Developing an LLM-powered agent to automate the cloning, setup, and execution of Python GitHub repositories; detecting and fixing installation errors using GPT-4 powered agentic loop.
 
-### [OCR Group, FactGrid Cuneiform Project, UC Berkeley](https://drive.google.com/file/d/1vlQzFKQ6lDvLLq6qpwZd_4Shadr_Uq7i/view) (Fall 2023 - Spring 2024)
+### Undergraduate Researcher for FactGrid Cuneiform Project, UC Berkeley
+*August 2023 - February 2024*
+* Developed machine learning model to segment and transcribe Old Assyrian Cuneiform tablets using the YOLOv8 architecture, under the mentorship of Dr. Adam Anderson (link to project poster)
+* Designed pipeline to convert nearly 3,000 raster images of Cuneiform signs into vector images using PIL, Inkscape, and Potrace, and then uploaded them onto a publicly-accessible database using MediaWiki API.
+* Created OCR model to support development of language models for under-resourced languages written in Cuneiform, especially Old Assyrian. Final product used to annotate dataset of 1,068 tablet images.
 
-* Develop machine learning model to segment and transcribe Old Assyrian Cuneiform tablets using the YOLOv8 architecture in collaboration with Dr. Adam Anderson. ([website](https://database.factgrid.de/wiki/FactGrid:Cuneiform_Project), [poster](https://drive.google.com/file/d/1vlQzFKQ6lDvLLq6qpwZd_4Shadr_Uq7i/view))
-* Design pipeline to convert nearly 3,000 raster images of Cuneiform signs into vector images using PIL, Inkscape, and Potrace, and then upload them onto publicly-accessible database using MediaWiki API.
-* Create OCR model to support development of language models for under-resourced languages written in Cuneiform, especially Old Assyrian. Final product used to annotate dataset of 1,068 tablet images.
-
-### [STEM Research Internship (Paid), Gavilan College](https://github.com/vkethana/balloon-tracking-software) (Summer 2022)
-
-*   Used OpenCV's Python interface to track fast-moving balloons using a cell phone camera. Used the CSRT (Channel and Spatial Reliability Tracking) algorithm. Collaborated with two teammates under Dr. David Argudo, Ph.D.
-*   Processed dozens of balloon motion videos into CSV location data files. Cleaned datasets using Statsmodels to correct for noise, outliers, and occasionally out-of-frame objects.
-*   Authored comprehensive, ten-page document describing how to conduct classroom physics demonstrations using the balloon tracking software.
-
-## Leadership Experience
-
-### [Co-Founder, Gilroy Hacks (2022 - 2023)](https://gilroyhacks.com)
-
-*   Organized multi-school, student-led hackathon series in my hometown's history: one hackathon in fall 2022, and another in spring 2023. Spring hackathon offered over $750 in prizes/awards and had 26 attendees.
-*   Secured $1481 grant by convincing sponsors, resolved logistical issues throughout the project, coordinated with judges and backers. Sponsors included Wolfram Language, 1Password, and AoPS (Art of Problem Solving).
-*   Support development of hackathon projects in Python, Next.js, Typescript, and Flask. [https://gilroyhacks.com](https://www.gilroyhacks.com)
+### Hackathon Cofounder
+*2022-2023*
+* Organized Gilroy Hacks, a multi-school, student-led hackathon series for middle/high schoolers in Gilroy, CA.
+* Secured a $1,481 grant by convincing sponsors and resolving logistical issues. Coordinated with judges and backers, including Wolfram Language, 1Password, and AoPS.
+* Support development of 7 hackathon projects in Python, Next.js, Typescript, and Flask.
 
 ## Future Projects
-*		Continue with my CS coursework (I plan to take machine learning, convex optimization, probability and random processes, and operating systems in the next year), with some Sanskrit on the side. 
-*		Write more technical stuff on my blog.
-*   Invent a miniature jetpack for messenger pigeons in order to make email, social media, and the entire internet obselete.
+*		Continue with my CS coursework (I plan to take machine learning, convex optimization, probability and random processes, and operating systems next year), with some Sanskrit on the side. 
+*		Write more stuff on my blog.
 
