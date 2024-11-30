@@ -6,22 +6,21 @@ title: Vijay's Reading Log
 Currently Reading/Rereading
 ---------------------------
 
-*   **Hands-on Machine Learning Scikit-Learn, Keras & Tensorflow**: I won't be taking Intro to Machine Learning at my college until Fall 2024 at the earliest, so in the meantime I am self-studying the concepts	with this book. 
 *   **Essays by Michel de Montaigne**: Montaigne (1533-1592) invented the essay, but not as we know it today. Modern essays are usually written as part of a school assignment and focus on just one topic. 
 Montaigne's essays, meanwhile, jump from topic to topic and are not dry. There is an emphasis on witty writing and funny anecdotes.
 *   **Speaker for the Dead by Orson Scott Card**
 
 Past Reads
 ----------
-*   **What is ChatGPT Doing... and Why Does It Work? by Stephen Wolfram:** A great primer for topics like NLP, LLMs, and ChatGPT. The author, Stephen Wolfram, has put the whole book online on [his website](https://writings.stephenwolfram.com/2023/02/what-is-chatgpt-doing-and-why-does-it-work/). 
-One interesting takeaway is, a lot of stuff about LLMs was discovered through tinkering and experimentation. 
+*   **What is ChatGPT Doing... and Why Does It Work? by Stephen Wolfram:** A really interesting summary of how ChatGPT works. The author, Stephen Wolfram, has put the whole book online on [his website](https://writings.stephenwolfram.com/2023/02/what-is-chatgpt-doing-and-why-does-it-work/). 
+One interesting takeaway is that a lot of stuff about LLMs was discovered through tinkering and experimentation. 
 For example, when writing about why a temperature value of 0.8 works best for language models, he admits, "There’s no “theory” being used here; it’s just a matter of what’s been found to work in practice."
 Likewise for why attention blocks "split up" the embedding vector -- "we don’t know any particular reason why [this is] a good idea."
 
 	 There are plenty of other examples throughout history of inventions being discovered before people fully understood why they worked. 
-	 For example, the Wright Brothers invented simple airplanes before flight mechanics was a formal, well-understood field like it it is today.[^fn-1]
+	 For example, the Wright Brothers invented simple airplanes before flight mechanics was as well-understood as it is today.[^fn-1]
 	 Many researchers today are tinkering with LLMs in a way not unlike how the Wright Brothers tinkered with airplanes. That's why we have things like prompt engineering and tweaking (hyper-)parameters to see how the model's performance changes. 
-*   **The Beginning of Infinity by David Deutsch:** I went through the book about a year ago, but looking back, I've barely scratched the surface. My favorite chapter is #17, "Unsustainable." If you like discrete math or or Turing machine / complexity theory stuff, you will definitely enjoy this book.
+*   **The Beginning of Infinity by David Deutsch:** I went through the book about a year ago, but looking back, I've barely scratched the surface. If you like discrete math or Turing machine / complexity theory stuff, you will definitely enjoy this book.
 *   **Ender's Game by Orson Scott Card:** Passes itself off as a kids' novel, but has a lot of philosophical depth. Kept my interest from start to finish with the deeper philosophical questions. Is it ethical to preemptively strike against aliens? 
 *   **Ender's Shadow by Orson Scott Card:** This is a great example of a successful sci-fi sequel. It doesn't outdo the original book, it complements it. Orson Scott Card sheds new light onto the characters' motivations and fleshes out subtle details that went unexplained in _Ender's Game_.
 *   **The Three-Body Problem by Cixin Liu:** The premise is that there are a finite amount of resources in the universe, so it is only logical that alien civilizations will pre-emptively attack each other. This is known as the "Dark Forest Theory", and it is wrong. [Aliens would visit for knowledge, not resources](https://nav.al/resources).
