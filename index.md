@@ -13,8 +13,9 @@ title: Vijay's Personal Website
 
 ## Bio
 
-My name is Vijay Kethanaboyina, and I'm a computer science student at UC Berkeley aspiring to work as a software or machine learning engineer. 
-I've solved problems in technical areas such as computer vision and Linux system administration. I'm also an avid [reader](reading_log) and language learner.
+My name is Vijay Kethana, and I'm a computer science student at UC Berkeley aspiring to work as a software engineer. 
+I'm working towards specializing in AI and machine learning. 
+I'm also an avid [reader](reading_log) and language learner.
 
 ## Links
 
