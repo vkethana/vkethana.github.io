@@ -262,7 +262,7 @@ Here's a non-exhaustive table of some cognates and the average scores of the sen
 |                     | professeur                                |                   |
 |                     | conférence                                |                   |
 
-# Features I want to add
+# Features I plan to add
 - Scale up the number of sentences in the app.
 - Bring back beam search for sentence generation: Currently I'm making stories by generating 10 sentences at once. A better, but slower and more costly, way to get high-scoring sentences is to generate many options, expand the highest-scoring ones, and discard the rest, gradually building up the stories.
 - Remove all English from the UI. Instead, express UI functions using images and icons. Any words which appear on the screen should be in the target language, not English, in order to immerse the user as much as possible.
