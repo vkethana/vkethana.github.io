@@ -7,7 +7,6 @@ tags: blog, code, web
 
 The reason I'm starting a website is simple: I want to join the ranks of all the other cool writers on the internet. Some of my inspirations include:
 - [Gwern](https://gwern.net/index) (machine learning, the scientific method, and a ton of other stuff)
-- [Progress Good](https://www.arjunkhemani.com/about) (philosophy of science, economics, education)
 - [ftlsid](https://ftlsid.com) (learning Japanese, meditation)
 - [Visakan Veerasamy](https://visakanv.com) (how social networks and innovation work)
 - [Alexey Guzey](https://guzey.com/) (metascience, philosophy)
