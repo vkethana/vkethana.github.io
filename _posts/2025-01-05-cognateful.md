@@ -11,7 +11,7 @@ comments: true
 
 Even if you don't speak French, you can probably understand, or at least get the gist of, the above sentence: the French president Emmanuel Macron is assuring the “peuple canadien” (Canadian people) about something involving the “gouvernment français” (French government). 
 Imagine reading thousands of sentences like this and gradually acquiring French through cognates you already know. 
-This is a type of comprehensible input, a language learning technique first advocated for by linguist Stephen Krashen in the 1980s. 
+This is a type of comprehensible input, a language learning technique popularized by linguist Stephen Krashen in the 1980s. 
 
 Comprehensible input is a good language learning method, but creating comprehensible input is very hard. 
 A native speaker has to painstakingly create thousands of sentences that speakers of another language can understand, gradually increasing the difficulty as the learner progresses. 
@@ -637,7 +637,7 @@ For example, I could modify the scoring system to use a weighted combination[^fn
 If you're familar with NLP, linguistics, or software development, you can help out by suggesting solutions to the following blockers that I'm currently facing.
 - **Cheaper and faster scoring**:
 Is there a cheaper, more scalable way to score sentences than what I've described here?
-To recap, using o1 is effective but slow and expensive.
+To recap, using reasoning models like o1 is effective but slow and expensive.
 Using models other than o1 results in bad quality sentences.
 Using non LLM-powered scoring misses the nuances of what makes a sentence easy or hard to understand. 
 - **More intuitive UI**: Users should be able to understand how the app works without reading an entire blog post about it. How can we engineer the UI so that it's immediately obvious how to use the app and why it will teach you French?
