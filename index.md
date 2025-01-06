@@ -39,7 +39,7 @@ I've solved problems in technical areas such as computer vision and Linux system
 
 ### Undergraduate Researcher for UC Berkeley Sky Computing Lab
 *June 2024 - Present*
-* Collaborating with UC Berkeley CS PhD students to enhance [R2E](https://r2e.dev), a framework for evaluating code generation capabilities of large language models. Scaling Python code generation benchmarks to include snippets from a wide selection of repositories (end goal: 1000+).
+* Collaborating with UC Berkeley CS PhD students to enhance [R2E](https://r2e.dev), a framework for evaluating code generation and optimization capabilities of large language models (LLMs). Collect install and test commands from 50 Python GitHub repositories containing approximately 130 code optimization problems.
 * Developing an LLM-powered agent to automate the cloning, setup, and execution of Python GitHub repositories; detecting and fixing installation errors using GPT-4 powered agentic loop.
 
 ### Hackathon Cofounder
