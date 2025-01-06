@@ -2,7 +2,6 @@
 layout: post
 title: "Generating Cognateful Sentences with Large Language Models"
 published: true
-tags: natural language processing, large language models, linguistics, software projects
 comments: true
 ---
 
@@ -634,7 +633,7 @@ For example, I could modify the scoring system to use a weighted combination[^fn
 - Add support for languages other than English.
 
 # How you can help
-If you're familar with NLP, linguistics, or software development, you can help out by suggesting solutions to the following blockers that I'm currently facing.
+If you're familiar with NLP, linguistics, or software development, you can help out by suggesting solutions to the following blockers that I'm currently facing.
 - **Cheaper and faster scoring**:
 Is there a cheaper, more scalable way to score sentences than what I've described here?
 To recap, using reasoning models like o1 is effective but slow and expensive.
