@@ -10,20 +10,20 @@ comments: true
 > “Le président Emmanuel Macron assure le peuple canadien que le gouvernement français va continuer à défendre le Canada contre la menace américain.”
 
 Even if you don't speak French, you can probably understand, or at least get the gist of, the above sentence: the French president Emmanuel Macron is assuring the “peuple canadien” (Canadian people) about something involving the “gouvernment français” (French government). 
-Imagine reading thousands of sentences like this and gradually acquiring French, backdooring into the language using cognates you already know. 
-This is known as comprehensible input, a language learning technique first advocated for by linguist Stephen Krashen in the 1980s. 
+Imagine reading thousands of sentences like this and gradually acquiring French through cognates you already know. 
+This is a type of comprehensible input, a language learning technique first advocated for by linguist Stephen Krashen in the 1980s. 
 
 Comprehensible input is a good language learning method, but creating comprehensible input is very hard. 
-A native speaker has to painstakingly create thousands of sentences that speakers of another language can understand, slowly scaling up the difficulty as the learner progresses. 
+A native speaker has to painstakingly create thousands of sentences that speakers of another language can understand, gradually increasing the difficulty as the learner progresses. 
 Resources like this actually do exist for a number of languages. 
 For example, learners of Latin can use *Lingua Latina per se Illustrata*, a book that teaches you Latin using exclusively sentences in Latin. 
 However, writing this text took years of effort on the part of Hans Ørberg, a linguist who dedicated a large part of his life to teaching Latin.
 Ørberg carefully wrote the sentences in his book to only use cognates an English speaker could understand and to avoid any complicated syntax an English speaker would have a hard time understanding. 
 
-What if there was a way to automate the process of generating comprehensible input using large language models? 
+What if there was a way to automate the process of generating "cognateful" sentences using large language models? 
 Language models like GPT-4o and o1 have good enough reasoning ability to tell what words in a foreign language are and aren't cognate with English. 
 They can reliably generate sentences in other languages like French without any additional training.
-In short, this is an ideal use case for large language models.
+In short, this is an ideal use case for LLMs.
 
 # What I did
 I made a simple interactive language-learning app, hosted at [cognateful.vkethana.com](https://cognateful.vkethana.com). It teaches you French using stories written exclusively in French.
@@ -31,7 +31,7 @@ I made a simple interactive language-learning app, hosted at [cognateful.vkethan
 Users are provided with a brief, ten-sentence story consisting of French sentences. The user's task is to read the sentences and translate them into English. 
 The app tells you whether or not your translation is correct using GPT-4o-powered scoring. 
 Based on your performance on the exercises, it assigns you a "difficulty" score, which goes up and down depending on your performance. 
-Users then are served sentences at appropriate levels of difficulty based on their performance. For those who are curious, the source code can be found [here](https://github.com/vkethana/cognate_sentences).
+Users then are served sentences at appropriate levels of difficulty based on their performance. For those who are curious, the source code for this project can be found [here](https://github.com/vkethana/cognate_sentences).
 
 Caveats: This is just a minimum viable product. 
 The number of sentences in the app is limited. 
@@ -209,7 +209,8 @@ But pre-generating sentences is cheaper, and we can still adapt to the user's pe
 - **Cognate ratios:**
 Originally, I scored sentences using a weighted combination of GPT-4's judgments and the percentage of cognate words in the sentence. 
 This is a bad idea because it treats all cognate words equally, leading to inaccurate scoring. 
-For example, "ouvre" and "technologie" are both cognates but the latter is much easier to understand.
+For example, "ouvre" and "technologie" are both cognates, but the latter is much easier to understand.
+A possible fix for this problem is to take into account the age of acquisition (AoA) of the cognate words.
 I plan to return to this idea, using a system that gives better scores to some cognate words.
 
 # Some optimizations I made
@@ -226,9 +227,17 @@ For example, my prompt for sentence scoring tells the LM to use the following ou
 ```
 - **Batching LLM calls to reduce inference costs:** Sentences are generated and scored in batches of 10, which brings down the cost and time of generating and scoring stories a lot.
 - **Require JSON outputs:** I wasted a lot of time trying to get the LM to output in a format that was easy to parse in Python. Eventually I realized that JSON outputs were perfect for this situation. 
-Anecdotally, it feels like formatting-related hallucinations are less common when the model is tasked with outputting JSON and not some special, user-defined format. 
+Anecdotally, it feels like formatting-related hallucinations are less common when the model is tasked with outputting JSON and not an ad-hoc, user-defined format. 
 
 # Findings
+With the right prompting and search strategy, LLMs can definitely generate "cognateful" sentences. I think all three of these examples can be mostly understood by an English speaker:
+
+> Netflix est une plateforme de streaming vidéo qui offre une large sélection de films, séries télévisées et documentaires.
+
+> L'intellectuel français Voltaire a dit: "La tolérance est un ingrédient essentiel de la civilisation."
+ 
+> En 1310, le navigateur italien Marco Polo a traversé l'océan Indien.
+
 Some cognate words have a stronger association with high-scoring sentences than others. 
 For example, *université* and *enthousiasme* have average scores of 3.00, whereas *recherches* and *ouvre* have average scores of 1.67. 
 These findings might seem obvious at first glance, but it's proof that the scoring function is doing something right!
@@ -267,7 +276,7 @@ Here's a non-exhaustive table of some cognates and the average scores of the sen
 Click to see the raw data used to make the above table
 </summary>
 <div markdown="1">
-Note that the list only contains words which appear at least two times across all the sentences.
+Note that the list only contains words which appear at least two times across all the sentences. Also, the table above isn't exhaustive.
 ```
 Cognate Words Sorted by Average Score:
 université: 3.00
@@ -620,22 +629,23 @@ matin: 1.00
 - Bring back beam search for sentence generation: Currently I'm making stories by generating 10 sentences at once. A better, but slower and more costly, way to get high-scoring sentences is to generate many options, expand the highest-scoring ones, and discard the rest, gradually building up the stories.
 - Remove all English from the UI. Instead, express UI functions using images and icons. Any words which appear on the screen should be in the target language, not English, in order to immerse the user as much as possible.
 - Come up with better heuristics for bumping up and down the user's difficulty score based on their performance. Right now, we simply decrement / increment the user's difficulty by 0.10 for each correct or incorrect answer. (Note that lower difficulty values = harder, not easier, sentences)
-- **Improve sentence scoring:** I think that this is the hardest part of this project and that there are a lot of ways I could improve the sentence scoring. 
+- **Improve sentence scoring:** I think that this is the hardest part of the project and that the sentence scoring has a lot of room for improvement. 
 For example, I could modify the scoring system to use a weighted combination[^fn-2] of two things: GPT-4 judgement scoring and the presence of certain high-scoring cognate words (see "Findings" above).
 - Add support for languages other than English.
 
 # How you can help
-If you're familar with NLP and/or software development, you can help out by suggesting solutions to the following blockers that I'm currently facing. Leave a comment below!
+If you're familar with NLP, linguistics, or software development, you can help out by suggesting solutions to the following blockers that I'm currently facing.
 - **Cheaper and faster scoring**:
 Is there a cheaper, more scalable way to score sentences than what I've described here?
+To recap, using o1 is effective but slow and expensive.
 Using models other than o1 results in bad quality sentences.
 Using non LLM-powered scoring misses the nuances of what makes a sentence easy or hard to understand. 
-- **More intuitive UI**: Users should be able to understand how the app works without reading an entire blog post about it. How can we engineer the UI so that it's obvious how to use the app?
+- **More intuitive UI**: Users should be able to understand how the app works without reading an entire blog post about it. How can we engineer the UI so that it's immediately obvious how to use the app and why it will teach you French?
 - **Better gameplay loop**: Right now, all the user does is read sentences, translate them, and watch their score go up or down.
 How can we make the app more fun?
 
 Thanks for reading my post! 
-If you liked (or hated) reading it or have thoughts on how to improve the project, please reach out over <a href="mailto:vijaykethanaboyina@gmail.com">email</a> or leave a comment below.
+If you liked reading it or have thoughts on how to improve the project, please reach out over <a href="mailto:vijaykethanaboyina@gmail.com">email</a> or leave a comment below.
 
 ----- 
 [^fn-1]: Justification: An English speaker would get "patient refuses absolutely to take medications" and "constant protestations doctor" but might miss "his" and "despite", changing their understanding of whose medications and the relationship between the refusal and protestations.
