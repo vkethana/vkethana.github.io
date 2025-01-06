@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Generating Cognateful Sentences with LLMs"
+title: "Generating Cognateful Sentences with Large Language Models"
 published: true
 tags: natural language processing, large language models, linguistics, software projects
 comments: true
