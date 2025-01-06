@@ -12,7 +12,7 @@ Even if you don't speak French, you can probably understand, or at least get the
 Imagine reading thousands of sentences like this and gradually acquiring French through cognates you already know. 
 This is a type of comprehensible input, a language learning technique popularized by linguist Stephen Krashen in the 1980s. 
 
-Comprehensible input is a good language learning method, but creating comprehensible input is very hard. 
+Comprehensible input is a good language learning method, but creating it is very hard. 
 A native speaker has to painstakingly create thousands of sentences that speakers of another language can understand, gradually increasing the difficulty as the learner progresses. 
 Resources like this actually do exist for a number of languages. 
 For example, learners of Latin can use *Lingua Latina per se Illustrata*, a book that teaches you Latin using exclusively sentences in Latin. 
