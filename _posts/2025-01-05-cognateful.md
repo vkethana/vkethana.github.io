@@ -12,8 +12,8 @@ Even if you don't speak French, you can probably understand, or at least get the
 
 Comprehensible input is a good language learning method, but creating comprehensible input is very hard. 
 A native speaker has to painstakingly create thousands of sentences that speakers of another language can understand, slowly scaling up the difficulty as the learner progresses. 
-Resources like this actually do exist for a number of language. 
-For example, learners of Latin can use *Lingua Latina per se Illustrata*, a book which teaches you Latin using exclusively sentences in Latin. 
+Resources like this actually do exist for a number of languages. 
+For example, learners of Latin can use *Lingua Latina per se Illustrata*, a book that teaches you Latin using exclusively sentences in Latin. 
 However, writing this text took years of effort on the part of Hans Ørberg, a linguist who dedicated a large part of his life to teaching Latin and had a deep understanding of the language. 
 Ørberg carefully wrote the sentences in his book to only use cognates an English speaker could understand and to avoid any complicated syntax an English speaker would have a hard time understanding. 
 
@@ -34,7 +34,7 @@ Caveats: This is just a minimum viable product.
 The number of sentences in the app is limited. 
 I don't speak French (yet), so sentences may contain mistakes.
 But the interface, scoring system, and sentence generation are all functional, and I think they will work at scale. 
-The biggest hurdle to improving the app is increasing the amount of sentences while not comprimising on sentence quality.
+The biggest hurdle to improving the app is increasing the number of sentences while not compromising on sentence quality.
 
 # How I generated and scored the sentences
 ## Scoring
@@ -50,7 +50,7 @@ Example: "Je veux manger du pain."
 
 **Score 3:** Fully understandable through cognates. Use almost exclusively cognate words except for basic connectors. Example: "Le président Emmanuel Macron assure le peuple canadien que le gouvernement français va continuer à défendre le Canada contre la menace américain."
 
-(Side Note: I found that using o1 is necessary for good quality scoring. 
+(Side Note: I found that using o1 is necessary for good-quality scoring. 
 Other models -- 4o, 4o-mini, and o1-mini -- had a hard time determining what a cognate was. Also, they were too lenient, often assigning scores of 3 to sentences that in my opinion an English speaker wouldn't be able to fully understand.)
 
 ## Generation
@@ -204,7 +204,7 @@ This works, but I eventually got rid of it and found that the sentences were sti
 Rather than pre-generating the sentences, I originally thought about generating them on the spot and feeding the model with information about the user's past performance.
 But pre-generating sentences is cheaper, and we can still adapt to the user's performance using the scoring system.
 - **Cognate ratios:**
-Originally, I scored sentences using a weighted combination of GPT-4's judgements and the percentage of cognate words in the sentence. 
+Originally, I scored sentences using a weighted combination of GPT-4's judgments and the percentage of cognate words in the sentence. 
 This is a bad idea because it treats all cognate words equally. 
 For example, "ouvre" and "technologie" are both cognates but the latter is much easier to understand.
 I plan to return to this idea, using a system that gives better scores to some cognate words.
@@ -223,10 +223,10 @@ For example, my prompt for sentence scoring tells the LM to use the following ou
 ```
 - **Batching LLM calls to reduce inference costs:** Sentences are generated and scored in batches of 10, which brings down the cost and time of generating and scoring stories a lot.
 - **Require JSON outputs:** I wasted a lot of time trying to get the LM to output in a format that was easy to parse in Python. Eventually I realized that JSON outputs were perfect for this situation. 
-Anecdotally, it feels like formatting-related hallucinations are less common when the model is tasked with outputting JSON and not some speical, user-defined format. 
+Anecdotally, it feels like formatting-related hallucinations are less common when the model is tasked with outputting JSON and not some special, user-defined format. 
 
 # Findings
-Some cognate words have stronger association with high-scoring sentences than others. 
+Some cognate words have a stronger association with high-scoring sentences than others. 
 For example, *université* and *enthousiasme* have average scores of 3.00, whereas *recherches* and *ouvre* have average scores of 1.67. 
 These findings might seem obvious at first glance, but it's proof that the scoring function is doing something right!
 Cognates that are very easy to understand receive high scores. 
@@ -264,8 +264,8 @@ Here's a non-exhaustive table of some cognates and the average scores of the sen
 - Bring back beam search for sentence generation: Currently I'm making stories by generating 10 sentences at once. A better, but slower and more costly, way to get high-scoring sentences is to generate many options, expand the highest-scoring ones, and discard the rest, gradually building up the stories.
 - Remove all English from the UI. Instead, express UI functions using images and icons. Any words which appear on the screen should be in the target language, not English, in order to immerse the user as much as possible.
 - Come up with better heuristics for bumping up and down the user's difficulty score based on their performance. Right now, we simply decrement / increment the user's difficulty by 0.10 for each correct or incorrect answer. (Note that lower difficulty values = harder, not easier, sentences)
-- **Improve sentence scoring:** I think this is the hardest part of this project and that there are a lot of ways I could improve the sentence scoring. 
-For example, I could modify the scoring system to use a weighted combination[^fn-2] of two things: of GPT-4 judgement scoring and the presence of certain high-scoring cognate words (see "Findings" above).
+- **Improve sentence scoring:** I think that this is the hardest part of this project and that there are a lot of ways I could improve the sentence scoring. 
+For example, I could modify the scoring system to use a weighted combination[^fn-2] of two things: GPT-4 judgement scoring and the presence of certain high-scoring cognate words (see "Findings" above).
 - Add support for languages other than English.
 
 # How you can help
