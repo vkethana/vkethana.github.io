@@ -212,7 +212,7 @@ This is a bad idea because it treats all cognate words equally, leading to inacc
 For example, "ouvre" and "technologie" are both cognates but the latter is much easier to understand.
 I plan to return to this idea, using a system that gives better scores to some cognate words.
 
-# Engineering Tricks I learned
+# Some optimizations I made
 - **Chain of Thought Prompting**: I tell the model to reason through its scoring and generation process. This substantially reduces hallucinations and improves the output quality of weaker models.
 For example, my prompt for sentence scoring tells the LM to use the following output in its response:
 
