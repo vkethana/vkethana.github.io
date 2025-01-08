@@ -41,7 +41,7 @@ The biggest hurdle to improving the app is increasing the number of sentences wh
 # How I generated and scored the sentences
 ## Scoring
 I have to explain sentence scoring before sentence generation because the scoring system influenced the prompt used to generate the sentences. 
-I give o1 a sentence and ask it to score the difficulty on a scale of 0 to 3, 0 being very hard to understand for a monolingual English speaker and 3 being very easy.
+I give o1-preview a sentence and ask it to score its difficulty on a scale of 0 to 3, 0 being very hard to understand for a monolingual English speaker and 3 being very easy.
 
 **Score 0**: Completely unintelligible to English speakers.
 Example: "Je veux manger du pain."
@@ -52,11 +52,13 @@ Example: "Je veux manger du pain."
 
 **Score 3:** Fully understandable through cognates. Use almost exclusively cognate words except for basic connectors. Example: "Le président Emmanuel Macron assure le peuple canadien que le gouvernement français va continuer à défendre le Canada contre la menace américain."
 
-(Side Note: I found that using o1 is necessary for good-quality scoring. 
-Other models -- 4o, 4o-mini, and o1-mini -- had a hard time determining what a cognate was. Also, they were too lenient, often assigning scores of 3 to sentences that in my opinion an English speaker wouldn't be able to fully understand.)
+(Side Note: I found that using o1-preview is necessary for good-quality scoring. 
+Other models -- 4o, 4o-mini, and o1-mini -- had a hard time determining what a cognate was. 
+Also, they were too lenient, often assigning scores of 3 to sentences that in my opinion an English speaker wouldn't be able to fully understand.
+Even o1-preview sometimes uses words an English speaker wouldn't understand.)
 
 ## Generation
-To save time and money, I pregenerate all sentences on the site using GPT-4o and o1. 
+To save time and money, I pregenerate all sentences on the site using GPT-4o and o1-preview. 
 Unsurprisingly, o1 made much higher quality sentences, but 4o did a pretty good job too, and any bad-quality sentences are flagged by the scoring system anyway. So it's OK to cut costs and use a cheaper model when generating sentences, but not when scoring them.
 To generate sentences, I made a function `generate_story` that takes in a target difficulty and then asks GPT-4o to generate a story consisting of sentences at that difficulty. This allows me to create a variety of sentences at different difficulty levels to suit the user's needs.
 
