@@ -26,7 +26,7 @@ I'm also an avid [reader](reading_log) and language learner.
 
 ## Education
 
-* Bachelor of Arts in Computer Science (4.0 GPA) from UC Berkeley (2023 – 2026).
+* Currently pursuing Bachelor of Arts in Computer Science (3.97 GPA) from UC Berkeley (2023 – ).
 * Coursework: Data Structures, Efficient Algorithms, Computer Architecture, Probability & Random Processes, Discrete Math,
   Linear Algebra, Multivariable Calculus.
 
