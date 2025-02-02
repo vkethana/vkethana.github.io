@@ -1,6 +1,5 @@
 ---
-layout: nonpost
-title: Vijay's Personal Website
+layout: base
 ---
 
 ## My Projects
