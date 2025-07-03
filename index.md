@@ -33,22 +33,3 @@ I'm also an avid reader and language learner.
 * **Frameworks**: React, Node.js, Flask, OpenMP, OpenMPI, JUnit
 * **Developer Tools**: Git, Vim, IntelliJ IDEA, Docker
 * **System Administration**: Debian, Arch Linux, DigitalOcean
-
-## Experience
-
-### Undergraduate Researcher for UC Berkeley Sky Computing Lab
-*June 2024 - Present*
-* Collaborating with UC Berkeley CS PhD students to enhance [R2E](https://r2e.dev), a framework for evaluating code generation and optimization capabilities of large language models (LLMs). Collect install and test commands from 50 Python GitHub repositories containing approximately 130 code optimization problems.
-* Developing an LLM-powered agent to automate the cloning, setup, and execution of Python GitHub repositories; detecting and fixing installation errors using GPT-4 powered agentic loop.
-
-### Hackathon Cofounder
-*2022-2023*
-* Organized [Gilroy Hacks](https://gilroyhacks.com), a multi-school, student-led hackathon series for middle/high schoolers in Gilroy, CA.
-* Secured a $1,481 grant by convincing sponsors and resolving logistical issues. Coordinated with judges and backers, including Wolfram Language, 1Password, and AoPS.
-* Support development of 7 hackathon projects in Python, Next.js, Typescript, and Flask.
-
-### Research Intern (Paid) at Gavilan College
-*June - August 2022*
-- Developed Python script with OpenCV to track fast-moving helium balloons using a smartphone camera. Utilized the CSRT (Channel and Spatial Reliability Tracking) and KCF (Kernelized Correlation Filter) algorithms. Collaborated with two teammates under Dr. David Argudo, Ph.D.
-- Processed balloon motion videos into CSV location data files. Applied Statsmodels to clean datasets and handle out-of-frame objects. 
-- Authored comprehensive, ten-page document describing how to conduct classroom physics demonstrations using the balloon tracking software.
