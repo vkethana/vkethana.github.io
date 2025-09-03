@@ -18,6 +18,7 @@ I'm also an avid reader and language learner.
 
 ## Links
 
+*		Blog:	[vkethana.com/vjposts]({{ "/vjposts" | prepend: site.baseurl }}) 
 *		RSS (Atom) Feed:	[vkethana.com/feed.xml]({{ "/feed.xml" | prepend: site.baseurl }}) 
 *   GitHub: [github.com/vkethana](https://www.github.com/vkethana)
 *   LinkedIn: [linkedin.com/in/vkethana/](https://www.linkedin.com/in/vkethana/)
