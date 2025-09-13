@@ -1,0 +1,9 @@
+- file: custom0_pyramid.jpg
+  green_offset: "(3, 29)"
+  red_offset: "(-7, 71)"
+- file: custom1_pyramid.jpg
+  green_offset: "(-12, 39)"
+  red_offset: "(-27, 86)"
+- file: custom2_pyramid.jpg
+  green_offset: "(-18, 66)"
+  red_offset: "(-34, 146)"

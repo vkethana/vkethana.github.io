@@ -583,3 +583,16 @@ table {
     // make font size 16px
     font-size: 16px;
 }
+
+.caption {
+  font-size: 14px;
+  color: var(--gray-600);
+  margin-top: 8px;
+  line-height: 1.4;
+  font-style: italic;
+}
+
+.caption br {
+  line-height: 1.6;
+}
+

@@ -1,0 +1,42 @@
+- file: cathedral_pyramid.jpg
+  green_offset: "(2, 5)"
+  red_offset: "(3, 12)"
+- file: church_pyramid.jpg
+  green_offset: "(4, 25)"
+  red_offset: "(-4, 58)"
+- file: emir_pyramid.jpg
+  green_offset: "(24, 49)"
+  red_offset: "(57, 103)"
+- file: harvesters_pyramid.jpg
+  green_offset: "(17, 60)"
+  red_offset: "(14, 124)"
+- file: icon_pyramid.jpg
+  green_offset: "(17, 41)"
+  red_offset: "(23, 89)"
+- file: italil_pyramid.jpg
+  green_offset: "(21, 38)"
+  red_offset: "(35, 77)"
+- file: melons_pyramid.jpg
+  green_offset: "(10, 81)"
+  red_offset: "(13, 178)"
+- file: monastery_pyramid.jpg
+  green_offset: "(2, -3)"
+  red_offset: "(2, 3)"
+- file: self_portrait_pyramid.jpg
+  green_offset: "(29, 79)"
+  red_offset: "(37, 176)"
+- file: siren_pyramid.jpg
+  green_offset: "(-6, 49)"
+  red_offset: "(-25, 96)"
+- file: three_generations_pyramid.jpg
+  green_offset: "(14, 53)"
+  red_offset: "(11, 111)"
+- file: tobolsk_pyramid.jpg
+  green_offset: "(3, 3)"
+  red_offset: "(3, 6)"
+- file: lastochikino_pyramid.jpg
+  green_offset: "(-2, -3)"
+  red_offset: "(-9, 75)"
+- file: lugano_pyramid.jpg
+  green_offset: "(-16, 41)"
+  red_offset: "(-29, 93)"
