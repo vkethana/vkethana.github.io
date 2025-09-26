@@ -332,4 +332,9 @@ def make_circular_mask(h, w, center, radius, feather=20):
     return mask
 </code></pre>
 I experimented with different input arguments to generate the mask and eventually I settled on a center of (630, 280) and a radius of 265.
+
+## Most Important Thing I Learned 
+The most important thing I learned in this project is that classical methods are still very useful in 2025.
+These days neural network-driven approaches are very popular in the CS world, and rightfully so, but this project shows us that sometimes it doesn't hurt to go old-school.
+For example, we could have used generative AI to merge the orange and apple photos, but there's no reason to do that when the multiresolution blending approach can get the same result with a fraction of the resources.
 </div>
