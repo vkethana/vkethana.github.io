@@ -102,7 +102,7 @@ I also tested a 9x9 box filter for smoothing:
 
 ---
 
-## Part 1.2: Derivative of Gaussian Filter
+## Part 1.2: Finite Difference Operator
 
 Using the cameraman image, I computed partial derivatives and edge detection with finite differences.
 
@@ -221,7 +221,7 @@ The technique combines the low-frequency components of one image with the high-f
 Low frequencies capture broad shapes and overall structure, which dominate our perception from far away. 
 High frequencies encode fine details and edges, which we perceive up close. 
 To create a hybrid image, I apply a Gaussian low-pass filter to extract smooth, large-scale features from the first image, then subtract a Gaussian-blurred version from the second image to obtain only its high-frequency details. 
-When these are combined, viewers see different images depending on their distance from the image: the high frequency image is seen from close up and the low frequencies one from far away.
+When these are combined, viewers see different images depending on their distance from the image: the high-frequency image is seen from close up and the low-frequency one from far away.
 
 ### Example 1: Derek + Nutmeg
 
