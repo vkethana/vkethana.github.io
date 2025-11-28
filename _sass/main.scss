@@ -1,44 +1,19 @@
 :root {
     --gray-000: #f8f9fa;
-    --gray-100: #f1f3f5;
-    --gray-200: #e9ecef;
     --gray-300: #dee2e6;
-    --gray-400: #ced4da;
-    --gray-500: #adb5bd;
     --gray-600: #868e96;
     --gray-700: #495057;
-    --gray-800: #343a40;
     --gray-900: #212529;
-    --dark-poole-001: hsl(200, 3%, 12%);
-    --dark-poole-002: hsl(0, 0%, 85%);
-    --dark-poole-link-color: rgba(255, 255, 255, 0.75);
-    --dark-poole-link-hover: #fff;
-    --red: #fa5252;
-    --pink: #e64980;
-    --grape: #be4bdb;
-    --purple: #7950f2;
-    --indigo: #4c6ef5;
-    --blue: #228be6;
-    --cyan: #15aabf;
-    --teal: #12b886;
-    --green: #40c057;
-    --yellow: #fab005;
-    --orange: #fd7e14;
-    --blue-300: #74c0fc;
-    --blue-400: #4dabf7;
     --yellow-100: #fff3bf;
     --body-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --body-font-size: 18px;
     --body-line-height: 1.5;
     --body-color: var(--gray-700);
     --body-bg: #fff;
-    --link-color: var(--blue);
-    --link-hover-color: #1c7ed6;
     --heading-color: var(--gray-900);
     --border-color: var(--gray-300);
     --border-radius: 0.25rem;
     --code-font: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-    --code-color: var(--grape);
     --code-bg: var(--gray-000);
     --spacer: 1rem;
     --spacer-2: calc(var(--spacer) * 1.5);
@@ -46,15 +21,9 @@
 }
 @media (prefers-color-scheme: dark) {
     :root {
-        //--body-color: var(--gray-300);
         --body-color: #444444;
-        //--body-bg: var(--gray-800);
         --body-bg: #f2f2f2;
-        //--heading-color: #fff;
-        //--link-color: var(--blue-300);
-        //--link-hover-color: var(--blue-400);
         --border-color: rgba(0, 0, 0, 0.05);
-        //--code-bg: var(--gray-900);
     }
 }
 * {
@@ -84,6 +53,7 @@ table {
     width: 100%;
     border: 0 solid var(--border-color);
     border-collapse: collapse;
+    font-size: 16px;
 }
 td,
 th {
@@ -453,20 +423,20 @@ footer {
 }
 
 .masthead-content {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
 }
 
 .nav {
-  display: flex;
-  align-items: baseline;
+    display: flex;
+    align-items: baseline;
 }
 
 .nav a {
-  margin-left: 15px;
-  font-weight: 400;
-  opacity: 0.5;
+    margin-left: 15px;
+    font-weight: 400;
+    opacity: 0.5;
 }
 
 .page,
@@ -480,9 +450,6 @@ footer {
 .page-title,
 .post-title {
     color: var(--heading-color);
-}
-.page-title,
-.post-title {
     margin-top: 0;
     margin-bottom: var(--spacer);
 }
@@ -494,25 +461,11 @@ footer {
 .post-title a:focus {
     text-decoration: underline;
 }
-.post-date, post-tags {
+.post-date {
     display: block;
     margin-top: -0.5rem;
     margin-bottom: var(--spacer);
     color: var(--gray-600);
-}
-.related {
-    padding-top: var(--spacer-2);
-    padding-bottom: var(--spacer-2);
-    margin-bottom: var(--spacer-2);
-    border-top: 1px solid var(--border-color);
-    border-bottom: 1px solid var(--border-color);
-}
-.message {
-    padding: var(--spacer);
-    margin-bottom: var(--spacer);
-    color: var(--gray-900);
-    background-color: var(--yellow-100);
-    border-radius: var(--border-radius);
 }
 #markdown-toc {
     padding: var(--spacer-2) var(--spacer-3);
@@ -540,13 +493,9 @@ footer {
 .colors dd {
     margin-left: var(--spacer);
 }
-
-.center{
-  text-align: center !important;
-}
 figcaption {
-  font-size: 1.1rem;
-  font-style: italic;
+    font-size: 1.1rem;
+    font-style: italic;
 }
 .image-column {
     max-width: 19em; /* Adjust the width as needed */
@@ -558,20 +507,30 @@ table img {
     border: 3px solid black;
 }
 
-table {
-    // make font size 16px
-    font-size: 16px;
-}
-
 .caption {
-  font-size: 14px;
-  color: var(--gray-600);
-  margin-top: 8px;
-  line-height: 1.4;
-  font-style: italic;
+    font-size: 14px;
+    color: var(--gray-600);
+    margin-top: 8px;
+    line-height: 1.4;
+    font-style: italic;
 }
 
 .caption br {
-  line-height: 1.6;
+    line-height: 1.6;
+}
+
+.bio-section {
+    display: flow-root;
+    margin-bottom: var(--spacer-2);
+}
+
+.bio-portrait {
+    float: left;
+    width: 140px;
+    margin: 0 var(--spacer-3) var(--spacer-2) 0;
+    padding: var(--spacer);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    background-color: var(--gray-000);
 }
 

@@ -2,7 +2,9 @@
 layout: post
 title: "Why (and how) I am starting a website"
 description: My brief essay on why the internet needs more independent blog sites run by independent tinkerers.
-tags: blog, code, web 
+tags:
+  - misc
+  - code
 ---
 
 The reason I'm starting a website is simple: I want to join the ranks of all the other cool writers on the internet. Some of my inspirations include:

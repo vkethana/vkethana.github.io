@@ -2,6 +2,8 @@
 layout: post
 title: Language Learning
 published: false
+tags:
+  - linguistics
 ---
 
 - Duolingo more is useful for studying writing systems than languages.

@@ -3,6 +3,9 @@ layout: post
 title: "Fun with Filters and Frequencies"
 description: Edge detection, image sharpening, hybrid images, and multiresolution blending for CS 180
 published: true
+tags:
+  - machine-learning
+  - computer-vision
 ---
 
 # TLDR

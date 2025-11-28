@@ -3,6 +3,9 @@ layout: post
 title: "Generating Cognateful Sentences with Large Language Models"
 published: true
 comments: true
+tags:
+  - machine-learning
+  - linguistics
 ---
 
 # Motivation
