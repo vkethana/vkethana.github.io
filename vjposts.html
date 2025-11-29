@@ -5,38 +5,18 @@ title: Vijay's Blog
 <div>
 </div>
 <div class="posts">
-  <h2>Machine Learning</h2>
-  {% assign ml_posts = site.tags['machine-learning'] %}
-  {% if ml_posts %}
-    {% assign ml_posts = ml_posts | sort: 'date' | reverse %}
-    <ul>
-      {% for post in ml_posts %}
-        <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
-      {% endfor %}
-    </ul>
-  {% else %}
-    <p>No machine learning posts yet.</p>
-  {% endif %}
-
-  <h2>Linguistics</h2>
-  {% assign ling_posts = site.tags['linguistics'] %}
-  {% if ling_posts %}
-    {% assign ling_posts = ling_posts | sort: 'date' | reverse %}
-    <ul>
-      {% for post in ling_posts %}
-        <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
-      {% endfor %}
-    </ul>
-  {% else %}
-    <p>No linguistics posts yet.</p>
-  {% endif %}
-
-  <h2>All Posts</h2>
+  <h2>Posts</h2>
   <ul>
-    {% for post in site.posts %}
-      <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
-    {% endfor %}
+    <li><a href="/nerfs/">Implementing NeRFs (Neural Radiance Fields) from scratch</a></li>
+    <li><a href="/cognateful/">Generating Cognateful Sentences with Large Language Models</a></li>
+    <li><a href="/vjscript/">Inventing my own writing system for English, VJScript</a></li>
+    <li><a href="/startups/">Startup Tips from Clever's CEO</a></li>
+    <li><a href="/colorize/">Colorizing Old Russian Photographs... Automatically!</a></li>
+    <li><a href="/mosaic/">Generating Image Mosaics (without machine learning!)</a></li>
+    <li><a href="/frequency/">Making Orapples: Fun with Filters, Frequencies, and Image Blending</a></li>
+    <li><a href="/ideas/">Random Research Ideas</a></li>
+    <li><a href="/starting_blog/">Why (and how) I am starting a website</a></li>
   </ul>
 
-  You can subscribe to an RSS feed of these posts <a href="{{ "/feed.xml" | prepend: site.baseurl }}">here</a>.
+  You can subscribe to an RSS feed <a href="{{ "/feed.xml" | prepend: site.baseurl }}">here</a>.
 </div>

@@ -20,24 +20,33 @@
                 <td>
                     <img src="/assets/images/nerf/lego.gif" alt="A gif of a spinning lego" />
                 </td>
-                <td>Implemented NeRFs (Neural Radiance Fields) to reconstruct a rotating 3D scene from a set of 2D images.</td>
+                <td>Designed and implemented a NeRF (Neural Radiance Field) model in PyTorch based on the <a href="https://arxiv.org/pdf/2003.08934">original NeRF paper</a>. 
+                    Successfully reconstructed a 3D scene of a rotating LEGO truck from a set of 2D views.</td>
+            </tr>
+            <tr id="gso">
+                <td><a href="https://arxiv.org/pdf/2505.23671">GSO: Software Optimization Tasks for Evaluating SWE-Agents</a></td>
+                <td>
+                    <img src="/assets/images/gso-task.svg" alt="An image of the GSO task generation pipeline" />
+                </td>
+                <td>Paper Accepted at NeurIPS 2025 (Datasets & Benchmarks Track): Coauthored Global Software Optimization (GSO), an LLM code optimization 
+                    benchmark spanning 102 optimization problems and five programming languages.</td>
+            </tr>
+            <tr id="pintos">
+                <td>PintOS (Operating Systems Class Project)</td>
+                <td>
+                    <img src="/assets/images/pintos.png" alt="An image of the PintOS operating system" />
+                </td>
+                <td>Built a transaction-safe Unix-like file system with hierarchical inode structure, resizable files, and rollback recovery. Developed an in-memory buffer cache with fine-grained locking for concurrent disk I/O. Implemented a POSIX-style threading subsystem with kernel-level synchronization primitives and priority scheduling to enable true parallel execution.</td>
             </tr>
             <tr id="risc-v-cpu">
-                <td><a href="https://cs61c.org/su24/projects/proj3/">RISC-V CPU</a></td>
+                <td>RISC-V CPU</td>
                 <td>
                     <img src="/assets/images/datapath.png" alt="RISC-V CPU Datapath" />
                 </td>
                 <td>Built a full CPU in Logism that runs instructions in assembly language. Implemented two-stage pipelining to increase throughput. Prevent control hazards via pipeline flushing.</td>
             </tr>
-            <tr id="digit-classifier">
-                <td><a href="https://cs61c.org/su24/projects/proj2/">Handwritten Digit Classifier</a></td>
-                <td>
-                    <img src="/assets/images/mnist.png" alt="Image from the MNIST Handwritten Digits database" />
-                </td>
-                <td>Designed machine learning algorithm to classify handwritten digits from MNIST database of 60,000 28x28 images. Wrote RISC-V assembly procedures for matrix multiplication, dot products, and the activation and loss functions.</td>
-            </tr>
             <tr id="factgrid-cuneiform">
-                <td><a href="https://drive.google.com/file/d/1vlQzFKQ6lDvLLq6qpwZd_4Shadr_Uq7i/view">FactGrid Cuneiform Project</a></td>
+                <td><a href="https://drive.google.com/file/d/1EfvsekS7I_fEWDSfWawkf6dkGystoq03/view?usp=sharing">FactGrid Cuneiform Project</a></td>
                 <td>
                     <img src="/assets/images/fixed_bounding_boxes.png" alt="FactGrid Cuneiform Project" />
                 </td>
@@ -49,20 +58,6 @@
                     <img src="/assets/images/david_deutsch_lexicon.png" alt="The David Deutsch Lexicon" />
                 </td>
                 <td>Online database of quotes from science author and quantum physicist David Deutsch. Utilizes <a href="https://docs.google.com/spreadsheets/d/1xTxusR0Mfy5eE5vbe8wjIAVwvfojvHzCse_J_fUteZc/edit?gid=0#gid=0">Google Sheets</a> as a backend database to allow for seamless and near-real-time updates. Scraped quotes off the internet using Python3 and NLTK (Natural Language Tool Kit). Designed UI using Flask and HTML.</td>
-            </tr>
-            <tr id="balloon-tracking">
-                <td><a href="https://github.com/vkethana/balloon-tracking-software">Helium Balloon Project</a></td>
-                <td>
-                    <img src="/assets/images/balloon.png" alt="Helium Balloon Project" />
-                </td>
-                <td>OpenCV-powered object tracking for helium balloons using the CSRT (Channel Spatial and Reliability Tracking) algorithm.</td>
-            </tr>
-            <tr id="convolutions">
-                <td><a href="https://cs61c.org/su24/projects/proj4/">2D Convolutions Optimizer</a></td>
-                <td>
-                    <img src="/assets/images/61kachow-1.svg" alt="diagram of convolutions" />
-                </td>
-                <td>Created algorithm for running 2D convolutions. Sped up algorithm by a factor of 8.10x using SIMD Instructions, multithreading via OpenMP, and targeted algorithmic optimizations. Wrote OpenMPI coordinator to support process-level parallelism capabilities. </td>
             </tr>
         </tbody>
     </table>

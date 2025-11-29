@@ -2,16 +2,18 @@
 layout: base
 ---
 
-## Bio
 
-<div class="bio-section">
-  <img src="/assets/images/portrait.jpeg" alt="Portrait of Vijay Kethanaboyina" class="bio-portrait">
-  <p>My name is Vijay Kethanaboyina, and I'm a computer science student at UC Berkeley interested in AI and machine learning. I'm also an avid reader and language learner who enjoys exploring how technology and linguistics intersect.</p>
-  <p>Outside of school, I enjoy cooking and hiking, always looking for new adventures and dishes to try.</p>
-</div>
 
 ## My Projects
+{% include project_toc.html %}
+
+## More Info
 {% include projectlist.html %}
+
+## Bio
+My name is Vijay Kethana, and I’m a computer science student at UC Berkeley. 
+I’m working towards specializing in AI and machine learning. 
+Outside of school, I enjoy cooking, hiking, and learning languages.
 
 ## Links
 

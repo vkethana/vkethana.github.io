@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Fun with Filters and Frequencies"
+title: "Making Orapples: Fun with Filters, Frequencies, and Image Blending"
 description: Edge detection, image sharpening, hybrid images, and multiresolution blending for CS 180
 published: true
 tags:
