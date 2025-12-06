@@ -1,0 +1,680 @@
+---
+layout: post
+title: "Interactively Visualizing the Qwen3 MoE Architecture"
+published: true
+tags:
+  - machine-learning
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interactive Qwen3 (Dense) Diagram</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --accent: #1d4ed8;
+        --accent-light: #dbeafe;
+        --gray: #e2e8f0;
+        --tooltip-bg: #1f2937;
+      }
+
+      .concepts {
+        margin: 48px auto;
+        max-width: 760px;
+        padding: 0 16px;
+        display: grid;
+        gap: 18px;
+      }
+
+      .concepts h2 {
+        margin: 0;
+        font-size: 20px;
+        color: var(--accent);
+      }
+
+      .concept {
+        display: grid;
+        gap: 6px;
+      }
+
+      .concept strong {
+        font-size: 16px;
+        color: #0f172a;
+      }
+
+      .concept p {
+        margin: 0;
+        font-size: 14px;
+        line-height: 1.6;
+        color: #334155;
+      }
+
+      .page {
+        max-width: 900px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+        margin: 24px auto 48px;
+        padding: 0 16px;
+      }
+
+      .post-intro {
+        max-width: 720px;
+        margin: 16px auto 32px;
+        padding: 0 16px;
+        font-size: 1rem;
+        line-height: 1.7;
+      }
+
+      h1 {
+        margin: 0;
+        letter-spacing: 0.04em;
+        color: var(--accent);
+      }
+
+      .tabs {
+        display: flex;
+        gap: 12px;
+        border-bottom: 2px solid var(--accent);
+        padding-bottom: 8px;
+      }
+
+      .tab {
+        padding: 8px 16px;
+        border-radius: 10px 10px 0 0;
+        background: var(--accent-light);
+        border: 2px solid var(--accent);
+        border-bottom: none;
+        cursor: pointer;
+        font-weight: 600;
+        color: var(--accent);
+        transition: background 0.2s ease;
+      }
+
+      .tab.inactive {
+        background: #fff;
+        color: #1f2937;
+        opacity: 0.8;
+      }
+
+      .tab-content {
+        display: none;
+        width: 100%;
+        justify-content: center;
+      }
+
+      .tab-content.active {
+        display: flex;
+      }
+
+      .diagram {
+        position: relative;
+        width: min(680px, 95vw);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .component {
+        position: relative;
+        padding: 12px 18px;
+        border: 2px solid var(--accent);
+        border-radius: 10px;
+        background: white;
+        text-align: center;
+        font-weight: 600;
+        width: clamp(280px, 36vw, 340px);
+        box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08);
+        transition: transform 0.2s ease;
+        z-index: 1;
+      }
+
+      .component:hover {
+        transform: translateY(-3px);
+        z-index: 30;
+      }
+
+      .component::after {
+        content: attr(data-description);
+        position: absolute;
+        left: 50%;
+        top: 100%;
+        transform: translate(-50%, 12px);
+        width: clamp(240px, 60vw, 320px);
+        background: var(--tooltip-bg);
+        color: white;
+        padding: 12px;
+        border-radius: 8px;
+        font-size: 14px;
+        line-height: 1.35;
+        box-shadow: 0 6px 16px rgba(15, 23, 42, 0.25);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.15s ease;
+        z-index: 10;
+      }
+
+      .component:hover::after,
+      .adder:hover::after {
+        opacity: 1;
+      }
+
+      .outer-block {
+        width: 100%;
+        max-width: 520px;
+        background: var(--gray);
+        border: 2px solid var(--accent);
+        border-radius: 18px;
+        padding: 24px 20px 32px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        position: relative;
+      }
+
+      .inner-block {
+        width: 100%;
+        background: var(--accent-light);
+        border-radius: 14px;
+        border: 2px solid var(--accent);
+        padding: 20px 20px 24px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .connector {
+        width: 6px;
+        height: 32px;
+        background: var(--accent);
+        border-radius: 999px;
+      }
+
+      .connector.small {
+        height: 24px;
+      }
+
+      .adder {
+        position: relative;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        border: 2px solid var(--accent);
+        background: white;
+        display: grid;
+        place-items: center;
+        font-weight: 700;
+        color: var(--accent);
+        box-shadow: 0 3px 8px rgba(15, 23, 42, 0.12);
+        cursor: help;
+        z-index: 1;
+        transition: transform 0.2s ease;
+      }
+
+      .adder:hover {
+        transform: translateY(-2px);
+        z-index: 30;
+      }
+
+      .adder::after {
+        content: attr(data-description);
+        position: absolute;
+        left: 50%;
+        top: 100%;
+        transform: translate(-50%, 12px);
+        width: 220px;
+        background: var(--tooltip-bg);
+        color: white;
+        padding: 10px;
+        border-radius: 8px;
+        font-size: 13px;
+        line-height: 1.35;
+        box-shadow: 0 6px 16px rgba(15, 23, 42, 0.25);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.15s ease;
+        z-index: 12;
+      }
+
+      .attention-section {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        width: 100%;
+        justify-content: center;
+      }
+
+      .moe-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      .moe-wrapper > .component {
+        flex: 0 0 auto;
+      }
+
+      .component.moe-feed-forward {
+        width: clamp(320px, 45vw, 380px);
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .moe-heading {
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--accent);
+      }
+
+      .experts-row {
+        display: flex;
+        gap: 8px;
+        width: 100%;
+        justify-content: space-between;
+        flex-wrap: nowrap;
+      }
+
+      .component.expert {
+        flex: 1;
+        width: auto;
+        min-width: 60px;
+        padding: 8px 10px;
+        font-weight: 500;
+        font-size: 13px;
+      }
+
+      .component.router-card {
+        width: 80%;
+      }
+
+      .side-column {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .component.side {
+        width: clamp(160px, 22vw, 200px);
+        padding: 10px 12px;
+        font-weight: 500;
+        border-style: dashed;
+      }
+
+      .footnote {
+        font-size: 13px;
+        color: #475569;
+        text-align: center;
+        max-width: 640px;
+        line-height: 1.45;
+      }
+
+      @media (max-width: 640px) {
+        .component {
+          width: min(240px, 85vw);
+        }
+
+        .component::after,
+        .adder::after {
+          width: min(200px, 70vw);
+        }
+
+        .attention-section {
+          flex-direction: column;
+        }
+
+        .component.side {
+          width: min(220px, 80vw);
+        }
+
+        .component.moe-feed-forward {
+          width: min(280px, 90vw);
+        }
+
+        .experts-row {
+          flex-wrap: wrap;
+        }
+
+        .component.expert {
+          flex: 1 1 calc(50% - 8px);
+        }
+      }
+    </style>
+    <script
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+      defer
+    ></script>
+  </head>
+  <body>
+      <p></p>
+      In Fall 2025, I am taking CS 182: Deep Neural Networks, a course at UC Berkeley taught by Professors Anant Sahai and Gireeja Ranade.
+      One assignment in this class challenges us to create AI-enhanced learning tools for individual concepts in the class.
+      For this assignment, I've created an interactive diagram to visualize the Qwen3 Mixture-of-Experts (MoE) architecture.
+      Check it out below!
+      For comparison, I also include the non-MoE architecture, Qwen3 Dense.
+      </p>
+      <p>
+      Beneath the visualizations are explanations of key concepts that might be unfamiliar to readers: Grouped Query Attention, QK-Norm, and Rotary Positional Embeddings (RoPE).
+      Note that a full explanation of transformers is out of scope for this post. 
+      For that, I recommend the Wikipedia article <a href="https://en.wikipedia.org/wiki/Transformer_(deep_learning)"> on Transformers</a>.
+      I would also recommend checking out Sebastian Raschka's <a href="https://magazine.sebastianraschka.com/p/the-big-llm-architecture-comparison">LLM Architecture Comparison</a>, which is what inspired this post.
+      </p>
+    <hr />
+    <div class="page">
+      <h1 id="qwen-diagram-heading">Qwen3 (Dense)</h1>
+      <div class="tabs">
+        <button class="tab" data-tab="dense">Qwen3 Dense</button>
+        <button class="tab inactive" data-tab="moe">Qwen3 MoE (click me)</button>
+      </div>
+      <div class="tab-content active" id="tab-dense">
+        <div class="diagram">
+          <div
+            class="component"
+            data-description="Maps the transformer outputs to vocabulary logits. Each neuron corresponds to one of roughly 151k tokens in Qwen3."
+          >
+            Linear output layer
+          </div>
+          <div class="connector"></div>
+          <div
+            class="component"
+            data-description="Normalizes the final hidden state with RMS scaling before projecting to logits, stabilizing the final prediction step."
+          >
+            Final RMSNorm
+          </div>
+          <div class="connector"></div>
+          <div class="outer-block">
+            <div class="inner-block">
+              <div
+                class="adder"
+                data-description="Adds the feed-forward output back into the residual stream, completing this transformer block."
+              >
+                +
+              </div>
+              <div class="connector small"></div>
+              <div
+                class="component"
+                data-description="Point-wise feed-forward network with a SiLU activated expansion and projection, enriching token representations. Intermediate widths expand to 3072 (0.6B), 6144 (1.7B), 9728 (4B), 12288 (8B), 17408 (14B), and 25600 (32B)."
+              >
+                Feed forward
+              </div>
+              <div class="connector small"></div>
+              <div
+                class="component"
+                data-description="Normalizes the residual stream before the feed-forward network when moving upward through the stack."
+              >
+                RMSNorm 2
+              </div>
+              <div class="connector small"></div>
+              <div
+                class="adder"
+                data-description="Adds the attention output back to the residual stream, preserving information from earlier layers."
+              >
+                +
+              </div>
+              <div class="connector small"></div>
+              <div class="attention-section">
+                <div class="side-column">
+                  <div
+                    class="component side"
+                    data-description="Normalizes query and key representations so attention scaling stays stable across layers."
+                  >
+                    QK-Norm
+                  </div>
+                  <div
+                    class="component side"
+                    data-description="Injects rotary positional encodings so the model is sensitive to token order, supporting long 32k contexts."
+                  >
+                    RoPE
+                  </div>
+                </div>
+                <div
+                  class="component"
+                  data-description="Masked grouped-query attention mixes information across tokens while respecting causality. Grouped queries reduce compute compared with multi-head attention. Head counts scale with size: 16 for 0.6B/1.7B, 32 for 4B/8B, 40 for 14B, and 64 for 32B."
+                >
+                  Masked grouped-query attention
+                </div>
+              </div>
+              <div class="connector small"></div>
+              <div
+                class="component"
+                data-description="Applies RMS normalization to the embedded tokens to prepare them for attention."
+              >
+                RMSNorm 1
+              </div>
+            </div>
+            <div class="connector small"></div>
+            <div
+              class="component"
+              data-description="Turns token IDs into learned dense vectors. This layer shares weights with the output projection. Embedding widths progress from 1024 (0.6B) to 2048 (1.7B), 2560 (4B), 4096 (8B), and 5120 for both 14B and 32B."
+            >
+              Token embedding layer
+            </div>
+          </div>
+          <div class="connector"></div>
+          <div
+            class="component"
+            data-description="Represents encoded tokens entering the transformer stack. The native context window spans roughly 32k tokens. Transformer depths vary: 28 blocks for 0.6B, 1.7B, and 8B; 32 blocks for 4B; 40 blocks for 14B; and 64 blocks for 32B."
+          >
+            Tokenized text
+          </div>
+        </div>
+      </div>
+      <div class="tab-content" id="tab-moe">
+        <div class="diagram">
+          <div
+            class="component"
+            data-description="Projects hidden states to the 151k token vocabulary shared across the Qwen3 family."
+          >
+            Linear output layer
+          </div>
+          <div class="connector"></div>
+          <div
+            class="component"
+            data-description="Final RMS normalization ensures stable magnitudes before logits are produced. Full MoE configurations stack different numbers of blocks: 48 for 30B-A3B, 94 for 235B-A22B, and 62 for 480B-A35B."
+          >
+            Final RMSNorm
+          </div>
+          <div class="connector"></div>
+          <div class="outer-block">
+            <div class="inner-block">
+              <div
+                class="adder"
+                data-description="Combines the MoE output with the residual stream, preserving information from earlier blocks."
+              >
+                +
+              </div>
+              <div class="connector small"></div>
+              <div class="moe-wrapper">
+                <div
+                  class="component moe-feed-forward"
+                  data-description="Mixture-of-experts feed-forward layer: a router activates only 8 experts per token. Qwen3 30B-A3B and 235B-A22B expose 128 experts each, while 480B-A35B offers 160. Experts are SwiGLU feed-forward networks expanding to 768, 1536, or 2560 hidden units before projecting back."
+                >
+                  <span class="moe-heading">MoE feed-forward</span>
+                  <div class="experts-row">
+                    <div
+                      class="component expert"
+                      data-description="One of many SwiGLU experts that expand the hidden state. Only eight experts like this fire per token, chosen dynamically."
+                    >
+                      Expert 1
+                    </div>
+                    <div
+                      class="component expert"
+                      data-description="Another SwiGLU expert; experts share parameters within groups and contribute specialized transformations."
+                    >
+                      Expert 2...
+                    </div>
+                    <div
+                      class="component expert"
+                      data-description="Across full models there are up to 160 experts; only the top eight per token deliver outputs to be mixed."
+                    >
+                      Expert 4
+                    </div>
+                  </div>
+                  <div
+                    class="component router-card"
+                  >
+                    MoE router
+                  </div>
+                </div>
+              </div>
+              <div class="connector small"></div>
+              <div
+                class="component"
+                data-description="Normalizes the residual stream after attention before entering the MoE layer."
+              >
+                RMSNorm 2
+              </div>
+              <div class="connector small"></div>
+              <div
+                class="adder"
+                data-description="Adds grouped-query attention results back to the residual pathway."
+              >
+                +
+              </div>
+              <div class="connector small"></div>
+              <div class="attention-section">
+                <div class="side-column">
+                  <div
+                    class="component side"
+                    data-description="QK-Norm stabilizes query/key magnitudes so attention logits remain well-conditioned."
+                  >
+                    QK-Norm
+                  </div>
+                  <div
+                    class="component side"
+                    data-description="Rotary positional encodings (RoPE) provide order awareness and support context lengths up to 262k tokens for larger MoE models."
+                  >
+                    RoPE
+                  </div>
+                </div>
+                <div
+                  class="component"
+                  data-description="Grouped-query attention mixes contextual signals while respecting causality. Shared keys and values reduce compute compared with independent heads. Attention heads scale with size: 32 for 30B-A3B, 64 for 235B-A22B, and 96 for 480B-A35B."
+                >
+                  Grouped-query attention
+                </div>
+              </div>
+              <div class="connector small"></div>
+              <div
+                class="component"
+                data-description="Initial RMS normalization preconditions token embeddings for stable attention dynamics."
+              >
+                RMSNorm 1
+              </div>
+            </div>
+            <div class="connector small"></div>
+            <div
+              class="component"
+              data-description="Transforms tokens into dense vectors with variant-specific widths: 2048 for 30B-A3B, 4096 for 235B-A22B, and 6144 for 480B-A35B."
+            >
+              Token embedding layer
+            </div>
+          </div>
+          <div class="connector"></div>
+          <div
+            class="component"
+            data-description="Tokenized input powers long contexts: 30B-A3B Hybrid handles 32k while its Instruct and Thinking modes stretch to 262k; 235B-A22B Hybrid also spans 32k with Instruct/Thinking at 262k; the 480B-A35B Coder variant reaches 262k."
+          >
+            Tokenized text
+          </div>
+        </div>
+      </div>
+      <p class="footnote">
+        Hover over each module to explore how the Qwen3 architecture works.
+        The diagrams show a single block; full models stack many, many copies according to size.
+      </p>
+    </div>
+    <hr />
+
+    <section class="concepts" aria-label="Key transformer concepts">
+      <h2>Architectural Concepts</h2>
+      <div class="concept">
+        <strong>Grouped Query Attention</strong>
+        <p>
+          Queries are partitioned into groups that share a key/value set, so each
+          group computes
+          \(\mathrm{softmax}\!\left(\frac{Q_g K_g^{\top}}{\sqrt{d}}\right) V_g\).
+          Reusing keys and values cuts memory bandwidth compared with standard
+          multi-head attention. 
+          The per-group outputs are concatenated (or projected) back into the full
+          hidden dimension before the residual connection.
+        </p>
+      </div>
+      <div class="concept">
+        <strong>QK-Norm</strong>
+        <p>
+          Before attention logits are formed, queries and keys are rescaled to
+          fixed RMS magnitude:
+          \(\hat{Q} = Q / \mathrm{RMS}(Q)\) and
+          \(\hat{K} = K / \mathrm{RMS}(K)\). 
+          (Note: the RMS normalization of Q/K is performed across the feature dimension - i.e. it is per-token.)
+          The normalization keeps logits balanced across 
+          layers so that softmax outputs stay well-conditioned even for
+          very long contexts.
+        </p>
+      </div>
+      <div class="concept">
+        <strong>Rotary Positional Embeddings (RoPE)</strong>
+        <p>
+          RoPE rotates each query/key pair in a complex plane by an angle
+          proportional to the token index. For a 2-D head slice
+          \([\mathbf{u}, \mathbf{v}]\), the rotated version is given by
+          
+          $$[\mathbf{u}', \mathbf{v}'] = [\mathbf{u}, \mathbf{v}] R(\theta)$$
+
+          where \(R(\theta)\) is the standard 2-by-2 rotation matrix that turns the head slice by angle \(\theta\).
+          with \(\theta = n / \omega\). 
+          The resulting phase difference between any two tokens depends only on their relative distance.
+          This is important because it lets the model generalize to sequence lengths beyond those seen in training.
+        </p>
+      </div>
+    </section>
+    <script>
+      const tabs = Array.from(document.querySelectorAll(".tab"));
+      const panels = Array.from(document.querySelectorAll(".tab-content"));
+      const heading = document.querySelector("#qwen-diagram-heading");
+
+      const titles = {
+        dense: "Qwen3 (Dense)",
+        moe: "Qwen3 (Mixture-of-Experts)",
+      };
+
+      function activateTab(name) {
+        tabs.forEach((tab) => {
+          if (tab.dataset.tab === name) {
+            tab.classList.remove("inactive");
+          } else {
+            tab.classList.add("inactive");
+          }
+        });
+
+        panels.forEach((panel) => {
+          panel.classList.toggle("active", panel.id === `tab-${name}`);
+        });
+
+        if (heading) {
+          heading.textContent = titles[name];
+        }
+      }
+
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", () => activateTab(tab.dataset.tab));
+      });
+
+      activateTab("dense");
+    </script>
+  </body>
+</html>
+
