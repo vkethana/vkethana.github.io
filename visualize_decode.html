@@ -1,0 +1,478 @@
+---
+title: "LLM Decoding Visualizer"
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LLM Decoding Visualizer</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-size: 18px;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f2f2f2;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 20px;
+            height: calc(100vh - 100px);
+        }
+
+        .controls {
+            grid-column: 1 / -1;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            flex: 1;
+        }
+
+        .input-group label {
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+
+        input[type="password"], input[type="text"] {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .range-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            min-width: 150px;
+        }
+
+        .range-header {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            height: fit-content;
+            align-self: flex-end;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+        
+        button.secondary-btn {
+            background-color: #6c757d;
+            font-size: 14px;
+            padding: 10px 15px;
+        }
+
+        button.secondary-btn:hover {
+            background-color: #5a6268;
+        }
+
+        button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        button.stop {
+            background-color: #dc3545;
+        }
+
+        button.stop:hover {
+            background-color: #c82333;
+        }
+
+        .main-panel {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        #output-text {
+            flex: 1;
+            overflow-y: auto;
+            font-size: 16px;
+            line-height: 1.8;
+            white-space: pre-wrap;
+        }
+
+        .token-span {
+            cursor: pointer;
+            padding: 2px 0;
+            border-radius: 2px;
+            transition: background-color 0.2s;
+        }
+
+        .token-span:hover {
+            background-color: #e0e0e0;
+        }
+
+        .token-span.active {
+            background-color: #fff3cd;
+            border-bottom: 2px solid #ffc107;
+        }
+
+        .logit-panel {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            overflow-y: auto;
+        }
+
+        .logit-header {
+            font-weight: bold;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .logit-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px;
+            border-bottom: 1px solid #f0f0f0;
+            font-family: monospace;
+            font-size: 14px;
+        }
+
+        .logit-item.selected {
+            background-color: #ffff00; /* Yellow highlight as requested */
+            font-weight: bold;
+        }
+
+        .logit-token {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: pre;
+        }
+
+        .logit-prob {
+            color: #666;
+            margin-left: 10px;
+        }
+
+        .bar-container {
+            flex: 1;
+            margin: 0 10px;
+            background: #eee;
+            height: 20px;
+            border-radius: 2px;
+            position: relative;
+        }
+
+        .bar-fill {
+            background-color: #4caf50;
+            height: 100%;
+            border-radius: 2px;
+            transition: width 0.3s;
+        }
+        
+        .disclaimer {
+            font-size: 0.8em;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .error {
+            color: #dc3545;
+            margin-top: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="controls">
+        <div class="input-group">
+            <label for="api-key">OpenAI API Key</label>
+            <input type="password" id="api-key" placeholder="sk-...">
+            <div class="disclaimer">Key is stored locally in browser memory only.</div>
+        </div>
+        <div class="range-group">
+            <div class="range-header">
+                <label for="temperature">Temperature</label>
+                <span id="temp-value">1.0</span>
+            </div>
+            <input type="range" id="temperature" min="0" max="2" step="0.1" value="1.0">
+        </div>
+        <div class="range-group">
+            <div class="range-header">
+                <label for="top-p">Top P</label>
+                <span id="top-p-value">1.0</span>
+            </div>
+            <input type="range" id="top-p" min="0" max="1" step="0.05" value="1.0">
+        </div>
+        <button id="greedy-btn" class="secondary-btn" title="Sets Temperature to 0">Greedy</button>
+        <div class="input-group" style="flex: 2;">
+            <label for="prompt">Prompt</label>
+            <input type="text" id="prompt" placeholder="Enter text to start generation..." value="Once upon a time">
+        </div>
+        <button id="generate-btn">Generate</button>
+    </div>
+
+    <div class="container">
+        <div class="main-panel">
+            <h3>Generated Output</h3>
+            <div id="output-text"></div>
+            <div id="error-msg" class="error"></div>
+        </div>
+        <div class="logit-panel">
+            <div class="logit-header">Top 10 Tokens (by logprob)</div>
+            <div id="logit-list">
+                <div style="color: #888; text-align: center; margin-top: 20px;">
+                    Generate text to see logprobs here. Click on tokens in the output to inspect past steps.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const apiKeyInput = document.getElementById('api-key');
+        const tempInput = document.getElementById('temperature');
+        const tempValue = document.getElementById('temp-value');
+        const topPInput = document.getElementById('top-p');
+        const topPValue = document.getElementById('top-p-value');
+        const greedyBtn = document.getElementById('greedy-btn');
+        const promptInput = document.getElementById('prompt');
+        const generateBtn = document.getElementById('generate-btn');
+        const outputDiv = document.getElementById('output-text');
+        const logitList = document.getElementById('logit-list');
+        const errorMsg = document.getElementById('error-msg');
+
+        let generationData = []; // Store token and logprobs for each step
+        let abortController = null;
+        let isGenerating = false;
+
+        tempInput.addEventListener('input', (e) => {
+            tempValue.textContent = e.target.value;
+        });
+
+        topPInput.addEventListener('input', (e) => {
+            topPValue.textContent = e.target.value;
+        });
+
+        greedyBtn.addEventListener('click', () => {
+            tempInput.value = 0;
+            tempValue.textContent = "0";
+            // Optional: reset Top P to 1.0 as Greedy usually implies just max prob
+            topPInput.value = 1;
+            topPValue.textContent = "1";
+        });
+
+        function displayLogits(index) {
+            if (index < 0 || index >= generationData.length) return;
+
+            const data = generationData[index];
+            const topLogprobs = data.logprobs.content[0].top_logprobs;
+            const selectedToken = data.token;
+            
+            logitList.innerHTML = '';
+            
+            // Calculate probabilities from logprobs for visualization
+            // p = exp(logprob)
+            
+            topLogprobs.forEach(item => {
+                const prob = Math.exp(item.logprob);
+                const percentage = (prob * 100).toFixed(2);
+                
+                const div = document.createElement('div');
+                const isSelected = item.token === selectedToken;
+                div.className = `logit-item ${isSelected ? 'selected' : ''}`;
+                
+                // Escape HTML for display
+                const displayToken = item.token.replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\n/g, '↵');
+                
+                div.innerHTML = `
+                    <div class="logit-token" title="${item.token}">${displayToken}</div>
+                    <div class="bar-container">
+                        <div class="bar-fill" style="width: ${percentage}%"></div>
+                    </div>
+                    <div class="logit-prob">${item.logprob.toFixed(2)}</div>
+                `;
+                logitList.appendChild(div);
+            });
+
+            // Highlight the selected token in the text area
+            const spans = outputDiv.querySelectorAll('.token-span');
+            spans.forEach((span, i) => {
+                if (i === index) span.classList.add('active');
+                else span.classList.remove('active');
+            });
+        }
+
+        async function generate() {
+            if (isGenerating) {
+                if (abortController) {
+                    abortController.abort();
+                    abortController = null;
+                }
+                isGenerating = false;
+                generateBtn.textContent = 'Generate';
+                generateBtn.classList.remove('stop');
+                return;
+            }
+
+            const apiKey = apiKeyInput.value.trim();
+            if (!apiKey) {
+                alert('Please enter your OpenAI API Key');
+                return;
+            }
+
+            const prompt = promptInput.value;
+            const temperature = parseFloat(tempInput.value);
+            const topP = parseFloat(topPInput.value);
+
+            // Reset UI
+            isGenerating = true;
+            abortController = new AbortController();
+            generateBtn.textContent = 'Stop';
+            generateBtn.classList.add('stop');
+            
+            outputDiv.innerHTML = ''; // Clear previous output
+            logitList.innerHTML = '<div style="color: #888; text-align: center; margin-top: 20px;">Waiting for tokens...</div>';
+            errorMsg.style.display = 'none';
+            errorMsg.textContent = '';
+            generationData = [];
+
+            // Display prompt first (optional, but good for context)
+            // For this visualizer, let's just show the generated text appended to the prompt logic internally, 
+            // but the user asked for "enters some text... see model generate response". 
+            // Usually this means showing the new tokens. 
+            // I'll show the prompt in bold or distinct style if needed, but let's stick to showing generated content primarily.
+            
+            try {
+                const response = await fetch('https://api.openai.com/v1/chat/completions', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${apiKey}`
+                    },
+                    body: JSON.stringify({
+                        model: 'gpt-3.5-turbo',
+                        messages: [{ role: 'user', content: prompt }],
+                        stream: true,
+                        temperature: temperature,
+                        top_p: topP,
+                        logprobs: true,
+                        top_logprobs: 10,
+                        max_tokens: 60
+                    }),
+                    signal: abortController.signal
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.error?.message || 'API request failed');
+                }
+
+                const reader = response.body.getReader();
+                const decoder = new TextDecoder();
+                let buffer = '';
+
+                while (true) {
+                    const { done, value } = await reader.read();
+                    if (done) break;
+
+                    buffer += decoder.decode(value, { stream: true });
+                    const lines = buffer.split('\n');
+                    buffer = lines.pop(); // Keep the last partial line in the buffer
+
+                    for (const line of lines) {
+                        const trimmedLine = line.trim();
+                        if (!trimmedLine || trimmedLine === 'data: [DONE]') continue;
+                        
+                        if (trimmedLine.startsWith('data: ')) {
+                            try {
+                                const json = JSON.parse(trimmedLine.slice(6));
+                                const choice = json.choices[0];
+                                
+                                if (choice.delta && choice.delta.content) {
+                                    const content = choice.delta.content;
+                                    const logprobs = choice.logprobs;
+                                    
+                                    // Store data
+                                    const dataIndex = generationData.length;
+                                    generationData.push({
+                                        token: content,
+                                        logprobs: logprobs
+                                    });
+
+                                    // Create span for token
+                                    const span = document.createElement('span');
+                                    span.className = 'token-span';
+                                    span.textContent = content;
+                                    span.onclick = () => displayLogits(dataIndex);
+                                    outputDiv.appendChild(span);
+
+                                    // Auto-scroll
+                                    outputDiv.scrollTop = outputDiv.scrollHeight;
+
+                                    // Update logits pane for the newest token immediately
+                                    displayLogits(dataIndex);
+
+                                    // Add delay for visualization
+                                    await new Promise(resolve => setTimeout(resolve, 250));
+                                    
+                                    // Check if aborted during delay
+                                    if (!isGenerating) return;
+                                }
+                            } catch (e) {
+                                console.error('Error parsing stream chunk', e);
+                            }
+                        }
+                    }
+                }
+
+            } catch (err) {
+                if (err.name === 'AbortError') {
+                    // Ignore abort errors as they are user initiated
+                    return;
+                }
+                errorMsg.textContent = `Error: ${err.message}`;
+                errorMsg.style.display = 'block';
+            } finally {
+                isGenerating = false;
+                abortController = null;
+                generateBtn.textContent = 'Generate';
+                generateBtn.classList.remove('stop');
+            }
+        }
+
+        generateBtn.addEventListener('click', generate);
+    </script>
+</body>
+</html>
