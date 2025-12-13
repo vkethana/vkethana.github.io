@@ -4,6 +4,19 @@
 <link rel="stylesheet" href="/assets/css/styles.css">
 <link rel="shortcut icon" href="/dark-poole/assets/favicon.ico">
 {% seo %}
+{% if page.require-mathjax %}
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+<script
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+  defer
+></script>
+{% endif %}
 {% if page.contains-vjscript %}
 
 <style>
