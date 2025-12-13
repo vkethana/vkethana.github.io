@@ -307,7 +307,7 @@ $$
   </figure>
   <figure style="display:inline-block; margin:5px;">
     <img src="/assets/images/diffusion/part1_8_citadel_castle_flipped.png" width="200"/>
-    <figcaption>Flipped: Castle</figcaption>
+    <figcaption>Flipped: Temple</figcaption>
   </figure>
 </p>
 
