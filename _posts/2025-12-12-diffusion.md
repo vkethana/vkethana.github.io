@@ -6,6 +6,55 @@ tags:
   - machine-learning
   - computer-vision
 require-mathjax: true
+toc:
+  - name: Part 0 - Setup
+    link: "#part-0-setup"
+  - name: Part 1 - Sampling Loops
+    link: "#part-1-sampling-loops"
+    subsections:
+      - name: 1.1 Forward Process
+        link: "#11-implementing-the-forward-process"
+      - name: 1.2 Classical Denoising
+        link: "#12-classical-denoising"
+      - name: 1.3 One-Step Denoising
+        link: "#13-one-step-denoising"
+      - name: 1.4 Iterative Denoising
+        link: "#14-iterative-denoising"
+      - name: 1.5 Diffusion Sampling
+        link: "#15-diffusion-model-sampling"
+      - name: 1.6 CFG
+        link: "#16-classifier-free-guidance-cfg"
+      - name: 1.7 Image-to-Image
+        link: "#17-image-to-image-translation"
+      - name: 1.8 Visual Anagrams
+        link: "#18-visual-anagrams"
+      - name: 1.9 Hybrid Images
+        link: "#19-hybrid-images"
+  - name: Part B - Flow Matching
+    link: "#part-b-flow-matching-from-scratch"
+    subsections:
+      - name: 1. Single-Step Denoising
+        link: "#1-single-step-denoising-unet"
+      - name: 2. Training Diffusion Model
+        link: "#2-training-a-diffusion-model"
+---
+
+## Table of Contents
+- [Part 0: Setup](#part-0-setup)
+- [Part 1: Sampling Loops](#part-1-sampling-loops)
+  - [1.1 Implementing the Forward Process](#11-implementing-the-forward-process)
+  - [1.2 Classical Denoising](#12-classical-denoising)
+  - [1.3 One-Step Denoising](#13-one-step-denoising)
+  - [1.4 Iterative Denoising](#14-iterative-denoising)
+  - [1.5 Diffusion Model Sampling](#15-diffusion-model-sampling)
+  - [1.6 Classifier-Free Guidance (CFG)](#16-classifier-free-guidance-cfg)
+  - [1.7 Image-to-Image Translation](#17-image-to-image-translation)
+  - [1.8 Visual Anagrams](#18-visual-anagrams)
+  - [1.9 Hybrid Images](#19-hybrid-images)
+- [Part B: Flow Matching from Scratch!](#part-b-flow-matching-from-scratch)
+  - [1. Single-Step Denoising UNet](#1-single-step-denoising-unet)
+  - [2. Training a Diffusion Model](#2-training-a-diffusion-model)
+
 ---
 
 ## Part 0: Setup
@@ -274,12 +323,11 @@ We can use a mask to keep parts of the image constant while denoising the rest. 
 We can guide the SDEdit process with specific text prompts to change the style or content of the image.
 Results for all three images are below:
 
+Here, the prompt was "a rainy day". Notice now the images gradually have more and more "rain-like" features. For example, the campanile turns into a bolt of lightning for time step 5 of the first row. Similarly, the happy face drawing starts to show small droplets of rain on its sides.
+
 <p align="center">
   <img src="/assets/images/diffusion/part_1_7_3.png" width="512" title="Text-Guided Edit"/>
 </p>
-
-Here, the prompt was "a rainy day". Notice now the images gradually have more and more "rain-like" features. For example, the campanile turns into a bolt of lightning for time step 5 of the first row. Similarly, the happy face drawing starts to show small droplets of rain on its sides.
-
 
 ### 1.8 Visual Anagrams
 
@@ -329,3 +377,274 @@ $$
     <figcaption>Hybrid Image 2: A lithograph of a skull + photo of a castle</figcaption>
   </figure>
 </p>
+
+---
+
+# Part B: Flow Matching from Scratch!
+
+In this part, we implement a diffusion model from scratch using the MNIST dataset. We start with a simple single-step denoiser and then move on to a full diffusion model with time conditioning. Unless otherwise stated, the random seed used for all subparts was **100**.
+
+## 1. Single-Step Denoising UNet
+
+### 1.1 Architecture
+The backbone of our denoiser is a UNet. At its core, a UNet is just an autoencoder with a twist: it compresses the image into a bottleneck to capture global context (like "this is a digit 8") and then expands it back to the original size. The "twist" is the skip connections—wires that bypass the bottleneck and plug the detailed, high-resolution features from the encoder directly into the decoder. This lets the network reconstruct fine details (like edges and noise) that would otherwise be lost in compression.
+
+<p align="center">
+  <img src="/assets/images/diffusion/part2/unconditional_arch.png" width="700" title="UNet Architecture"/>
+</p>
+
+### 1.2 Noising Process Visualization
+The noising process adds Gaussian noise to a clean image $x$.
+$$ z = x + \sigma \epsilon, \quad \epsilon \sim \mathcal{N}(0, I) $$
+
+Here is the effect of varying $\sigma$ on a clean image:
+
+<p align="center">
+  <img src="/assets/images/diffusion/part2/part_1_2_noising_process.png" width="661" title="Noising Process"/>
+</p>
+
+### 1.2.1 Training the Denoiser
+I trained a UNet to denoise images with $\sigma = 0.5$. The objective is to minimize the L2 distance between the denoised image and the original clean image:
+$$ L = \mathbb{E}_{z,x} \|D_{\theta}(z) - x\|^2 $$
+
+**Training Loss Curve:**
+<p align="center">
+  <img src="/assets/images/diffusion/part2/part_1_2_1_plot.png" width="567" title="Training Loss"/>
+</p>
+
+**Denoising Results (Epoch 1 vs Epoch 5):**
+The model learns to remove the noise effectively after just a few epochs.
+<p align="center">
+  <figure style="display:block; margin:40px auto;">
+    <img src="/assets/images/diffusion/part2/part_1_2_epoch1_denoise_results.png" width="800"/>
+    <figcaption>Epoch 1</figcaption>
+  </figure>
+  <figure style="display:block; margin:40px auto;">
+    <img src="/assets/images/diffusion/part2/part_1_2_epoch5_denoise_results.png" width="800"/>
+    <figcaption>Epoch 5</figcaption>
+  </figure>
+</p>
+
+### 1.2.2 Out-of-Distribution Testing
+The model was trained only on $\sigma=0.5$. Here I tested it on other noise levels. It performs reasonably well on lower noise levels but struggles when the noise level is much higher than what it was trained on (e.g., $\sigma=1.0$).
+
+<div align="center">
+  <table>
+    <tr>
+      <td align="center">
+        <img src="/assets/images/diffusion/part2/part_1_2_ood_sigma_0.png" width="300" />
+        $\sigma=0.0$
+      </td>
+      <td align="center">
+        <img src="/assets/images/diffusion/part2/part_1_2_ood_sigma_0.2.png" width="300" />
+        $\sigma=0.2$
+      </td>
+    </tr>
+    <tr>
+      <td align="center">
+        <img src="/assets/images/diffusion/part2/part_1_2_ood_sigma_0.4.png" width="300" />
+        $\sigma=0.4$
+      </td>
+      <td align="center">
+        <img src="/assets/images/diffusion/part2/part_1_2_ood_sigma_0.5.png" width="300" />
+        $\sigma=0.5$
+      </td>
+    </tr>
+    <tr>
+      <td align="center">
+        <img src="/assets/images/diffusion/part2/part_1_2_ood_sigma_0.6.png" width="300" />
+        $\sigma=0.6$
+      </td>
+      <td align="center">
+        <img src="/assets/images/diffusion/part2/part_1_2_ood_sigma_0.8.png" width="300" />
+        $\sigma=0.8$
+      </td>
+    </tr>
+    <tr>
+      <td align="center">
+        <img src="/assets/images/diffusion/part2/part_1_2_ood_sigma_1.0.png" width="300" />
+        $\sigma=1.0$
+      </td>
+      <td></td> 
+    </tr>
+  </table>
+</div>
+
+### 1.2.3 Denoising Pure Noise
+Here, I trained the model to denoise pure noise (i.e., mapping $\mathcal{N}(0, I)$ to MNIST digits).
+
+<p align="center">
+  <img src="/assets/images/diffusion/part2/part_1_2_3_pure_noise_loss_curve.png" width="567" title="Loss Curve"/>
+</p>
+
+<p align="center">
+  <img src="/assets/images/diffusion/part2/part_1_2_3_generate_from_pure_noise.png" width="800" title="Results"/>
+</p>
+
+Interestingly, the model manages to generate digit-like shapes, but they are often blurry or hybrids of multiple digits. 
+This is because the mapping from pure noise to a specific digit is one-to-many and highly ambiguous, so the L2 loss forces the model to output the "average" of all possible digits, resulting in blurry blobs.
+
+---
+
+## 2. Training a Diffusion Model
+
+Now we move to a proper diffusion model (Time-Conditioned UNet), where we iteratively denoise the image.
+
+### 2.1 Adding Time Conditioning
+To perform iterative denoising, the model needs to know the current noise level (or timestep $t$). We inject this information into the UNet using fully connected blocks (FCBlocks).
+
+<p align="center">
+  <img src="/assets/images/diffusion/part2/conditional_arch_fm.png" width="600" title="Conditioned UNet"/>
+</p>
+
+The scalar $t$ is fed into two fully connected blocks (`fc1_t`, `fc2_t`) to produce scaling coefficients. These coefficients are then used to modulate the feature maps at specific points in the UNet.
+
+Specifically, $t$ is used to scale the activations after the unflatten step ($t_1$) and after the first upsampling block ($t_2$):
+
+```python
+# fc1_t and fc2_t are small MLPs that project the scalar t to channel dimensions
+t1 = fc1_t(t)
+t2 = fc2_t(t)
+
+# Modulate the unflattened features
+unflatten = unflatten * t1
+
+# ... intermediate layers ...
+
+# Modulate the first upsampling block
+up1 = up1 * t2
+```
+
+Training involves picking a random image $x_1$, a random timestep $t$, adding noise to get $x_t$, and training the network.
+The loss at every time step is calculated based on how well the model prediction conditioned on noisy image $x_t$ and time step $t$ matches $x_1 - x_0$: the clean image *minus* the random noise.
+
+<p align="center">
+  <img src="/assets/images/diffusion/part2/algo1_t_only_fm.png" width="600" title="Training Algorithm"/>
+</p>
+
+### 2.2 Time-Conditioned UNet Training
+I trained the UNet conditioned on the timestep $t$.
+
+<p align="center">
+  <img src="/assets/images/diffusion/part2/part2_2_time_conditioned_unet_plot.png" width="567" title="Time-Conditioned Loss"/>
+</p>
+
+### 2.3 Time-Conditioned Sampling
+Sampling starts from pure noise $x_0 \sim \mathcal{N}(0, 1)$ and iteratively refines it to a clean image $x_1$.
+
+<p align="center">
+  <img src="/assets/images/diffusion/part2/algo2_t_only_fm.png" width="800" title="Sampling Algorithm"/>
+</p>
+
+Here are the sampling results at different epochs and different seeds (100, 101, and 102):
+
+<p align="center">
+  <img src="/assets/images/diffusion/part2/part2_3.png" width="717" title="Sampling Results"/>
+</p>
+
+<p align="center">
+  <img src="/assets/images/diffusion/part2/part2_3_ex2.png" width="717" title="Sampling Results"/>
+</p>
+
+<p align="center">
+  <img src="/assets/images/diffusion/part2/part2_3_ex3.png" width="717" title="Sampling Results"/>
+</p>
+
+### 2.4 Adding Class-Conditioning to UNet
+
+To improve the generation quality and gain control over the output, we condition the UNet on both the timestep $t$ and the digit class $c$. This allows us to ask the model for a "5" or a "7" specifically.
+
+#### Architectural Changes
+Similar to time conditioning, we inject the class information $c$ (a one-hot vector) into the network. We add two more FCBlocks (`fc1_c`, `fc2_c`) to process the class vector.
+
+The class conditioning is added to the time conditioning, meaning the modulation signal becomes a combination of both:
+
+```python
+# c is a one-hot vector for the digit class
+c1 = fc1_c(c)
+c2 = fc2_c(c)
+
+# Combine with time embedding and modulate
+unflatten = (c1 * unflatten) + t1
+# ...
+up1 = (c2 * up1) + t2
+```
+
+We also use dropout on the class conditioning (setting it to a null token with $p=0.1$) to enable Classifier-Free Guidance later.
+
+<p align="center">
+  <img src="/assets/images/diffusion/part2/algo3_c_fm.png" width="600" title="Class-Conditioned Training"/>
+</p>
+
+### 2.5 Training the UNet
+
+We train the class-conditioned UNet using the same process as before, but with the added class labels.
+
+<p align="center">
+  <img src="/assets/images/diffusion/part2/part_2_5_lr_sch_loss_curve.png" width="576" title="Class-Conditioned Loss"/>
+</p>
+
+### 2.6 Sampling from the UNet
+
+We use Classifier-Free Guidance (CFG) during sampling to improve quality. The final noise estimate is a combination of the conditional and unconditional estimates:
+$$ \epsilon = \epsilon_{uncond} + \gamma (\epsilon_{cond} - \epsilon_{uncond}) $$
+
+<p align="center">
+  <img src="/assets/images/diffusion/part2/algo4_c_fm.png" width="600" title="CFG Sampling"/>
+</p>
+
+By guiding the model with class labels, we can generate specific digits. Here are the results over 10 epochs using Classifier-Free Guidance ($\gamma=5.0$).
+
+<div align="center">
+  <table>
+    <tr>
+      <td align="center">
+        <img src="/assets/images/diffusion/part2/part_2_6_with_lr_sch_epoch1.png" width="220" />
+        <br>
+        Epoch 1
+      </td>
+      <td align="center">
+        <img src="/assets/images/diffusion/part2/part_2_6_with_lr_sch_epoch5.png" width="220" />
+        <br>
+        Epoch 5
+      </td>
+      <td align="center">
+        <img src="/assets/images/diffusion/part2/part_2_6_with_lr_sch_epoch10.png" width="220" />
+        <br>
+        Epoch 10
+      </td>
+    </tr>
+  </table>
+</div>
+
+#### Can we get rid of the annoying learning rate scheduler?
+
+I tried training the model with a constant learning rate of 1e-4 instead of using an exponential decay scheduler. To account for the fact that the learning rate no longer decreases, I used AdamW with a weight decay of **1e-4**. As shown in the loss curve, the training was still stable.
+
+<p align="center">
+  <img src="/assets/images/diffusion/part2/part_2_5_constant_lr_loss_curve.png" width="567" title="Constant LR Loss"/>
+</p>
+
+The sampling results are also comparable to the scheduled version, suggesting that for this specific task and architecture, a well-tuned constant learning rate is sufficient.
+
+<div align="center">
+  <table>
+    <tr>
+      <td align="center">
+        <img src="/assets/images/diffusion/part2/part_2_6_constant_lr_epoch1.png" width="220" />
+        <br>
+        Epoch 1
+      </td>
+      <td align="center">
+        <img src="/assets/images/diffusion/part2/part_2_6_constant_lr_epoch5.png" width="220" />
+        <br>
+        Epoch 5
+      </td>
+      <td align="center">
+        <img src="/assets/images/diffusion/part2/part_2_6_constant_lr_epoch10.png" width="220" />
+        <br>
+        Epoch 10
+      </td>
+    </tr>
+  </table>
+</div>
