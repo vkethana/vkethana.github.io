@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Implementing Diffusion Models"
+title: "Diffusion Image Generation Models from Scratch in PyTorch"
 published: true
 tags:
   - machine-learning
@@ -41,7 +41,7 @@ toc:
 
 ## Table of Contents
 - [Part 0: Setup](#part-0-setup)
-- [Part 1: Sampling Loops](#part-1-sampling-loops)
+- [Part A: Sampling Loops](#part-1-sampling-loops)
   - [1.1 Implementing the Forward Process](#11-implementing-the-forward-process)
   - [1.2 Classical Denoising](#12-classical-denoising)
   - [1.3 One-Step Denoising](#13-one-step-denoising)
@@ -57,9 +57,18 @@ toc:
 
 ---
 
+## TLDR
+
+In this project, I explore techniques for sampling from pretrained diffusion models [(Part A)](#part-1-sampling-loops) and train my own class-conditioned flow matching model from scratch using a UNet [(Part B)](#part-b-flow-matching-from-scratch).
+
+Here's an example of an image sampled from the model I trained in part B, which can generate images of any handwritten digit between 0 and 9:
+<p align="center">
+  <img src="/assets/images/diffusion/diffusion.gif" alt="An image being generated from scratch" />
+</p>
+
 ## Part 0: Setup
 
-In this project, I experimented with the DeepFloyd IF diffusion model. This is a text-to-image model that operates in two stages:
+In this part, I experimented with the DeepFloyd IF diffusion model. This is a text-to-image model that operates in two stages:
 1.  **Stage 1**: Generates a 64x64 resolution image from the text prompt.
 2.  **Stage 2**: Upscales the image to 256x256 and adds details.
 

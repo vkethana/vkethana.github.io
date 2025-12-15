@@ -2,18 +2,13 @@
 layout: base
 ---
 
-
-
 ## My Projects
-{% include project_toc.html %}
-
-## More Info
 {% include projectlist.html %}
 
 ## Bio
 My name is Vijay Kethana, and I’m a computer science student at UC Berkeley. 
-I’m working towards specializing in AI and machine learning. 
-Outside of school, I enjoy cooking, hiking, and learning languages.
+I’m interested in natural language processing (NLP), machine learning systems, and artificial intelligence in general.
+Outside of school, I enjoy cooking, hiking, and learning languages. I also [blog]({{ "/vjposts" | prepend: site.baseurl }}).
 
 ## Links
 
