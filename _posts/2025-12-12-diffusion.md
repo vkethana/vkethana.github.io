@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Diffusion Image Generation Models from Scratch in PyTorch"
+title: "Flow Matching Models from Scratch in PyTorch"
 published: true
 tags:
   - machine-learning
@@ -63,7 +63,7 @@ In this project, I explore techniques for sampling from pretrained diffusion mod
 
 Here's an example of an image sampled from the model I trained in part B, which can generate images of any handwritten digit between 0 and 9:
 <p align="center">
-  <img src="/assets/images/diffusion/diffusion.gif" alt="An image being generated from scratch" />
+  <img src="/assets/images/diffusion/diffusion.webp" alt="An image being generated from scratch" />
 </p>
 
 ## Part 0: Setup
