@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Trace Viewer: Base vs SFT</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #0f1117;
+      --panel: #161925;
+      --text: #e8ecf1;
+      --muted: #9aa3b5;
+      --accent: #7dcfff;
+      --danger: #ff6b6b;
+      --success: #2ecc71;
+      --border: #222637;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: "Inter", system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+    h1 { margin-top: 0; }
+    .row { display: flex; gap: 16px; flex-wrap: wrap; }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 14px;
+    }
+    label { font-size: 13px; color: var(--muted); }
+    input[type="file"], select {
+      margin-top: 6px;
+      padding: 6px 8px;
+      background: #111421;
+      border: 1px solid var(--border);
+      color: var(--text);
+      border-radius: 6px;
+    }
+    select { min-width: 260px; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 16px;
+      margin-top: 12px;
+    }
+    .header-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .pill {
+      padding: 4px 8px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+    .pill.success { color: var(--success); border-color: var(--success); }
+    .pill.danger { color: var(--danger); border-color: var(--danger); }
+    .title { font-weight: 700; }
+    details { border: 1px solid var(--border); border-radius: 8px; padding: 8px 10px; margin: 6px 0; background: #111421; }
+    summary { cursor: pointer; font-weight: 600; }
+    pre {
+      white-space: pre-wrap;
+      background: #0d1020;
+      padding: 8px 10px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      overflow-x: auto;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .muted { color: var(--muted); }
+    .flex { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+    .small { font-size: 13px; }
+  </style>
+</head>
+<body>
+  <h1>Model Trace Viewer (Base vs SFT)</h1>
+
+  <div class="row">
+    <div class="card">
+      <label>Problem ID</label><br />
+      <select id="problemSelect" disabled></select>
+    </div>
+  </div>
+
+  <div id="meta" class="card" style="margin-top:12px; display:none;">
+    <div class="flex">
+      <div class="title" id="problemText"></div>
+    </div>
+    <div class="small muted" id="target"></div>
+  </div>
+
+  <div class="grid" id="panels" style="display:none;">
+    <div class="card" id="basePanel">
+      <div class="header-line">
+        <span class="title">Base Model</span>
+        <span id="baseStatus" class="pill">—</span>
+      </div>
+      <div class="small muted" id="basePred"></div>
+      <div id="baseTree"></div>
+    </div>
+    <div class="card" id="sftPanel">
+      <div class="header-line">
+        <span class="title">SFT Model</span>
+        <span id="sftStatus" class="pill">—</span>
+      </div>
+      <div class="small muted" id="sftPred"></div>
+      <div id="sftTree"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <label>Base JSONL file</label><br />
+    <input id="baseFile" type="file" accept=".jsonl,.txt" />
+  </div>
+  <div class="card">
+    <label>SFT JSONL file</label><br />
+    <input id="sftFile" type="file" accept=".jsonl,.txt" />
+  </div>
+
+  <script>
+    const baseInput = document.getElementById('baseFile');
+    const sftInput  = document.getElementById('sftFile');
+    const problemSelect = document.getElementById('problemSelect');
+    const meta = document.getElementById('meta');
+    const panels = document.getElementById('panels');
+
+    let baseData = {};
+    let sftData = {};
+
+    function parseJsonl(text) {
+      const out = {};
+      text.split('\n').forEach((line) => {
+        const t = line.trim();
+        if (!t) return;
+        try {
+          const obj = JSON.parse(t);
+          if (obj.problem_id) out[obj.problem_id] = obj;
+        } catch (err) {
+          console.warn('Bad line', line, err);
+        }
+      });
+      return out;
+    }
+
+    function updateProblemList() {
+      const baseIds = new Set(Object.keys(baseData));
+      const sftIds  = new Set(Object.keys(sftData));
+      const common = [...baseIds].filter((id) => sftIds.has(id)).sort();
+
+      problemSelect.innerHTML = '';
+      if (common.length === 0) {
+        problemSelect.disabled = true;
+        meta.style.display = 'none';
+        panels.style.display = 'none';
+        return;
+      }
+      common.forEach((id) => {
+        const opt = document.createElement('option');
+        opt.value = id;
+        opt.textContent = id;
+        problemSelect.appendChild(opt);
+      });
+      problemSelect.disabled = false;
+      renderProblem(common[0]);
+    }
+
+    function badge(el, ok) {
+      el.className = 'pill ' + (ok ? 'success' : 'danger');
+      el.textContent = ok ? 'Correct' : 'Incorrect';
+    }
+
+    function renderTree(container, record) {
+      container.innerHTML = '';
+      const root = document.createElement('div');
+
+      const rootDetails = document.createElement('details');
+      rootDetails.open = true;
+      const rootSummary = document.createElement('summary');
+      rootSummary.textContent = 'Parent rollout';
+      rootDetails.appendChild(rootSummary);
+      const parentPre = document.createElement('pre');
+      parentPre.textContent = record.parent_rollout || '<no parent_rollout>';
+      rootDetails.appendChild(parentPre);
+      root.appendChild(rootDetails);
+
+      if (Array.isArray(record.fork_trace) && record.fork_trace.length) {
+        record.fork_trace.forEach((fork, idx) => {
+          const d = document.createElement('details');
+          const s = document.createElement('summary');
+          s.textContent = `Fork #${idx} • children: ${fork.child_traces?.length || 0}`;
+          d.appendChild(s);
+
+          const pTxt = document.createElement('pre');
+          pTxt.textContent = fork.parent_text || '';
+          d.appendChild(pTxt);
+
+          if (fork.results_json) {
+            const rTxt = document.createElement('pre');
+            rTxt.textContent = `Injected results:\n${fork.results_json}`;
+            d.appendChild(rTxt);
+          }
+
+          if (Array.isArray(fork.child_traces)) {
+            fork.child_traces.forEach((child, cidx) => {
+              const cDet = document.createElement('details');
+              cDet.style.marginLeft = '8px';
+              const cSum = document.createElement('summary');
+              cSum.textContent = `Child #${cidx} • goal_id=${child.goal_id ?? ''}`;
+              cDet.appendChild(cSum);
+              const cPre = document.createElement('pre');
+              cPre.textContent = child.full_response || child.answer || '';
+              cDet.appendChild(cPre);
+              d.appendChild(cDet);
+            });
+          }
+          root.appendChild(d);
+        });
+      }
+      container.appendChild(root);
+    }
+
+    function renderProblem(pid) {
+      const base = baseData[pid];
+      const sft  = sftData[pid];
+      if (!base || !sft) return;
+
+      meta.style.display = 'block';
+      panels.style.display = 'grid';
+
+      document.getElementById('problemText').textContent = base.problem_text || '(no text)';
+      document.getElementById('target').textContent = 'Target: ' + (base.target_answer || '');
+
+      const baseStatus = document.getElementById('baseStatus');
+      badge(baseStatus, !!base.is_correct);
+      document.getElementById('basePred').textContent = 'Prediction: ' + (base.prediction || '<none>');
+      renderTree(document.getElementById('baseTree'), base);
+
+      const sftStatus = document.getElementById('sftStatus');
+      badge(sftStatus, !!sft.is_correct);
+      document.getElementById('sftPred').textContent = 'Prediction: ' + (sft.prediction || '<none>');
+      renderTree(document.getElementById('sftTree'), sft);
+    }
+
+    problemSelect.addEventListener('change', () => {
+      renderProblem(problemSelect.value);
+    });
+
+    function handleFile(input, setter) {
+      const file = input.files?.[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (ev) => {
+        setter(parseJsonl(ev.target.result));
+        updateProblemList();
+      };
+      reader.readAsText(file);
+    }
+
+    baseInput.addEventListener('change', () => handleFile(baseInput, (d) => (baseData = d)));
+    sftInput.addEventListener('change',  () => handleFile(sftInput,  (d) => (sftData = d)));
+
+    // Optional: auto-load default files if present (same directory as this HTML).
+    // Defaults: base_math500_rollouts.jsonl and sft_math500_rollouts.jsonl
+    // You can override via query params: ?base=...&sft=...
+    async function tryAutoLoad() {
+      const params = new URLSearchParams(window.location.search);
+      const baseUrl = params.get('base') || 'base_math500_rollouts.jsonl';
+      const sftUrl  = params.get('sft')  || 'sft_math500_rollouts.jsonl';
+
+      async function fetchMaybe(url) {
+        try {
+          const res = await fetch(url);
+          if (!res.ok) throw new Error(res.statusText);
+          const text = await res.text();
+          return text;
+        } catch (e) {
+          return null;
+        }
+      }
+
+      const [baseText, sftText] = await Promise.all([fetchMaybe(baseUrl), fetchMaybe(sftUrl)]);
+      if (baseText) baseData = parseJsonl(baseText);
+      if (sftText)  sftData  = parseJsonl(sftText);
+      if (baseText || sftText) updateProblemList();
+    }
+
+    // Kick off optional autoload (non-blocking if files are absent)
+    tryAutoLoad();
+  </script>
+</body>
+</html>
