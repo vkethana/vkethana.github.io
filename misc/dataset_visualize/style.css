@@ -1,0 +1,69 @@
+body {
+  font-family: system-ui, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  padding: 0.75rem;
+  background: #1f2937;
+  color: white;
+}
+
+main {
+  display: flex;
+  height: 60vh;
+}
+
+#leftPane, #rightPane {
+  flex: 1;
+  padding: 0.75rem;
+  overflow: auto;
+  border-right: 1px solid #ddd;
+}
+
+#rightPane {
+  border-right: none;
+}
+
+#treeContainer ul {
+  list-style: none;
+  padding-left: 1rem;
+}
+
+.tree-node {
+  cursor: pointer;
+  margin: 2px 0;
+}
+
+.tree-node.node {
+  font-weight: 600;
+}
+
+.tree-node.leaf {
+  font-style: italic;
+}
+
+.tree-node:hover {
+  background: #eef2ff;
+}
+
+#detailPane {
+  height: 30vh;
+  border-top: 1px solid #ddd;
+  padding: 0.75rem;
+  overflow: auto;
+}
+
+#metrics div {
+  margin-bottom: 0.25rem;
+}
+
+svg {
+  border: 1px solid #ddd;
+  background: #fafafa;
+}
+

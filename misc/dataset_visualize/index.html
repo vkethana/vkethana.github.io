@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Reasoning Trace Viewer</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Reasoning Trace Viewer</h1>
+    <input type="file" id="fileInput" accept=".jsonl" />
+    <select id="traceSelect"></select>
+  </header>
+
+  <main>
+    <section id="leftPane">
+      <h2>Tree Explorer</h2>
+      <div id="treeContainer"></div>
+    </section>
+
+    <section id="rightPane">
+      <h2>Graph View</h2>
+      <svg id="graph" width="600" height="400"></svg>
+
+      <h2>Metrics</h2>
+      <div id="metrics"></div>
+    </section>
+  </main>
+
+  <section id="detailPane">
+    <h2>Node Details</h2>
+    <pre id="detailContent"></pre>
+  </section>
+
+  <script src="app.js"></script>
+</body>
+</html>
+
