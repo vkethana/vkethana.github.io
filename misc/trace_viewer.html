@@ -80,6 +80,14 @@
     .muted { color: var(--muted); }
     .flex { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
     .small { font-size: 13px; }
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+    ul { padding-left: 18px; margin: 6px 0 0 0; }
+    li { font-size: 13px; line-height: 1.4; }
   </style>
 </head>
 <body>
@@ -118,6 +126,28 @@
     </div>
   </div>
 
+  <div id="metricsContainer" class="card" style="margin-top:12px; display:none;">
+    <div class="title" style="margin-bottom:8px;">Metrics (averaged over all rollouts)</div>
+    <div class="small muted" style="margin-bottom:6px;">Computed from text lengths; response_length used when present.</div>
+    <div class="metrics-grid">
+      <div>
+        <div class="title small">Max children per fork</div>
+        <div class="muted small">Averaged across all rollouts</div>
+        <ul id="metricWidth"></ul>
+      </div>
+      <div>
+        <div class="title small">Parent + longest descendant chain (avg chars)</div>
+        <div class="muted small">(I.e. the critical path length)</div>
+        <ul id="metricThroughput"></ul>
+      </div>
+      <div>
+        <div class="title small">Context lengths</div>
+        <div class="muted small"> </div>
+        <ul id="metricCtx"></ul>
+      </div>
+    </div>
+  </div>
+
   <div class="card">
     <label>Base JSONL file</label><br />
     <input id="baseFile" type="file" accept=".jsonl,.txt" />
@@ -126,16 +156,143 @@
     <label>SFT JSONL file</label><br />
     <input id="sftFile" type="file" accept=".jsonl,.txt" />
   </div>
+  <div class="card">
+    <label>Optional: Metrics CSV (any task)</label><br />
+    <input id="csvFile" type="file" accept=".csv,.txt" />
+    <div class="small muted" style="margin-top:4px;">Loads into metrics panel; also logs metrics to console.</div>
+  </div>
 
   <script>
     const baseInput = document.getElementById('baseFile');
     const sftInput  = document.getElementById('sftFile');
+    const csvInput  = document.getElementById('csvFile');
     const problemSelect = document.getElementById('problemSelect');
     const meta = document.getElementById('meta');
     const panels = document.getElementById('panels');
 
     let baseData = {};
     let sftData = {};
+    let csvData = {};
+
+    // ---- tree utilities (recursive) ----
+    function buildNestedChildren(node) {
+      const kids = [];
+      if (Array.isArray(node.fork_trace)) {
+        node.fork_trace.forEach((fork) => {
+          const forkNode = { text: fork.parent_text || '', response_length: fork.response_length, children: [] };
+          if (Array.isArray(fork.child_traces)) {
+            fork.child_traces.forEach((child) => {
+              forkNode.children.push({
+                text: child.full_response || child.answer || '',
+                response_length: child.response_length,
+                fork_trace: child.fork_trace,
+                children: buildNestedChildren(child),
+              });
+            });
+          }
+          kids.push(forkNode);
+        });
+      }
+      return kids;
+    }
+
+    function buildTreeFromRecord(rec) {
+      const root = { text: rec.parent_rollout || '', response_length: rec.response_length, children: [] };
+      if (Array.isArray(rec.fork_trace)) {
+        rec.fork_trace.forEach((fork) => {
+          const forkNode = { text: fork.parent_text || '', response_length: fork.response_length, children: [] };
+          if (Array.isArray(fork.child_traces)) {
+            fork.child_traces.forEach((child) => {
+              forkNode.children.push({
+                text: child.full_response || child.answer || '',
+                response_length: child.response_length,
+                fork_trace: child.fork_trace,
+                children: buildNestedChildren(child),
+              });
+            });
+          }
+          root.children.push(forkNode);
+        });
+      }
+      return root;
+    }
+
+    function walkMetrics(node) {
+      let widths = [node.children.length];
+      let textLens = [node.text.length];
+      let ctxLens = [typeof node.response_length === 'number' ? node.response_length : node.text.length];
+
+      node.children.forEach((c) => {
+        const sub = walkMetrics(c);
+        widths = widths.concat(sub.widths);
+        textLens = textLens.concat(sub.textLens);
+        ctxLens = ctxLens.concat(sub.ctxLens);
+      });
+
+      return { widths, textLens, ctxLens };
+    }
+
+    function maxPathLen(node) {
+      if (!node.children.length) return node.text.length;
+      let best = 0;
+      node.children.forEach((c) => { best = Math.max(best, maxPathLen(c)); });
+      return node.text.length + best;
+    }
+
+    // helpers
+    function median(arr) {
+      if (!arr.length) return 0;
+      const a = [...arr].sort((x, y) => x - y);
+      const mid = Math.floor(a.length / 2);
+      return a.length % 2 === 0 ? (a[mid - 1] + a[mid]) / 2 : a[mid];
+    }
+
+    function summarizeMetrics(records) {
+      const values = Object.values(records);
+      if (!values.length) return null;
+
+      const widths = [];
+      const pathLens = [];
+      const ctxLens = [];
+
+      values.forEach((rec) => {
+        const tree = buildTreeFromRecord(rec);
+        const walk = walkMetrics(tree);
+        widths.push(Math.max(...walk.widths));
+        ctxLens.push(...walk.ctxLens);
+        pathLens.push(maxPathLen(tree));
+      });
+
+      return {
+        avgWidth: widths.length ? (widths.reduce((a,b)=>a+b,0)/widths.length).toFixed(2) : '0.00',
+        medPath: median(pathLens).toFixed(1),
+        medCtx: median(ctxLens).toFixed(1),
+      };
+    }
+
+    // Simple CSV parser (comma-separated, header row). Returns object keyed by problem_id.
+    function parseCsv(text) {
+      const lines = text.trim().split(/\r?\n/);
+      if (!lines.length) return {};
+      const headers = lines[0].split(',').map((h) => h.trim());
+      const out = {};
+      lines.slice(1).forEach((line, idx) => {
+        if (!line.trim()) return;
+        const cols = line.split(',');
+        const obj = {};
+        headers.forEach((h, i) => { obj[h] = cols[i] ?? ''; });
+        if (obj.fork_trace) {
+          try { obj.fork_trace = JSON.parse(obj.fork_trace); } catch { obj.fork_trace = []; }
+        }
+        if (obj.response_length) {
+          const n = Number(obj.response_length);
+          if (!Number.isNaN(n)) obj.response_length = n;
+        }
+        obj.problem_id = obj.problem_id || `csv_row_${idx}`;
+        out[obj.problem_id] = obj;
+      });
+      return out;
+    }
 
     function parseJsonl(text) {
       const out = {};
@@ -172,6 +329,11 @@
       });
       problemSelect.disabled = false;
       renderProblem(common[0]);
+
+      // refresh metrics
+      const baseMetrics = summarizeMetrics(baseData);
+      const sftMetrics  = summarizeMetrics(sftData);
+      renderMetrics(baseMetrics, sftMetrics);
     }
 
     function badge(el, ok) {
@@ -181,52 +343,26 @@
 
     function renderTree(container, record) {
       container.innerHTML = '';
-      const root = document.createElement('div');
 
-      const rootDetails = document.createElement('details');
-      rootDetails.open = true;
-      const rootSummary = document.createElement('summary');
-      rootSummary.textContent = 'Parent rollout';
-      rootDetails.appendChild(rootSummary);
-      const parentPre = document.createElement('pre');
-      parentPre.textContent = record.parent_rollout || '<no parent_rollout>';
-      rootDetails.appendChild(parentPre);
-      root.appendChild(rootDetails);
-
-      if (Array.isArray(record.fork_trace) && record.fork_trace.length) {
-        record.fork_trace.forEach((fork, idx) => {
-          const d = document.createElement('details');
-          const s = document.createElement('summary');
-          s.textContent = `Fork #${idx} • children: ${fork.child_traces?.length || 0}`;
-          d.appendChild(s);
-
-          const pTxt = document.createElement('pre');
-          pTxt.textContent = fork.parent_text || '';
-          d.appendChild(pTxt);
-
-          if (fork.results_json) {
-            const rTxt = document.createElement('pre');
-            rTxt.textContent = `Injected results:\n${fork.results_json}`;
-            d.appendChild(rTxt);
-          }
-
-          if (Array.isArray(fork.child_traces)) {
-            fork.child_traces.forEach((child, cidx) => {
-              const cDet = document.createElement('details');
-              cDet.style.marginLeft = '8px';
-              const cSum = document.createElement('summary');
-              cSum.textContent = `Child #${cidx} • goal_id=${child.goal_id ?? ''}`;
-              cDet.appendChild(cSum);
-              const cPre = document.createElement('pre');
-              cPre.textContent = child.full_response || child.answer || '';
-              cDet.appendChild(cPre);
-              d.appendChild(cDet);
-            });
-          }
-          root.appendChild(d);
-        });
+      function renderNode(node, label) {
+        const det = document.createElement('details');
+        det.open = label === 'Parent';
+        const sum = document.createElement('summary');
+        sum.textContent = label;
+        det.appendChild(sum);
+        const pre = document.createElement('pre');
+        pre.textContent = node.text || '<empty>';
+        det.appendChild(pre);
+        if (node.children && node.children.length) {
+          node.children.forEach((c, idx) => {
+            det.appendChild(renderNode(c, `Child ${idx + 1}`));
+          });
+        }
+        return det;
       }
-      container.appendChild(root);
+
+      const tree = buildTreeFromRecord(record);
+      container.appendChild(renderNode(tree, 'Parent rollout'));
     }
 
     function renderProblem(pid) {
@@ -268,6 +404,18 @@
 
     baseInput.addEventListener('change', () => handleFile(baseInput, (d) => (baseData = d)));
     sftInput.addEventListener('change',  () => handleFile(sftInput,  (d) => (sftData = d)));
+    csvInput.addEventListener('change',  () => {
+      const file = csvInput.files?.[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (ev) => {
+        csvData = parseCsv(ev.target.result);
+        const csvMetrics = summarizeMetrics(csvData);
+        console.log('CSV metrics', csvMetrics);
+        renderMetrics(csvMetrics, null);
+      };
+      reader.readAsText(file);
+    });
 
     // Optional: auto-load default files if present (same directory as this HTML).
     // Defaults: base_math500_rollouts.jsonl and sft_math500_rollouts.jsonl
@@ -294,8 +442,36 @@
       if (baseText || sftText) updateProblemList();
     }
 
+    function renderMetrics(baseMetrics, sftMetrics) {
+      const container = document.getElementById('metricsContainer');
+      if (!baseMetrics && !sftMetrics) {
+        container.style.display = 'none';
+        return;
+      }
+      container.style.display = 'block';
+
+      function renderStat(el, labelBase, labelSft, valBase, valSft) {
+        el.innerHTML = '';
+        if (valBase !== undefined) {
+          const li = document.createElement('li');
+          li.textContent = `${labelBase}: ${valBase}`;
+          el.appendChild(li);
+        }
+        if (valSft !== undefined) {
+          const li = document.createElement('li');
+          li.textContent = `${labelSft}: ${valSft}`;
+          el.appendChild(li);
+        }
+      }
+
+      renderStat(document.getElementById('metricWidth'), 'Base avg max children', 'SFT avg max children', baseMetrics?.avgWidth, sftMetrics?.avgWidth);
+      renderStat(document.getElementById('metricThroughput'), 'Base median path len', 'SFT median path len', baseMetrics?.medPath, sftMetrics?.medPath);
+      renderStat(document.getElementById('metricCtx'), 'Base median context len', 'SFT median context len', baseMetrics?.medCtx, sftMetrics?.medCtx);
+    }
+
     // Kick off optional autoload (non-blocking if files are absent)
     tryAutoLoad();
   </script>
 </body>
 </html>
+
