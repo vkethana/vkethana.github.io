@@ -3,6 +3,7 @@ layout: base
 ---
 
 ## My Projects
+
 {% include projectlist.html %}
 
 ## Bio
@@ -20,5 +21,5 @@ Outside of school, I enjoy cooking, hiking, and learning languages. I also [blog
 
 ## Education
 
-* Currently pursuing Bachelor of Arts in Computer Science (3.97 GPA) from UC Berkeley (2023 – ).
-* Coursework: Operating Systems, Machine Learning, Deep Learning, Computer Vision, Data Structures, Algorithms, Introductory & Intermediate Sanskrit.
+* Currently pursuing Bachelor's Degree in Computer Science from UC Berkeley (2023 – ).
+* Coursework: Operating Systems, Machine Learning, Deep Learning, Deep Reinforcement Learning, Computer Vision, Data Structures, Algorithms, FPGA Design; Historical Linguistics, Introductory & Intermediate Sanskrit.

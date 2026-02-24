@@ -1,75 +1,67 @@
-<div class="container">
-    <table>
-        <thead>
-            <tr>
-                <th>Project Name</th>
-                <th>Image</th>
-                <th class="image-column">Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr id="cognateful">
-                <td><a href="https://cognateful.vkethana.com/">Cognateful</a></td>
-                <td>
-                    <img src="/assets/images/frontpg/cognateful.png" alt="Image from my language learning app" />
-                </td>
-                <td>Interactive language-learning app that teaches you French using stories written in French, with translation exercises that are scored using large language model judgements.</td>
-            </tr>
-            <tr id="nerfs">
-                <td><a href="https://www.vkethana.com/nerfs/">NeRFs from Scratch</a></td>
-                <td>
-                    <img src="/assets/images/nerf/lego.webp" alt="A gif of a spinning lego" />
-                </td>
-                <td>Designed and implemented a NeRF (Neural Radiance Field) model in PyTorch based on the <a href="https://arxiv.org/pdf/2003.08934">original NeRF paper</a>. 
-                    Successfully reconstructed a 3D scene of a rotating LEGO truck from a set of 2D views.</td>
-            </tr>
-            <tr id="diffusion">
-                <td><a href="https://www.vkethana.com/diffusion/">Flow Matching Models from Scratch</a></td>
-                <td>
-                    <img src="/assets/images/diffusion/diffusion.webp" alt="An image being generated from scratch" />
-                </td>
-                <td>
-                    Implemented flow matching generative model in PyTorch using a time and class-conditioned UNet.
-                    Trained the model on MNIST with conditional dropout to support classifier-free guidance during inference.
-                    Built sampling + visualization pipeline to generate GIFs showing emergence of digits over time.
-                </td>            
-            </tr>
-            <tr id="gso">
-                <td><a href="https://arxiv.org/pdf/2505.23671">GSO: Software Optimization Tasks for Evaluating SWE-Agents</a></td>
-                <td>
-                    <img src="/assets/images/frontpg/gso_task.png" alt="An image of the GSO task generation pipeline" />
-                </td>
-                <td>Paper Accepted at NeurIPS 2025 (Datasets & Benchmarks Track): Coauthored Global Software Optimization (GSO), an LLM code optimization 
-                    benchmark spanning 102 optimization problems and five programming languages.</td>
-            </tr>
-            <tr id="pintos">
-                <td>PintOS (Operating Systems Class Project)</td>
-                <td>
-                    <img src="/assets/images/frontpg/pintos.png" alt="An image of the PintOS operating system" />
-                </td>
-                <td>Built a transaction-safe Unix-like file system with hierarchical inode structure, resizable files, and rollback recovery. Developed an in-memory buffer cache with fine-grained locking for concurrent disk I/O. Implemented a POSIX-style threading subsystem with kernel-level synchronization primitives and priority scheduling to enable true parallel execution.</td>
-            </tr>
-            <tr id="risc-v-cpu">
-                <td>RISC-V CPU</td>
-                <td>
-                    <img src="/assets/images/frontpg/datapath.png" alt="RISC-V CPU Datapath" />
-                </td>
-                <td>Built a full CPU in Logism that runs instructions in assembly language. Implemented two-stage pipelining to increase throughput. Prevent control hazards via pipeline flushing.</td>
-            </tr>
-            <tr id="factgrid-cuneiform">
-                <td><a href="https://drive.google.com/file/d/1EfvsekS7I_fEWDSfWawkf6dkGystoq03/view?usp=sharing">FactGrid Cuneiform Project</a></td>
-                <td>
-                    <img src="/assets/images/frontpg/fixed_bounding_boxes.png" alt="FactGrid Cuneiform Project" />
-                </td>
-                <td>Develop machine learning model to segment and transcribe dataset of 1,068 annotated Cuneiform tablets using the YOLOv8 architecture.</td>
-            </tr>
-            <tr id="david-deutsch-dictionary">
-                <td><a href="https://rational.vkethana.com">The David Deutsch Dictionary</a></td>
-                <td>
-                    <img src="/assets/images/frontpg/david_deutsch_lexicon.png" alt="The David Deutsch Lexicon" />
-                </td>
-                <td>Online database of quotes from science author and quantum physicist David Deutsch. Utilizes <a href="https://docs.google.com/spreadsheets/d/1xTxusR0Mfy5eE5vbe8wjIAVwvfojvHzCse_J_fUteZc/edit?gid=0#gid=0">Google Sheets</a> as a backend database to allow for seamless and near-real-time updates. Scraped quotes off the internet using Python3 and NLTK (Natural Language Tool Kit). Designed UI using Flask and HTML.</td>
-            </tr>
-        </tbody>
-    </table>
+<div class="project-list">
+    <div class="project-header">
+        <div class="header-name">Project Name</div>
+        <div class="header-image">Image</div>
+        <div class="header-desc">Description</div>
+    </div>
+    <div class="project-item" id="cognateful">
+        <div class="project-name"><a href="https://cognateful.vkethana.com/">Cognateful</a></div>
+        <div class="project-image">
+            <img src="/assets/images/frontpg/cognateful.png" alt="Image from my language learning app" />
+        </div>
+        <div class="project-description">Interactive language-learning app that teaches you French using stories written in French, with translation exercises that are scored using large language model judgements.</div>
+    </div>
+    <div class="project-item" id="nerfs">
+        <div class="project-name"><a href="https://www.vkethana.com/nerfs/">NeRFs from Scratch</a></div>
+        <div class="project-image">
+            <img src="/assets/images/nerf/lego.webp" alt="A gif of a spinning lego" />
+        </div>
+        <div class="project-description">Designed and implemented a NeRF (Neural Radiance Field) model in PyTorch based on the <a href="https://arxiv.org/pdf/2003.08934">original NeRF paper</a>. Successfully reconstructed a 3D scene of a rotating LEGO truck from a set of 2D views.</div>
+    </div>
+    <div class="project-item" id="diffusion">
+        <div class="project-name"><a href="https://www.vkethana.com/diffusion/">Flow Matching Models from Scratch</a></div>
+        <div class="project-image">
+            <img src="/assets/images/diffusion/diffusion.webp" alt="An image being generated from scratch" />
+        </div>
+        <div class="project-description">
+            Implemented flow matching generative model in PyTorch using a time and class-conditioned UNet.
+            Trained the model on MNIST with conditional dropout to support classifier-free guidance during inference.
+            Built sampling + visualization pipeline to generate GIFs showing emergence of digits over time.
+        </div>
+    </div>
+    <div class="project-item" id="gso">
+        <div class="project-name"><a href="https://arxiv.org/pdf/2505.23671">GSO: Software Optimization Tasks for Evaluating SWE-Agents</a></div>
+        <div class="project-image">
+            <img src="/assets/images/frontpg/gso_task.png" alt="An image of the GSO task generation pipeline" />
+        </div>
+        <div class="project-description">Paper Accepted at NeurIPS 2025 (Datasets & Benchmarks Track): Coauthored Global Software Optimization (GSO), an LLM code optimization benchmark spanning 102 optimization problems and five programming languages.</div>
+    </div>
+    <div class="project-item" id="pintos">
+        <div class="project-name">PintOS (Operating Systems Class Project)</div>
+        <div class="project-image">
+            <img src="/assets/images/frontpg/pintos.png" alt="An image of the PintOS operating system" />
+        </div>
+        <div class="project-description">Built a transaction-safe Unix-like file system with hierarchical inode structure, resizable files, and rollback recovery. Developed an in-memory buffer cache with fine-grained locking for concurrent disk I/O. Implemented a POSIX-style threading subsystem with kernel-level synchronization primitives and priority scheduling to enable true parallel execution.</div>
+    </div>
+    <div class="project-item" id="risc-v-cpu">
+        <div class="project-name">RISC-V CPU</div>
+        <div class="project-image">
+            <img src="/assets/images/frontpg/datapath.png" alt="RISC-V CPU Datapath" />
+        </div>
+        <div class="project-description">Built a full CPU in Logism that runs instructions in assembly language. Implemented two-stage pipelining to increase throughput. Prevent control hazards via pipeline flushing.</div>
+    </div>
+    <div class="project-item" id="factgrid-cuneiform">
+        <div class="project-name"><a href="https://drive.google.com/file/d/1EfvsekS7I_fEWDSfWawkf6dkGystoq03/view?usp=sharing">FactGrid Cuneiform Project</a></div>
+        <div class="project-image">
+            <img src="/assets/images/frontpg/fixed_bounding_boxes.png" alt="FactGrid Cuneiform Project" />
+        </div>
+        <div class="project-description">Develop machine learning model to segment and transcribe dataset of 1,068 annotated Cuneiform tablets using the YOLOv8 architecture.</div>
+    </div>
+    <div class="project-item" id="david-deutsch-dictionary">
+        <div class="project-name"><a href="https://rational.vkethana.com">The David Deutsch Dictionary</a></div>
+        <div class="project-image">
+            <img src="/assets/images/frontpg/david_deutsch_lexicon.png" alt="The David Deutsch Lexicon" />
+        </div>
+        <div class="project-description">Online database of quotes from science author and quantum physicist David Deutsch. Utilizes <a href="https://docs.google.com/spreadsheets/d/1xTxusR0Mfy5eE5vbe8wjIAVwvfojvHzCse_J_fUteZc/edit?gid=0#gid=0">Google Sheets</a> as a backend database to allow for seamless and near-real-time updates. Scraped quotes off the internet using Python3 and NLTK (Natural Language Tool Kit). Designed UI using Flask and HTML.</div>
+    </div>
 </div>
