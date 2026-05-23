@@ -2,6 +2,7 @@
 layout: post
 title: "Flow Matching Models from Scratch in PyTorch"
 published: true
+featured_image: /assets/images/diffusion/diffusion.webp
 tags:
   - machine-learning
   - computer-vision

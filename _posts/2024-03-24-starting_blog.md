@@ -2,6 +2,7 @@
 layout: post
 title: "Why (and how) I am starting a website"
 description: My brief essay on why the internet needs more independent blog sites run by independent tinkerers.
+featured_image: /assets/images/portrait.jpeg
 tags:
   - misc
   - code
