@@ -3,7 +3,7 @@
 
   {% include head.html %}
 
-  <body>
+  <body class="{% if page.url == '/' %}home-page{% endif %}">
     <div class="container content">
       {% include navbar.html %}
 
