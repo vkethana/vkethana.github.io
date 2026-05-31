@@ -13,8 +13,35 @@ layout: base
 <section class="home-section" aria-labelledby="recent-title">
   <h2 id="recent-title" class="visually-hidden">Posts</h2>
   <div class="recent-list">
-    {% assign recent_posts = site.posts | where_exp: "post", "post.published != false" | slice: 0, 8 %}
+    {% assign recent_posts = site.posts | where_exp: "post", "post.published != false" %}
     {% for post in recent_posts %}
+      {% if forloop.index == 2 %}
+        {% assign mse_post = site.posts | where: "url", "/pusht/" | first %}
+        {% if mse_post %}
+          {% assign words = mse_post.content | strip_html | number_of_words %}
+          {% assign minutes = words | divided_by: 200 %}
+          {% if minutes < 1 %}{% assign minutes = 1 %}{% endif %}
+          <article class="recent-item">
+            <a class="recent-thumb" href="{{ mse_post.url | prepend: site.baseurl }}" aria-label="{{ mse_post.title }}">
+              {% if mse_post.featured_image %}
+                <img src="{{ mse_post.featured_image }}" alt="">
+              {% else %}
+                <span>{{ mse_post.title | slice: 0 }}</span>
+              {% endif %}
+            </a>
+            <div class="recent-body">
+              <h3><a href="{{ mse_post.url | prepend: site.baseurl }}">Training an MSE Policy via Imitation Learning</a></h3>
+              <p>
+                <time datetime="{{ mse_post.date | date_to_xmlschema }}">{{ mse_post.date | date: "%-d %B %Y" }}</time>
+                <span>{{ words }} words</span>
+                <span>{{ minutes }} min</span>
+              </p>
+            </div>
+          </article>
+        {% endif %}
+      {% endif %}
+      {% if post.url == "/qwen-arch/" %}{% continue %}{% endif %}
+      {% if post.url == "/pusht/" %}{% continue %}{% endif %}
       {% assign words = post.content | strip_html | number_of_words %}
       {% assign minutes = words | divided_by: 200 %}
       {% if minutes < 1 %}{% assign minutes = 1 %}{% endif %}
