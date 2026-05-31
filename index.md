@@ -2,7 +2,13 @@
 layout: base
 ---
 
-<h1 class="home-title">vijay kethanaboyina</h1>
+<div class="home-title-block" aria-labelledby="home-title">
+  <div class="title-row">
+    <span class="title-ornament" aria-hidden="true">§</span>
+    <h1 id="home-title" class="home-title">vijay kethanaboyina</h1>
+    <span class="title-ornament" aria-hidden="true">§</span>
+  </div>
+</div>
 
 <section class="home-section" aria-labelledby="recent-title">
   <h2 id="recent-title" class="visually-hidden">Posts</h2>

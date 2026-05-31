@@ -1,17 +1,18 @@
 :root {
-    --gray-000: #fffaf0;
-    --gray-100: #f4ead6;
-    --gray-300: #d8c9aa;
-    --gray-600: #7a6752;
-    --gray-700: #4f4032;
-    --gray-900: #241a14;
-    --accent: #8f2c19;
-    --yellow-100: #f7e5a5;
-    --body-font: Georgia, "Times New Roman", Times, serif;
+    --gray-000: #f8f8f8;
+    --gray-100: #eeeeee;
+    --gray-300: #cfcfcf;
+    --gray-600: #666666;
+    --gray-700: #222222;
+    --gray-900: #000000;
+    --accent: #8b1e3f;
+    --accent-soft: #f3dbe4;
+    --yellow-100: #fff8c5;
+    --body-font: "Latin Modern Roman", "Computer Modern Serif", "CMU Serif", Georgia, "Times New Roman", Times, serif;
     --body-font-size: 18px;
     --body-line-height: 1.5;
     --body-color: var(--gray-700);
-    --body-bg: #fbf4e3;
+    --body-bg: #fffffb;
     --heading-color: var(--gray-900);
     --border-color: var(--gray-300);
     --border-radius: 0.25rem;
@@ -23,9 +24,9 @@
 }
 @media (prefers-color-scheme: dark) {
     :root {
-        --body-color: #4f4032;
-        --body-bg: #fbf4e3;
-        --border-color: #d8c9aa;
+        --body-color: #222222;
+        --body-bg: #fffffb;
+        --border-color: #cfcfcf;
     }
 }
 * {
@@ -38,6 +39,7 @@ body {
     line-height: var(--body-line-height);
     color: var(--body-color);
     background-color: var(--body-bg);
+    text-rendering: optimizeLegibility;
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
 }
@@ -47,7 +49,7 @@ a strong {
 a {
     color: var(--accent);
     text-decoration-thickness: 1px;
-    text-underline-offset: 0.18em;
+    text-underline-offset: 0.14em;
 }
 img {
     display: block;
@@ -88,7 +90,7 @@ h4,
 h5,
 h6 {
     margin-bottom: 0.5rem;
-    font-weight: 600;
+    font-weight: 400;
     line-height: 1.25;
     color: var(--heading-color);
 }
@@ -406,7 +408,7 @@ pre {
     padding: 15px !important;
 }
 .container {
-    max-width: 52rem;
+    max-width: 50rem;
     padding-left: var(--spacer-2);
     padding-right: var(--spacer-2);
     margin-left: auto;
@@ -430,14 +432,18 @@ footer::before {
     display: block;
     margin-bottom: var(--spacer);
     color: var(--gray-600);
-    content: "* * *";
-    letter-spacing: 0.35em;
+    content: "";
+    width: 12rem;
+    height: 1px;
+    margin-left: auto;
+    margin-right: auto;
+    background: var(--accent);
+    letter-spacing: 0;
 }
 .masthead {
-    padding: var(--spacer) 0;
+    padding: 0.75rem 0;
     margin-bottom: var(--spacer-2);
-    border-top: 1px solid var(--border-color);
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--accent);
 }
 .masthead-title a, .nav a {
     color: inherit;
@@ -446,9 +452,10 @@ footer::before {
 
 .masthead-title {
     margin-bottom: 0;
-    font-size: 1.08rem;
-    font-weight: 700;
-    letter-spacing: 0.02em;
+    font-size: 1rem;
+    font-variant: small-caps;
+    font-weight: 400;
+    letter-spacing: 0.04em;
     text-transform: lowercase;
 }
 
@@ -467,10 +474,10 @@ footer::before {
 }
 
 .nav a {
-    margin-left: 18px;
+    margin-left: 1.1rem;
     font-size: 0.95rem;
     font-weight: 400;
-    opacity: 0.78;
+    opacity: 1;
     text-transform: lowercase;
 }
 
@@ -574,13 +581,53 @@ table img {
     background-color: var(--gray-000);
 }
 
+.home-title-block {
+    display: grid;
+    justify-items: center;
+    gap: 0.55rem;
+    margin: var(--spacer-3) auto calc(var(--spacer-2) * 1.2);
+    max-width: 36rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--accent);
+    text-align: center;
+}
+
+.home-title-block::before,
+.home-title-block::after {
+    display: none;
+}
+
+.title-row {
+    display: flex;
+    gap: 0.8rem;
+    align-items: baseline;
+    justify-content: center;
+}
+
 .home-title {
-    margin: var(--spacer-3) 0 var(--spacer-2);
-    font-size: clamp(2.1rem, 6vw, 3.4rem);
+    margin: 0;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-variant: small-caps;
     font-weight: 700;
-    line-height: 1.05;
+    line-height: 1.1;
     letter-spacing: 0;
     text-transform: lowercase;
+}
+
+.title-ornament {
+    color: var(--accent);
+    font-size: 1.05rem;
+    font-style: normal;
+    line-height: 1;
+    opacity: 0.82;
+}
+
+.title-ornament:first-child {
+    justify-self: end;
+}
+
+.title-ornament:last-child {
+    justify-self: start;
 }
 
 .visually-hidden {
@@ -612,8 +659,9 @@ table img {
 .home-section > h2 {
     margin: 0;
     color: var(--accent);
-    font-size: 1.35rem;
-    font-style: italic;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-variant: small-caps;
     font-weight: 400;
     text-transform: lowercase;
 }
@@ -628,23 +676,27 @@ table img {
 .recent-list {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 1.35rem 1rem;
+    gap: 1rem;
 }
 
 .recent-item {
     display: block;
-    padding: 0;
-    border-bottom: 0;
+    height: 100%;
+    padding: 0.55rem;
+    background: var(--gray-000);
+    border: 1px solid var(--border-color);
+    border-top: 3px solid var(--accent);
+    box-shadow: 2px 2px 0 var(--gray-300);
 }
 
 .recent-thumb {
     display: block;
     overflow: hidden;
     width: 100%;
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 1;
     margin-bottom: 0.55rem;
     background: var(--gray-100);
-    border: 1px solid var(--gray-900);
+    border: 1px solid var(--border-color);
     border-radius: 0;
     box-shadow: none;
 }
@@ -658,15 +710,15 @@ table img {
 }
 
 .recent-body h3 {
-    margin: 0 0 0.25rem;
-    font-size: 1rem;
+    margin: 0 0 0.3rem;
+    font-size: 0.94rem;
     font-weight: 400;
-    line-height: 1.18;
+    line-height: 1.2;
 }
 
 .recent-body h3 a {
     color: var(--accent);
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 .recent-body h3 a:hover,
@@ -680,7 +732,7 @@ table img {
     gap: 0.2rem 0.45rem;
     margin: 0;
     color: var(--gray-600);
-    font-size: 0.78rem;
+    font-size: 0.76rem;
     font-style: italic;
 }
 
@@ -787,4 +839,14 @@ table img {
     .home-title {
         font-size: 2.1rem;
     }
+
+    .home-title-block::before,
+    .home-title-block::after {
+        display: none;
+    }
+
+    .title-row {
+        gap: 0.45rem;
+    }
+
 }
