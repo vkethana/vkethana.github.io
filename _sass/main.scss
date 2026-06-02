@@ -573,7 +573,7 @@ table img {
 
 .bio-portrait {
     float: left;
-    width: 140px;
+    width: 190px;
     margin: 0 var(--spacer-3) var(--spacer-2) 0;
     padding: var(--spacer);
     border: 1px solid var(--border-color);
@@ -751,8 +751,8 @@ table img {
 /* Project List Styles */
 .project-list {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1.1rem;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
     margin-bottom: 2rem;
 }
 
@@ -762,11 +762,11 @@ table img {
 
 .project-item {
     display: grid;
+    grid-template-columns: minmax(10rem, 14rem) 1fr;
     grid-template-areas:
-        "image"
-        "name"
-        "desc";
-    gap: 0.55rem;
+        "image name"
+        "image desc";
+    gap: 0.4rem 1rem;
     align-content: start;
     padding-bottom: 0;
     border-bottom: 0;
@@ -786,16 +786,18 @@ table img {
 
 .project-image {
     grid-area: image;
-    text-align: center;
+    text-align: left;
 }
 
 .project-image img {
-    width: 100%;
-    aspect-ratio: 16 / 10;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 12rem;
     border: 0;
-    border-radius: 6px;
-    object-fit: cover;
-    background: var(--gray-100);
+    border-radius: 0;
+    object-fit: initial;
+    background: transparent;
     margin-bottom: 0;
 }
 
@@ -834,6 +836,14 @@ table img {
 
     .project-list {
         grid-template-columns: 1fr;
+    }
+
+    .project-item {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "image"
+            "name"
+            "desc";
     }
 
     .home-title {

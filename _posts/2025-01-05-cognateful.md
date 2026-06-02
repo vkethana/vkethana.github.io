@@ -3,7 +3,7 @@ layout: post
 title: "Generating Cognateful Sentences with Large Language Models"
 published: true
 comments: true
-featured_image: /assets/images/frontpg/cognateful.png
+featured_image: /assets/images/frontpg/cognateful_square.png
 tags:
   - machine-learning
   - linguistics
