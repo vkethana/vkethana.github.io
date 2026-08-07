@@ -3,9 +3,6 @@ layout: post
 title: "Flow Matching Models from Scratch in PyTorch"
 published: true
 featured_image: /assets/images/diffusion/diffusion.webp
-tags:
-  - machine-learning
-  - computer-vision
 require-mathjax: true
 toc:
   - name: Part 0 - Setup
@@ -38,6 +35,9 @@ toc:
         link: "#1-single-step-denoising-unet"
       - name: 2. Training Diffusion Model
         link: "#2-training-a-diffusion-model"
+tags:
+  - machine learning
+  - school project
 ---
 
 ## Table of Contents

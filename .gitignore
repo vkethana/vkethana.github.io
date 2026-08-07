@@ -3,3 +3,5 @@ _drafts
 _drafts/*
 _site/*
 _site
+.bundle/
+vendor/

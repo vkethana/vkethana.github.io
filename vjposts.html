@@ -1,25 +1,25 @@
 ---
 layout: nonpost
-title: Vijay's Blog
+title: Writing
 ---
-<div>
-</div>
-<div class="posts">
-  <h2>Posts</h2>
-  <ul>
-    <li><a href="/pusht/">Training a Flow-Matching Policy via Imitation Learning</a></li>
-    <li><a href="/diffusion/">Flow Matching Models from Scratch in PyTorch</a></li>
-    <li><a href="/nerfs/">Implementing NeRFs (Neural Radiance Fields) from Scratch</a></li>
-    <li><a href="/cognateful/">Generating Cognateful Sentences with Large Language Models</a></li>
-    <li><a href="/vjscript/">Inventing My Own Writing System for English, VJScript</a></li>
-    <li><a href="/startups/">Startup Tips from Clever's CEO</a></li>
-    <li><a href="/qwen-arch/">Visualizing the Qwen3 MoE Architecture</a></li>
-    <li><a href="/colorize/">Colorizing Old Russian Photographs... Automatically!</a></li>
-    <li><a href="/mosaic/">Generating Image Mosaics (without Machine Learning!)</a></li>
-    <li><a href="/frequency/">Making Orapples: Fun with Filters, Frequencies, and Image Blending</a></li>
-    <li><a href="/ideas/">Random Research Ideas</a></li>
-    <li><a href="/starting_blog/">Why (and How) I am Starting a Website</a></li>
-  </ul>
 
-  You can subscribe to an RSS feed <a href="{{ "/feed.xml" | prepend: site.baseurl }}">here</a>.
+<div class="post-list">
+  {% assign published_posts = site.posts | where_exp: "post", "post.published != false" %}
+  {% for post in published_posts %}
+    <article class="post-card">
+      <a class="post-card-thumb" href="{{ post.url | prepend: site.baseurl }}" aria-label="{{ post.title }}">
+        {% if post.featured_image %}
+          <img src="{{ post.featured_image }}" alt="">
+        {% else %}
+          <span class="post-card-fallback">{{ post.title | slice: 0 }}</span>
+        {% endif %}
+      </a>
+      <div class="post-card-body">
+        <h2><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h2>
+        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y" }}</time>
+      </div>
+    </article>
+  {% endfor %}
 </div>
+
+<p style="margin-top: 1rem;">Subscribe via <a href="{{ "/feed.xml" | prepend: site.baseurl }}">RSS</a>.</p>

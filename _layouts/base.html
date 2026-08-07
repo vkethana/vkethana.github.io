@@ -1,24 +1,47 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark-poole">
+<html lang="en">
 
   {% include head.html %}
 
   <body class="{% if page.url == '/' %}home-page{% endif %}">
-    <div class="container content">
+    <button type="button" class="desktop-icon" id="desktop-icon" hidden>
+      <img src="/assets/images/theme/xp-icon.png" alt="" width="32" height="32">
+      <span>V. Kethana</span>
+    </button>
+
+    <div class="site-frame" id="site-window" data-window-state="normal">
       {% include navbar.html %}
 
-      <main>
-        {{ content }}
-      </main>
+      <div class="site-body">
+        <aside class="sidebar">
+          <div class="sidebar-heading">Places</div>
+          <nav class="side-nav">
+            <a href="/" {% if page.url == '/' %}class="active"{% endif %}>Home</a>
+            <a href="/about" {% if page.url == '/about/' %}class="active"{% endif %}>About</a>
+            <a href="/portfolio" {% if page.url == '/portfolio/' %}class="active"{% endif %}>Projects</a>
+            <a href="/reading-log" {% if page.url == '/reading-log/' %}class="active"{% endif %}>Reading Log</a>
+            <a href="mailto:vijaykethanaboyina@gmail.com">Contact</a>
+          </nav>
+        </aside>
+
+        <main class="content-pane">
+          {{ content }}
+        </main>
+      </div>
 
       <footer class="footer">
-        <small>
-          &copy;
-          <time datetime="2026"
-            >2026</time
-          > Vijay Kiran Kethanaboyina. All rights reserved.
-        </small>
+        <small>&copy; {{ 'now' | date: '%Y' }} V. Kethana</small>
       </footer>
     </div>
+
+    <div class="os-taskbar" role="presentation">
+      <div class="start-btn" aria-hidden="true"><span>start</span></div>
+      <button type="button" class="task-btn" id="task-btn" aria-label="Restore V. Kethana">
+        <img src="/assets/images/theme/xp-icon.png" alt="" width="16" height="16">
+        <span>V. Kethana</span>
+      </button>
+    </div>
+
+    <script src="/assets/js/xp-window.js" defer></script>
   </body>
 </html>

@@ -1,6 +1,6 @@
 ---
 layout: nonpost
-title: Vijay's Coding Portfolio
+title: Projects
 ---
 
 ## Table of Contents

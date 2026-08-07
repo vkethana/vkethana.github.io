@@ -5,8 +5,7 @@ description: Edge detection, image sharpening, hybrid images, and multiresolutio
 published: true
 featured_image: /assets/images/frequency/pt2/oraple.jpg
 tags:
-  - machine-learning
-  - computer-vision
+  - school project
 ---
 
 # TLDR
