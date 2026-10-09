@@ -14,7 +14,7 @@ title: About
   </p>
 
   <p>
-    You can also find me on <a href="https://twitter.com/v_kethana">Twitter</a>, <a href="https://www.linkedin.com/in/vkethana/">LinkedIn</a>, or subscribe to this site's
+    You can also find me on <a href="https://www.linkedin.com/in/vkethana/">LinkedIn</a> or subscribe to this site's
     <a href="{{ "/feed.xml" | prepend: site.baseurl }}">RSS feed</a>.
   </p>
 </section>
